@@ -1,5 +1,87 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://zerobone.net/feed.xml" rel="self" type="application/atom+xml" /><link href="https://zerobone.net/" rel="alternate" type="text/html" hreflang="en" /><updated>2020-08-31T15:37:04+02:00</updated><id>https://zerobone.net/feed.xml</id><title type="html">ZeroBone</title><subtitle>Computer Science student &amp; backend developer.
-</subtitle><entry><title type="html">Extended Euclidean algorithm without stack or recursion</title><link href="https://zerobone.net/blog/cs/2020-02-21-non-recursive-extended-euklidian-algorithm/" rel="alternate" type="text/html" title="Extended Euclidean algorithm without stack or recursion" /><published>2020-02-21T00:00:00+01:00</published><updated>2020-02-21T00:00:00+01:00</updated><id>https://zerobone.net/blog/cs/non-recursive-extended-euklidian-algorithm</id><content type="html" xml:base="https://zerobone.net/blog/cs/2020-02-21-non-recursive-extended-euklidian-algorithm/">&lt;p&gt;Typical implementation of the extended Euclidean algorithm on the internet will just iteratively calculate modulo until 0 is reached. However, sometimes you also need to calculate the linear combination coefficients for the greatest common divisor.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://zerobone.net/feed.xml" rel="self" type="application/atom+xml" /><link href="https://zerobone.net/" rel="alternate" type="text/html" hreflang="en" /><updated>2020-08-31T23:02:24+02:00</updated><id>https://zerobone.net/feed.xml</id><title type="html">ZeroBone</title><subtitle>Computer Science student &amp; backend developer.
+</subtitle><entry><title type="html">Numbers in congruence classes are regular languages</title><link href="https://zerobone.net/blog/cs/2020-08-29-numbers-are-regular-languages/" rel="alternate" type="text/html" title="Numbers in congruence classes are regular languages" /><published>2020-08-29T00:00:00+02:00</published><updated>2020-08-29T00:00:00+02:00</updated><id>https://zerobone.net/blog/cs/numbers-are-regular-languages</id><content type="html" xml:base="https://zerobone.net/blog/cs/2020-08-29-numbers-are-regular-languages/">&lt;p&gt;In this post we will consider natural Radix-b numbers in positional number systems. The congruence class of any such arbitrary natural number can be determined by a finite automata, and thus, intuitively speaking, the language of all Radix-b numbers that satisfy some fixed properties modulo b is regular.&lt;/p&gt;
+
+&lt;h2 id=&quot;radix-b-numbers-divisible-by-m&quot;&gt;Radix-b numbers divisible by m&lt;/h2&gt;
+
+&lt;p&gt;The key idea behind the automation construction is that after reading a digit, the new congruence class depends only on the current read digit and on the previous congruence class. There are only &lt;code class=&quot;MathJax_Preview&quot;&gt;m &amp;lt; \infty&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+m &lt; \infty %]]&gt;&lt;/script&gt; congruence classes so we can construct a finite automata that accepts all numbers divisible by m:&lt;/p&gt;
+
+&lt;pre class=&quot;MathJax_Preview&quot;&gt;&lt;code&gt;\begin{aligned}
+A &amp;amp;= (Z,\Sigma,\delta, z_0, E) \\
+Z &amp;amp;:= \{0,\dots, m-1\} \\
+\Sigma &amp;amp;:= \{0,\dots, b-1\} \\
+E &amp;amp;:= \{0\} \\
+z_0 &amp;amp;:= 0 \\
+\delta(r,d) &amp;amp;:= r \cdot b + d \bmod{m}
+\end{aligned}&lt;/code&gt;&lt;/pre&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{aligned}
+A &amp;= (Z,\Sigma,\delta, z_0, E) \\
+Z &amp;:= \{0,\dots, m-1\} \\
+\Sigma &amp;:= \{0,\dots, b-1\} \\
+E &amp;:= \{0\} \\
+z_0 &amp;:= 0 \\
+\delta(r,d) &amp;:= r \cdot b + d \bmod{m}
+\end{aligned} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;The correctness of the transition function can be seen as follows: when the automation is in state &lt;code class=&quot;MathJax_Preview&quot;&gt;r&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;r&lt;/script&gt;, the number that has been read is in the congruence class &lt;code class=&quot;MathJax_Preview&quot;&gt;r&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;r&lt;/script&gt; modulo &lt;code class=&quot;MathJax_Preview&quot;&gt;m&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;m&lt;/script&gt;. So we can write it as &lt;code class=&quot;MathJax_Preview&quot;&gt;mk+r&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;mk+r&lt;/script&gt;. By multiplying with &lt;code class=&quot;MathJax_Preview&quot;&gt;b&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;b&lt;/script&gt; (i.e. shift the number by 1 digit to the left) and adding &lt;code class=&quot;MathJax_Preview&quot;&gt;d&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;d&lt;/script&gt; we get the new congruence class:&lt;/p&gt;
+
+&lt;pre class=&quot;MathJax_Preview&quot;&gt;&lt;code&gt;\begin{aligned}
+\delta(r,d) &amp;amp;= (mk + r)\cdot b + d \bmod{m} \\
+&amp;amp;= mkb + rb + d \bmod{m} \\
+&amp;amp;= rb + d \bmod{m}
+\end{aligned}&lt;/code&gt;&lt;/pre&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{aligned}
+\delta(r,d) &amp;= (mk + r)\cdot b + d \bmod{m} \\
+&amp;= mkb + rb + d \bmod{m} \\
+&amp;= rb + d \bmod{m}
+\end{aligned} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Of course, by altering the set of final states &lt;code class=&quot;MathJax_Preview&quot;&gt;E&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;E&lt;/script&gt; we can accept not only multiples of &lt;code class=&quot;MathJax_Preview&quot;&gt;m&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;m&lt;/script&gt;, but any such number &lt;code class=&quot;MathJax_Preview&quot;&gt;n&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt; with &lt;code class=&quot;MathJax_Preview&quot;&gt;n \mod{m} \in E&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;n \mod{m} \in E&lt;/script&gt; for any &lt;code class=&quot;MathJax_Preview&quot;&gt;E \in \mathcal{P}(Z)&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;E \in \mathcal{P}(Z)&lt;/script&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;binary-numbers-modulo-4&quot;&gt;Binary numbers modulo 4&lt;/h2&gt;
+
+&lt;p&gt;For example, we can construct a finite automation that accept all binary (&lt;code class=&quot;MathJax_Preview&quot;&gt;b = 2&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;b = 2&lt;/script&gt;) numbers divisible by 4 (&lt;code class=&quot;MathJax_Preview&quot;&gt;m = 4&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;m = 4&lt;/script&gt;):&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/dfa-radix2-modulo4.svg&quot; alt=&quot;Stack buffer overflow&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The transitions are obtained as follows:&lt;/p&gt;
+
+&lt;pre class=&quot;MathJax_Preview&quot;&gt;&lt;code&gt;\begin{aligned}
+0 \cdot 2 \bmod{4} = 0 &amp;amp;\implies \delta(0, 0) = 0, \delta(0, 1) = 1 \\
+1 \cdot 2 \bmod{4} = 2 &amp;amp;\implies \delta(1, 0) = 2, \delta(1, 1) = 3 \\
+2 \cdot 2 \bmod{4} = 0 &amp;amp;\implies \delta(2, 0) = 0, \delta(2, 1) = 1 \\
+3 \cdot 2 \bmod{4} = 2 &amp;amp;\implies \delta(3, 0) = 2, \delta(3, 1) = 3
+\end{aligned}&lt;/code&gt;&lt;/pre&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{aligned}
+0 \cdot 2 \bmod{4} = 0 &amp;\implies \delta(0, 0) = 0, \delta(0, 1) = 1 \\
+1 \cdot 2 \bmod{4} = 2 &amp;\implies \delta(1, 0) = 2, \delta(1, 1) = 3 \\
+2 \cdot 2 \bmod{4} = 0 &amp;\implies \delta(2, 0) = 0, \delta(2, 1) = 1 \\
+3 \cdot 2 \bmod{4} = 2 &amp;\implies \delta(3, 0) = 2, \delta(3, 1) = 3
+\end{aligned} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;In this particular case the constructed automation is not minimal. States s1 and s3 are equivalent (this can be formally proven with the Myhill-Nerode theorem) and can be replaced by one state:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/dfa-radix2-modulo4-min.svg&quot; alt=&quot;Stack buffer overflow&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;As languages accepted by DFA’s are exactly the regular languages, we can transform any DFA in a regular expression to see the exact structure of numbers divisible, for example, by 4. Unfortunately such regular expressions are very long when constructed with the Kleene or with the Arden method by a computer. These regular expressions must be massively simplified in order to be readable. With the Kleene construction i’ve implemented in &lt;a href=&quot;/projects/numpat/&quot;&gt;this project&lt;/a&gt; we get the following regular expression:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ε|0|(ε|0)0*(ε|0)|(1|(ε|0)0*1)(1|0*1)*0*(ε|0)|(1|(ε|0)0*1)(1|0*1)*0((1|00*1)(1|0*1)*0)*(0|00*(ε|0)|(1|00*1)(1|0*1)*0*(ε|0))
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;It can be simplified by computer heuristics down to:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ε|0|1(1|01)*00|(0|ε|1(1|01)*00)(0|1(1|01)*00)*(0|ε|1(1|01)*00)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Still, the regular expression is not so readable. By transforming it further manually, we can prove that it is equivalent to:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ε|0|(0|1)*00
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;So, any binary number divisible by 4 must be zero or end with &lt;code class=&quot;highlighter-rouge&quot;&gt;00&lt;/code&gt;.&lt;/p&gt;</content><author><name>Alexander Mayorov</name><email>zerobone21@gmail.com</email></author><summary type="html">In this post we will consider natural Radix-b numbers in positional number systems. The congruence class of any such arbitrary natural number can be determined by a finite automata, and thus, intuitively speaking, the language of all Radix-b numbers that satisfy some fixed properties modulo b is regular.</summary></entry><entry><title type="html">Extended Euclidean algorithm without stack or recursion</title><link href="https://zerobone.net/blog/cs/2020-02-21-non-recursive-extended-euklidian-algorithm/" rel="alternate" type="text/html" title="Extended Euclidean algorithm without stack or recursion" /><published>2020-02-21T00:00:00+01:00</published><updated>2020-02-21T00:00:00+01:00</updated><id>https://zerobone.net/blog/cs/non-recursive-extended-euklidian-algorithm</id><content type="html" xml:base="https://zerobone.net/blog/cs/2020-02-21-non-recursive-extended-euklidian-algorithm/">&lt;p&gt;Typical implementation of the extended Euclidean algorithm on the internet will just iteratively calculate modulo until 0 is reached. However, sometimes you also need to calculate the linear combination coefficients for the greatest common divisor.&lt;/p&gt;
 
 &lt;h2 id=&quot;extended-euclidean-algorithm&quot;&gt;Extended Euclidean algorithm&lt;/h2&gt;
 
@@ -348,7 +430,7 @@ r_{n+2} &amp;= r_n \bmod r_{n+1}
 
 &lt;p&gt;C programmers often allocate buffers on the stack to handle user input. If the input reading logic is implemented incorrectly and has now buffer length checks, a underflow/overflow can happen. If the user input is long enouph, it will overwrite the saved &lt;code class=&quot;highlighter-rouge&quot;&gt;ebp&lt;/code&gt; register of the previous stack frame and, what matters most, the return address.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/img/blog/call_stack_buffer_overflow.svg&quot; alt=&quot;Переполнение буфера на стеке&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/call-stack-buffer-overflow.svg&quot; alt=&quot;Stack buffer overflow&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
 
@@ -668,4 +750,4 @@ The program has no registers now.
 
 &lt;p&gt;Compilers and operating systems have some techniques to prevent such stack exploits. In &lt;code class=&quot;highlighter-rouge&quot;&gt;gcc&lt;/code&gt;, for example, if the function allocates a buffer on the stack, an additional socalled &lt;code class=&quot;highlighter-rouge&quot;&gt;stack canary&lt;/code&gt; is added. A stack canary is just a random integer generated when the function is called. Before returning the function makes sure that the canary has the same value. If the canary has been altered, the program is terminated with a fatal &lt;code class=&quot;highlighter-rouge&quot;&gt;Stack smashing detected&lt;/code&gt; error.&lt;/p&gt;
 
-&lt;p&gt;Another technique used by operating systems is restricting code evaluation on the stack. When the stack overflow is exploited, hackers will try to overwrite the return address so that it points at the buffer location with the malicious code injected. Even if the exact address is not known, it is possible to construct a &lt;code class=&quot;highlighter-rouge&quot;&gt;NO-OP&lt;/code&gt;-instruction slide in the stack buffer so that jump at any address within this slide will lead to malicious code execution. Exact stack addresses are typically different after every program run because operating systems push environmental variables onto it.&lt;/p&gt;</content><author><name>Alexander Mayorov</name><email>zerobone21@gmail.com</email></author><summary type="html">Buffer overflows are a kind of call stack vulnerability that occur when buffers are created on the stack, but accessed improperly. Buffer underruns are typically not so dangerous, because writing in the current stack frame or beyond the stack pointer will only affect local variables on that stack frame. On the other side, buffer overruns can allow the attacker to overwrite the return address and thus even modify the program’s behaviour.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://zerobone.net/assets/img/blog/call_stack_buffer_overflow.svg" /></entry></feed>
+&lt;p&gt;Another technique used by operating systems is restricting code evaluation on the stack. When the stack overflow is exploited, hackers will try to overwrite the return address so that it points at the buffer location with the malicious code injected. Even if the exact address is not known, it is possible to construct a &lt;code class=&quot;highlighter-rouge&quot;&gt;NO-OP&lt;/code&gt;-instruction slide in the stack buffer so that jump at any address within this slide will lead to malicious code execution. Exact stack addresses are typically different after every program run because operating systems push environmental variables onto it.&lt;/p&gt;</content><author><name>Alexander Mayorov</name><email>zerobone21@gmail.com</email></author><summary type="html">Buffer overflows are a kind of call stack vulnerability that occur when buffers are created on the stack, but accessed improperly. Buffer underruns are typically not so dangerous, because writing in the current stack frame or beyond the stack pointer will only affect local variables on that stack frame. On the other side, buffer overruns can allow the attacker to overwrite the return address and thus even modify the program’s behaviour.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://zerobone.net/assets/img/blog/call-stack-buffer-overflow.svg" /></entry></feed>
