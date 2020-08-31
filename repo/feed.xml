@@ -1,0 +1,671 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://zerobone.net/feed.xml" rel="self" type="application/atom+xml" /><link href="https://zerobone.net/" rel="alternate" type="text/html" hreflang="en" /><updated>2020-08-31T15:37:04+02:00</updated><id>https://zerobone.net/feed.xml</id><title type="html">ZeroBone</title><subtitle>Computer Science student &amp; backend developer.
+</subtitle><entry><title type="html">Extended Euclidean algorithm without stack or recursion</title><link href="https://zerobone.net/blog/cs/2020-02-21-non-recursive-extended-euklidian-algorithm/" rel="alternate" type="text/html" title="Extended Euclidean algorithm without stack or recursion" /><published>2020-02-21T00:00:00+01:00</published><updated>2020-02-21T00:00:00+01:00</updated><id>https://zerobone.net/blog/cs/non-recursive-extended-euklidian-algorithm</id><content type="html" xml:base="https://zerobone.net/blog/cs/2020-02-21-non-recursive-extended-euklidian-algorithm/">&lt;p&gt;Typical implementation of the extended Euclidean algorithm on the internet will just iteratively calculate modulo until 0 is reached. However, sometimes you also need to calculate the linear combination coefficients for the greatest common divisor.&lt;/p&gt;
+
+&lt;h2 id=&quot;extended-euclidean-algorithm&quot;&gt;Extended Euclidean algorithm&lt;/h2&gt;
+
+&lt;p&gt;The extended Euclidean algorithm allows us not only to calculate the gcd (greatest common divisor) of 2 numbers, but gives us also a representation of the result in a form of a linear combination:&lt;/p&gt;
+
+&lt;pre class=&quot;MathJax_Preview&quot;&gt;&lt;code&gt;\gcd(a, b) = u \cdot a + v \cdot b \quad u,v \in \mathbb{Z}&lt;/code&gt;&lt;/pre&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\gcd(a, b) = u \cdot a + v \cdot b \quad u,v \in \mathbb{Z}&lt;/script&gt;
+
+&lt;p&gt;gcd of more than 2 numbers can always be done by iteratively calculating the gcd of 2 numbers.&lt;/p&gt;
+
+&lt;p&gt;For example, let us calculate &lt;code class=&quot;MathJax_Preview&quot;&gt;gcd(14, 5)&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;gcd(14, 5)&lt;/script&gt;:&lt;/p&gt;
+
+&lt;pre class=&quot;MathJax_Preview&quot;&gt;&lt;code&gt;\begin{aligned}
+14 &amp;amp;= 5 \cdot 2 + 4 \\
+5 &amp;amp;= 4 \cdot 1 + 1 \\
+4 &amp;amp;= 1 \cdot 4 + 0
+\end{aligned}&lt;/code&gt;&lt;/pre&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{aligned}
+14 &amp;= 5 \cdot 2 + 4 \\
+5 &amp;= 4 \cdot 1 + 1 \\
+4 &amp;= 1 \cdot 4 + 0
+\end{aligned} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;So the greatest common divisor of &lt;code class=&quot;MathJax_Preview&quot;&gt;14&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;14&lt;/script&gt; and &lt;code class=&quot;MathJax_Preview&quot;&gt;5&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;5&lt;/script&gt; is &lt;code class=&quot;MathJax_Preview&quot;&gt;1&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;1&lt;/script&gt;.&lt;/p&gt;
+
+&lt;p&gt;We can find the linear combination coefficients by writing &lt;code class=&quot;MathJax_Preview&quot;&gt;1&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;1&lt;/script&gt; in terms of &lt;code class=&quot;MathJax_Preview&quot;&gt;14&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;14&lt;/script&gt; and &lt;code class=&quot;MathJax_Preview&quot;&gt;5&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;5&lt;/script&gt;:&lt;/p&gt;
+
+&lt;pre class=&quot;MathJax_Preview&quot;&gt;&lt;code&gt;\begin{aligned}
+1 &amp;amp;= 5 - 4 \cdot 1 \\
+&amp;amp;= 5 - (14 - 5 \cdot 2) \cdot 1 \\
+&amp;amp;= 5 - 14 + 5 \cdot 2 \\
+&amp;amp;= 3 \cdot 5 + (-1) \cdot 14
+\end{aligned}&lt;/code&gt;&lt;/pre&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{aligned}
+1 &amp;= 5 - 4 \cdot 1 \\
+&amp;= 5 - (14 - 5 \cdot 2) \cdot 1 \\
+&amp;= 5 - 14 + 5 \cdot 2 \\
+&amp;= 3 \cdot 5 + (-1) \cdot 14
+\end{aligned} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;So in this case &lt;code class=&quot;MathJax_Preview&quot;&gt;u = 3&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;u = 3&lt;/script&gt; and &lt;code class=&quot;MathJax_Preview&quot;&gt;v = -1&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;v = -1&lt;/script&gt;:&lt;/p&gt;
+
+&lt;pre class=&quot;MathJax_Preview&quot;&gt;&lt;code&gt;\gcd(14, 5) = (-1) \cdot 14 + 3 \cdot 5 = 1&lt;/code&gt;&lt;/pre&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\gcd(14, 5) = (-1) \cdot 14 + 3 \cdot 5 = 1&lt;/script&gt;
+
+&lt;p&gt;We can calculate the linear combination coefficients by doing back substitution. But it is not so easy to implement this without recursion, because the back substitution is done when we are climbing out of the recursive calls. We will implement the algorithm recursively first.&lt;/p&gt;
+
+&lt;h2 id=&quot;recursive-implementation&quot;&gt;Recursive implementation&lt;/h2&gt;
+
+&lt;p&gt;The formula&lt;/p&gt;
+
+&lt;pre class=&quot;MathJax_Preview&quot;&gt;&lt;code&gt;\gcd(a, b) =
+	\begin{cases}
+	b, &amp;amp; \text{if}\ a = 0 \\
+	\gcd(b \bmod a, a), &amp;amp; \text{otherwise}
+	\end{cases}&lt;/code&gt;&lt;/pre&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\gcd(a, b) =
+	\begin{cases}
+	b, &amp; \text{if}\ a = 0 \\
+	\gcd(b \bmod a, a), &amp; \text{otherwise}
+	\end{cases} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;allows us to describe the algorithm in a functional way:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;If &lt;code class=&quot;MathJax_Preview&quot;&gt;a = 0&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;a = 0&lt;/script&gt;, then the greatest common divisor is &lt;code class=&quot;MathJax_Preview&quot;&gt;b&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;b&lt;/script&gt;. Coefficients &lt;code class=&quot;MathJax_Preview&quot;&gt;u = 0&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;u = 0&lt;/script&gt; and &lt;code class=&quot;MathJax_Preview&quot;&gt;v = 0&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;v = 0&lt;/script&gt;.&lt;/li&gt;
+  &lt;li&gt;Else, we make the problem simpler by calculating &lt;code class=&quot;MathJax_Preview&quot;&gt;\gcd(b \bmod a, a)&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;\gcd(b \bmod a, a)&lt;/script&gt;. We can calculate the new coefficients based on the coefficients of the simpler problem.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So, how can we calculate &lt;code class=&quot;MathJax_Preview&quot;&gt;u&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;u&lt;/script&gt; and &lt;code class=&quot;MathJax_Preview&quot;&gt;v&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;v&lt;/script&gt; so that&lt;/p&gt;
+
+&lt;pre class=&quot;MathJax_Preview&quot;&gt;&lt;code&gt;\gcd(a, b) = u \cdot a + v \cdot b&lt;/code&gt;&lt;/pre&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\gcd(a, b) = u \cdot a + v \cdot b&lt;/script&gt;
+
+&lt;p&gt;by knowing &lt;code class=&quot;MathJax_Preview&quot;&gt;u'&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;u'&lt;/script&gt; and &lt;code class=&quot;MathJax_Preview&quot;&gt;v'&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;v'&lt;/script&gt; with:&lt;/p&gt;
+
+&lt;pre class=&quot;MathJax_Preview&quot;&gt;&lt;code&gt;\gcd(b \bmod a, a) = u' \cdot (b \bmod a) + v' \cdot a&lt;/code&gt;&lt;/pre&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\gcd(b \bmod a, a) = u' \cdot (b \bmod a) + v' \cdot a&lt;/script&gt;
+
+&lt;p&gt;In order to do that we can write &lt;code class=&quot;MathJax_Preview&quot;&gt;b \bmod a&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;b \bmod a&lt;/script&gt; in terms of initial &lt;code class=&quot;MathJax_Preview&quot;&gt;a&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;a&lt;/script&gt; and &lt;code class=&quot;MathJax_Preview&quot;&gt;b&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;b&lt;/script&gt;:&lt;/p&gt;
+
+&lt;pre class=&quot;MathJax_Preview&quot;&gt;&lt;code&gt;\begin{aligned}
+	\gcd(b \bmod a, a)
+    	&amp;amp;= u' \cdot (b \bmod a) + v' \cdot a \\
+    	&amp;amp;= u' \cdot (b - \left\lfloor \frac{b}{a} \right\rfloor \cdot a) + v' \cdot a \\
+    	&amp;amp;= u' \cdot b - u' \cdot \left\lfloor \frac{b}{a} \right\rfloor \cdot a + v' \cdot a \\
+    	&amp;amp;= (v' - u' \cdot \left\lfloor \frac{b}{a} \right\rfloor) \cdot a + u' \cdot b
+\end{aligned}&lt;/code&gt;&lt;/pre&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{aligned}
+	\gcd(b \bmod a, a)
+    	&amp;= u' \cdot (b \bmod a) + v' \cdot a \\
+    	&amp;= u' \cdot (b - \left\lfloor \frac{b}{a} \right\rfloor \cdot a) + v' \cdot a \\
+    	&amp;= u' \cdot b - u' \cdot \left\lfloor \frac{b}{a} \right\rfloor \cdot a + v' \cdot a \\
+    	&amp;= (v' - u' \cdot \left\lfloor \frac{b}{a} \right\rfloor) \cdot a + u' \cdot b
+\end{aligned} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;So the new linear combination coefficients are:&lt;/p&gt;
+
+&lt;pre class=&quot;MathJax_Preview&quot;&gt;&lt;code&gt;\begin{aligned}
+    u &amp;amp;= v' - u' \cdot \left\lfloor \frac{b}{a} \right\rfloor \\
+    v &amp;amp;= u'
+\end{aligned}&lt;/code&gt;&lt;/pre&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{aligned}
+    u &amp;= v' - u' \cdot \left\lfloor \frac{b}{a} \right\rfloor \\
+    v &amp;= u'
+\end{aligned} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;With this formula we are now ready to implement the algorithm:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;GCD_Result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Representation of the result
+&lt;/span&gt;    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gcd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gcd&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gcd&lt;/span&gt;
+        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;
+        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;extended_gcd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GCD_Result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;extended_gcd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;u&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# save u'
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# u = v' - u' * (b // a)
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;u&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# v = u'
+&lt;/span&gt;    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;non-recursive-implementation&quot;&gt;Non-recursive implementation&lt;/h2&gt;
+
+&lt;p&gt;The recursion in the algorithm above cannot be easily eliminated because the function is not tail-recursive.&lt;/p&gt;
+
+&lt;p&gt;In order to implement the algorithm with a loop we need to define a sequence of division remainders and then update the corresponding remainers as we calculate the remainders. Formally, we can define f finite sequence &lt;code class=&quot;MathJax_Preview&quot;&gt;r_n&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;r_n&lt;/script&gt;:&lt;/p&gt;
+
+&lt;pre class=&quot;MathJax_Preview&quot;&gt;&lt;code&gt;\begin{aligned}
+r_1 &amp;amp;= a \\
+r_2 &amp;amp;= b \\
+r_{n+2} &amp;amp;= r_n \bmod r_{n+1}
+\end{aligned}&lt;/code&gt;&lt;/pre&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{aligned}
+r_1 &amp;= a \\
+r_2 &amp;= b \\
+r_{n+2} &amp;= r_n \bmod r_{n+1}
+\end{aligned} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;If &lt;code class=&quot;MathJax_Preview&quot;&gt;r_{n+1} = 0&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;r_{n+1} = 0&lt;/script&gt;, &lt;code class=&quot;MathJax_Preview&quot;&gt;r_{n+2}&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;r_{n+2}&lt;/script&gt; is not defined. We can write each &lt;code class=&quot;MathJax_Preview&quot;&gt;r_n&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;r_n&lt;/script&gt; as a linear combination of &lt;code class=&quot;MathJax_Preview&quot;&gt;u&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;u&lt;/script&gt; and &lt;code class=&quot;MathJax_Preview&quot;&gt;v&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;v&lt;/script&gt;. Now we are interested in how &lt;code class=&quot;MathJax_Preview&quot;&gt;u&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;u&lt;/script&gt; and &lt;code class=&quot;MathJax_Preview&quot;&gt;v&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;v&lt;/script&gt; change as we calculate remainders. To do this formally, we will need to define two new finite sequences &lt;code class=&quot;MathJax_Preview&quot;&gt;u_n&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;u_n&lt;/script&gt; and &lt;code class=&quot;MathJax_Preview&quot;&gt;v_n&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;v_n&lt;/script&gt; which will represent the linear combination coefficients:&lt;/p&gt;
+
+&lt;pre class=&quot;MathJax_Preview&quot;&gt;&lt;code&gt;r_n = u_n \cdot a + v_n \cdot b&lt;/code&gt;&lt;/pre&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;r_n = u_n \cdot a + v_n \cdot b&lt;/script&gt;
+
+&lt;p&gt;By definition, &lt;code class=&quot;MathJax_Preview&quot;&gt;r_1  = a&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;r_1  = a&lt;/script&gt; and &lt;code class=&quot;MathJax_Preview&quot;&gt;r_2 = b&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;r_2 = b&lt;/script&gt;, so we can directly write the linear combination coefficients for &lt;code class=&quot;MathJax_Preview&quot;&gt;r_1&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;r_1&lt;/script&gt; and &lt;code class=&quot;MathJax_Preview&quot;&gt;r_2&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;r_2&lt;/script&gt;:&lt;/p&gt;
+
+&lt;pre class=&quot;MathJax_Preview&quot;&gt;&lt;code&gt;\begin{aligned}
+    u_1 &amp;amp;= 1 \\
+    v_1 &amp;amp;= 0 \\
+    u_2 &amp;amp;= 0 \\
+    v_2 &amp;amp;= 1
+\end{aligned}&lt;/code&gt;&lt;/pre&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{aligned}
+    u_1 &amp;= 1 \\
+    v_1 &amp;= 0 \\
+    u_2 &amp;= 0 \\
+    v_2 &amp;= 1
+\end{aligned} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Let &lt;code class=&quot;MathJax_Preview&quot;&gt;q_n&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;q_n&lt;/script&gt; be the finite sequence of integer divisions in &lt;code class=&quot;MathJax_Preview&quot;&gt;r_n&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;r_n&lt;/script&gt;:&lt;/p&gt;
+
+&lt;pre class=&quot;MathJax_Preview&quot;&gt;&lt;code&gt;r_n = r_{n+1} \cdot q_{n+2} + r_{n+2}&lt;/code&gt;&lt;/pre&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;r_n = r_{n+1} \cdot q_{n+2} + r_{n+2}&lt;/script&gt;
+
+&lt;p&gt;Now we can write &lt;code class=&quot;MathJax_Preview&quot;&gt;u_n&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;u_n&lt;/script&gt; and &lt;code class=&quot;MathJax_Preview&quot;&gt;v_n&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;v_n&lt;/script&gt; in terms of &lt;code class=&quot;MathJax_Preview&quot;&gt;q_n&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;q_n&lt;/script&gt;:&lt;/p&gt;
+
+&lt;pre class=&quot;MathJax_Preview&quot;&gt;&lt;code&gt;\begin{aligned} 
+    r_{n+2} &amp;amp;= r_n - r_{n+1} \cdot q_{n+2} \\
+    &amp;amp;= u_n \cdot a + v_n \cdot b - r_{n+1} \cdot q_{n+2} \\
+    &amp;amp;= u_n \cdot a + v_n \cdot b - (u_{n+1} \cdot a + v_{n+1} \cdot b) \cdot q_{n+2} \\
+    &amp;amp;= u_n \cdot a + v_n \cdot b - u_{n+1} \cdot a \cdot q_{n+2} - v_{n+1} \cdot b \cdot q_{n+2} \\
+    &amp;amp;= (u_n - u_{n+1} \cdot q_{n+2}) \cdot a + (v_n - v_{n+1} \cdot q_{n+2}) \cdot b
+\end{aligned}&lt;/code&gt;&lt;/pre&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{aligned} 
+    r_{n+2} &amp;= r_n - r_{n+1} \cdot q_{n+2} \\
+    &amp;= u_n \cdot a + v_n \cdot b - r_{n+1} \cdot q_{n+2} \\
+    &amp;= u_n \cdot a + v_n \cdot b - (u_{n+1} \cdot a + v_{n+1} \cdot b) \cdot q_{n+2} \\
+    &amp;= u_n \cdot a + v_n \cdot b - u_{n+1} \cdot a \cdot q_{n+2} - v_{n+1} \cdot b \cdot q_{n+2} \\
+    &amp;= (u_n - u_{n+1} \cdot q_{n+2}) \cdot a + (v_n - v_{n+1} \cdot q_{n+2}) \cdot b
+\end{aligned} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;To get the formula for &lt;code class=&quot;MathJax_Preview&quot;&gt;u_n&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;u_n&lt;/script&gt; and &lt;code class=&quot;MathJax_Preview&quot;&gt;v_n&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;v_n&lt;/script&gt; we can just substitute &lt;code class=&quot;MathJax_Preview&quot;&gt;n&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt; instead of &lt;code class=&quot;MathJax_Preview&quot;&gt;n + 2&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;n + 2&lt;/script&gt;:&lt;/p&gt;
+
+&lt;pre class=&quot;MathJax_Preview&quot;&gt;&lt;code&gt;\begin{aligned}
+    u_n &amp;amp;= u_{n-2} - q_n \cdot u_{n-1} \\
+    v_n &amp;amp;= v_{n-2} - q_n \cdot v_{n-1}
+\end{aligned}&lt;/code&gt;&lt;/pre&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{aligned}
+    u_n &amp;= u_{n-2} - q_n \cdot u_{n-1} \\
+    v_n &amp;= v_{n-2} - q_n \cdot v_{n-1}
+\end{aligned} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;With this formula and the initial values of the &lt;code class=&quot;MathJax_Preview&quot;&gt;u_n&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;u_n&lt;/script&gt; and &lt;code class=&quot;MathJax_Preview&quot;&gt;v_n&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;v_n&lt;/script&gt; sequences we can now implement the extended Euclidean algorithm without recursion:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;extended_gcd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;# The algorithm will work correctly without this check
+&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;# But it will take one iteration of the inner loop
+&lt;/span&gt;        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GCD_Result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;unPrev&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;vnPrev&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;unCur&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;vnCur&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;# Calculate new element of the qn sequence
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;qn&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;
+        
+        &lt;span class=&quot;c1&quot;&gt;# Calculate new element of the rn sequence
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;newRemainder&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;newRemainder&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;# Calculate new coefficients with the formula above
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;unNew&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;unPrev&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;qn&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;unCur&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;vnNew&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vnPrev&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;qn&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vnCur&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;# Shift coefficients
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;unPrev&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;unCur&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;vnPrev&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vnCur&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;unCur&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;unNew&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;vnCur&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vnNew&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GCD_Result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;unPrev&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vnPrev&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;p&gt;We can visualize the finite sequences we defined and see how the algorithm works with a table. We will calculate &lt;code class=&quot;MathJax_Preview&quot;&gt;\gcd(104, 47)&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;\gcd(104, 47)&lt;/script&gt; and it’s linear combination coefficients:&lt;/p&gt;
+
+&lt;pre class=&quot;MathJax_Preview&quot;&gt;&lt;code&gt;\gcd(104, 47) = u \cdot 104 + v \cdot 47&lt;/code&gt;&lt;/pre&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\gcd(104, 47) = u \cdot 104 + v \cdot 47&lt;/script&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;MathJax_Preview&quot;&gt;r_n&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;r_n&lt;/script&gt;&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;MathJax_Preview&quot;&gt;q_n&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;q_n&lt;/script&gt;&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;MathJax_Preview&quot;&gt;u_n&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;u_n&lt;/script&gt;&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;MathJax_Preview&quot;&gt;v_n&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;v_n&lt;/script&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;104&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;-&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;47&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;-&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;-2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;-4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;-11&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;-14&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;31&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;33&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;20&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;At each step we first calculate the next element from the &lt;code class=&quot;MathJax_Preview&quot;&gt;q_n&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;q_n&lt;/script&gt; sequence and then use it to calculate new linear combination coefficients &lt;code class=&quot;MathJax_Preview&quot;&gt;u_n&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;u_n&lt;/script&gt; and &lt;code class=&quot;MathJax_Preview&quot;&gt;v_n&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;v_n&lt;/script&gt;.&lt;/p&gt;
+
+&lt;p&gt;The result of the algorithm:&lt;/p&gt;
+
+&lt;pre class=&quot;MathJax_Preview&quot;&gt;&lt;code&gt;\gcd(104, 47) = -14 \cdot 104 + 31 \cdot 47 = 1&lt;/code&gt;&lt;/pre&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\gcd(104, 47) = -14 \cdot 104 + 31 \cdot 47 = 1&lt;/script&gt;
+
+&lt;h2 id=&quot;improvement-of-the-non-recusive-solution&quot;&gt;Improvement of the non-recusive solution&lt;/h2&gt;
+
+&lt;p&gt;As we see in the example above, we don’t need to calculate the last row of the table because we aren’t interested in the linear combination that forms zero. We can terminate the algorithm directly after calculating the new element of the &lt;code class=&quot;MathJax_Preview&quot;&gt;r_n&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;r_n&lt;/script&gt; sequence:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;extended_gcd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Optional check
+&lt;/span&gt;        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GCD_Result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Without this check the first iteration will divide by zero
+&lt;/span&gt;        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GCD_Result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;unPrev&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;vnPrev&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;unCur&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;vnCur&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;qn&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;newR&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;newR&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GCD_Result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;unCur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vnCur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;# Update coefficients
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;unNew&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;unPrev&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;qn&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;unCur&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;vnNew&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vnPrev&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;qn&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vnCur&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;# Shift coefficients
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;unPrev&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;unCur&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;vnPrev&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vnCur&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;unCur&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;unNew&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;vnCur&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vnNew&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Alexander Mayorov</name><email>zerobone21@gmail.com</email></author><summary type="html">Typical implementation of the extended Euclidean algorithm on the internet will just iteratively calculate modulo until 0 is reached. However, sometimes you also need to calculate the linear combination coefficients for the greatest common divisor.</summary></entry><entry><title type="html">Call Stack - buffer overflow vulnerability</title><link href="https://zerobone.net/blog/cs/2019-06-30-call-stack-buffer-overflow/" rel="alternate" type="text/html" title="Call Stack - buffer overflow vulnerability" /><published>2019-06-30T00:00:00+02:00</published><updated>2019-06-30T00:00:00+02:00</updated><id>https://zerobone.net/blog/cs/call-stack-buffer-overflow</id><content type="html" xml:base="https://zerobone.net/blog/cs/2019-06-30-call-stack-buffer-overflow/">&lt;p&gt;Buffer overflows are a kind of call stack vulnerability that occur when buffers are created on the stack, but accessed improperly. Buffer underruns are typically not so dangerous, because writing in the current stack frame or beyond the stack pointer will only affect local variables on that stack frame. On the other side, buffer overruns can allow the attacker to overwrite the return address and thus even modify the program’s behaviour.&lt;/p&gt;
+
+&lt;h2 id=&quot;buffer-overflow&quot;&gt;Buffer overflow&lt;/h2&gt;
+
+&lt;p&gt;C programmers often allocate buffers on the stack to handle user input. If the input reading logic is implemented incorrectly and has now buffer length checks, a underflow/overflow can happen. If the user input is long enouph, it will overwrite the saved &lt;code class=&quot;highlighter-rouge&quot;&gt;ebp&lt;/code&gt; register of the previous stack frame and, what matters most, the return address.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/call_stack_buffer_overflow.svg&quot; alt=&quot;Переполнение буфера на стеке&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;stdlib.h&amp;gt;
+&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__attribute__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;noinline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fun&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	
+	&lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+	
+	&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prevEbp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	
+	&lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Buffer start: %p Buffer start pointer address: %p&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Previous EBP: %p Value: %d Value as hex: %x&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prevEbp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prevEbp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prevEbp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Return address: %p Value: %x&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Buffer end: %p&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	
+	&lt;span class=&quot;n&quot;&gt;fflush&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stdout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Ptr size: %d bytes&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;sizeof&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;fun&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;We can calculate the return address position by taking addresses of the buffer and the function arguments. In this case we only take the pointer to the first argument, because it is added to the stack last. The previous base pointer size as well as the return address size are 4 bytes, so we can just subtract 1 (&lt;code class=&quot;highlighter-rouge&quot;&gt;4&lt;/code&gt; bytes) from the pointer to get the return address and 2 (&lt;code class=&quot;highlighter-rouge&quot;&gt;8&lt;/code&gt; bytes) to get the base pointer.&lt;/p&gt;
+
+&lt;p&gt;We can now compile the program with the &lt;code class=&quot;highlighter-rouge&quot;&gt;-fno-stack-protector&lt;/code&gt; flag to disable stack protecting canary that &lt;code class=&quot;highlighter-rouge&quot;&gt;gcc&lt;/code&gt; adds by default:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;gcc main.c &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; viewret &lt;span class=&quot;nt&quot;&gt;-fno-stack-protector&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;By running the program I got:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Ptr size: 4 bytes
+Buffer start: 0061FEE8 Buffer start pointer address: 0061FEE8
+Previous EBP: 0061FF08 Value: 6422312 Value as hex: 61ff28
+Return address: 0061FF0C Value: 401508
+Buffer end: 0061FEF8
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;We can easly alter the return address value now:&lt;/p&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__attribute__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;noinline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fun&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	
+	&lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+	
+	&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prevEbp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	
+	&lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Buffer start: %p Buffer start pointer address: %p&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Previous EBP: %p Value: %d Value as hex: %x&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prevEbp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prevEbp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prevEbp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Return address: %p Value: %x&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Buffer end: %p&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	
+	&lt;span class=&quot;n&quot;&gt;fflush&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stdout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	
+	&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0xcafeefac&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now, if we run the program we will get a &lt;code class=&quot;highlighter-rouge&quot;&gt;segmentation fault&lt;/code&gt; error because the function will try to jump back to the calee using an invalid address.&lt;/p&gt;
+
+&lt;p&gt;We can examine exactly how it works by running the &lt;code class=&quot;highlighter-rouge&quot;&gt;GDB&lt;/code&gt; debugger:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;gdb viewret.exe
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Of course, we need to set the breakpoint at the &lt;code class=&quot;highlighter-rouge&quot;&gt;fun&lt;/code&gt; function:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;gdb&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;br fun
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[New Thread 3388.0x3368]
+[New Thread 3388.0x1a2c]
+Ptr size: 4 bytes
+
+Breakpoint 1, 0x00401416 in fun ()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;By using the &lt;code class=&quot;highlighter-rouge&quot;&gt;frame&lt;/code&gt; command we can view the saved registers if the current stack frame.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;gdb&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;info frame
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Stack level 0, frame at 0x61ff10:
+ eip = 0x401416 in fun; saved eip 0x401508
+ called by frame at 0x61ff30
+ Arglist at 0x61ff08, args:
+ Locals at 0x61ff08, Previous frame's sp is 0x61ff10
+ Saved registers:
+  ebp at 0x61ff08, eip at 0x61ff0c
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;ebp&lt;/code&gt; register of the previous stack frame is at address &lt;code class=&quot;highlighter-rouge&quot;&gt;0x61ff08&lt;/code&gt;, the return address - at &lt;code class=&quot;highlighter-rouge&quot;&gt;0x61ff0c&lt;/code&gt;. The values are the same as generated by the program above.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;gdb&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;c
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Continuing.
+Buffer start: 0061FEE8 Buffer start pointer address: 0061FEE8
+Previous EBP: 0061FF08 Value: 6422312 Value as hex: 61ff28
+Return address: 0061FF0C Value: 401508
+Buffer end: 0061FEF8
+
+Program received signal SIGSEGV, Segmentation fault.
+0xcafeefac in ?? ()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;By stepping over the breakpoint we can see the invalid return address that caused the segmentation fault.&lt;/p&gt;
+
+&lt;h2 id=&quot;altering-variables&quot;&gt;Altering variables&lt;/h2&gt;
+
+&lt;p&gt;Let’s examine another program that reads data from the standart input stream:&lt;/p&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;stdlib.h&amp;gt;
+&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	
+	&lt;span class=&quot;k&quot;&gt;volatile&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;zero&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	
+	&lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+	
+	&lt;span class=&quot;n&quot;&gt;zero&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	
+	&lt;span class=&quot;n&quot;&gt;gets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	
+	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zero&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;You changed the zero variable to %d (hex: %x)!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;zero&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;zero&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;puts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Variable not changed.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+	
+	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;zero&lt;/code&gt; variable is marked as &lt;code class=&quot;highlighter-rouge&quot;&gt;volatile&lt;/code&gt; to prevent the compiler from optimizing it’s usage, e.g. by caching it’s value in one of the general-purpose registers.&lt;/p&gt;
+
+&lt;p&gt;By dissassembling with &lt;code class=&quot;highlighter-rouge&quot;&gt;GDB&lt;/code&gt; we get:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-assembly&quot;&gt;0x00401410 &amp;lt;+0&amp;gt;:     push   ebp ; save the previous ebp register
+0x00401411 &amp;lt;+1&amp;gt;:     mov    ebp,esp ; initializing ebp of the new stack frame
+0x00401413 &amp;lt;+3&amp;gt;:     and    esp,0xfffffff0 ; memory aligning
+0x00401416 &amp;lt;+6&amp;gt;:     sub    esp,0x60 ; memory allocation on the stack
+0x00401419 &amp;lt;+9&amp;gt;:     call   0x401980 &amp;lt;__main&amp;gt;
+0x0040141e &amp;lt;+14&amp;gt;:    mov    DWORD PTR [esp+0x5c],0x0 ; assign to zero
+; eax = esp + 0x1c
+0x00401426 &amp;lt;+22&amp;gt;:    lea    eax,[esp+0x1c]
+; the address calculated with the previous instruction gets saved on the stack
+0x0040142a &amp;lt;+26&amp;gt;:    mov    DWORD PTR [esp],eax
+0x0040142d &amp;lt;+29&amp;gt;:    call   0x403ae8 &amp;lt;gets&amp;gt; ; gets() call
+; load the value from the memory for comparison
+0x00401432 &amp;lt;+34&amp;gt;:    mov    eax,DWORD PTR [esp+0x5c]
+0x00401436 &amp;lt;+38&amp;gt;:    test   eax,eax ; test if it is zero
+0x00401438 &amp;lt;+40&amp;gt;:    je     0x401458 &amp;lt;main+72&amp;gt; 
+0x0040143a &amp;lt;+42&amp;gt;:    mov    edx,DWORD PTR [esp+0x5c]
+; commands needed for printf
+0x0040143e &amp;lt;+46&amp;gt;:    mov    eax,DWORD PTR [esp+0x5c]
+0x00401442 &amp;lt;+50&amp;gt;:    mov    DWORD PTR [esp+0x8],edx
+0x00401446 &amp;lt;+54&amp;gt;:    mov    DWORD PTR [esp+0x4],eax
+0x0040144a &amp;lt;+58&amp;gt;:    mov    DWORD PTR [esp],0x405044
+0x00401451 &amp;lt;+65&amp;gt;:    call   0x403ac8 &amp;lt;printf&amp;gt; ; success print
+0x00401456 &amp;lt;+70&amp;gt;:    jmp    0x401464 &amp;lt;main+84&amp;gt; ; jump over the else branch
+0x00401458 &amp;lt;+72&amp;gt;:    mov    DWORD PTR [esp],0x405073
+0x0040145f &amp;lt;+79&amp;gt;:    call   0x403ac0 &amp;lt;puts&amp;gt; ; error print
+; return with exit code 0
+0x00401464 &amp;lt;+84&amp;gt;:    mov    eax,0x0
+0x00401469 &amp;lt;+89&amp;gt;:    leave
+0x0040146a &amp;lt;+90&amp;gt;:    ret
+0x0040146b &amp;lt;+91&amp;gt;:    nop
+0x0040146c &amp;lt;+92&amp;gt;:    xchg   ax,ax
+0x0040146e &amp;lt;+94&amp;gt;:    xchg   ax,ax
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We can set 2 breakpoints - before and after the &lt;code class=&quot;highlighter-rouge&quot;&gt;gets()&lt;/code&gt; call.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;gdb&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;br &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;0x0040142d
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;gdb&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;br &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;0x00401432
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;With gdb we can define what commands to run when these breakpoints are reached:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;gdb&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;define hook-stop
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;info registers
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;x/24wx &lt;span class=&quot;nv&quot;&gt;$esp&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;x/2i &lt;span class=&quot;nv&quot;&gt;$eip&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;end
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;With the commands above we will see the register state, 24 machine words on the stack and two next instuctions after the instruction pointer:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;eax            0x61fedc 6422236
+ecx            0x4018f0 4200688
+edx            0x50000018       1342177304
+ebx            0x2d2000 2957312
+esp            0x61fec0 0x61fec0
+ebp            0x61ff28 0x61ff28
+esi            0x4012d0 4199120
+edi            0x4012d0 4199120
+eip            0x40142d 0x40142d &amp;lt;main+29&amp;gt;
+eflags         0x202    [ IF ]
+cs             0x23     35
+ss             0x2b     43
+ds             0x2b     43
+es             0x2b     43
+fs             0x53     83
+gs             0x2b     43
+0x61fec0:       0x0061fedc      0x00000008      0x772c8023      0x772c801a
+0x61fed0:       0xb3b6879d      0x004012d0      0x004012d0      0x00000000
+0x61fee0:       0x004018f0      0x0061fed0      0x0061ff08      0x0061ffcc
+0x61fef0:       0x772cdd70      0xc4e6dd59      0xfffffffe      0x772c801a
+0x61ff00:       0x772c810d      0x004018f0      0x0061ff50      0x0040195b
+0x61ff10:       0x004018f0      0x00000000      0x002d2000      0x00000000
+=&amp;gt; 0x40142d &amp;lt;main+29&amp;gt;:  call   0x403ae8 &amp;lt;gets&amp;gt;
+   0x401432 &amp;lt;main+34&amp;gt;:  mov    eax,DWORD PTR [esp+0x5c]
+
+Breakpoint 1, 0x0040142d in main ()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now we can examine how the input affects the stack:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;gdb&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;c
+Continuing.
+0000000000000000000000000000000000000000000
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;eax            0x61fedc 6422236
+ecx            0x772eb098       1999548568
+edx            0xa      10
+ebx            0x2d2000 2957312
+esp            0x61fec0 0x61fec0
+ebp            0x61ff28 0x61ff28
+esi            0x4012d0 4199120
+edi            0x4012d0 4199120
+eip            0x401432 0x401432 &amp;lt;main+34&amp;gt;
+eflags         0x216    [ PF AF IF ]
+cs             0x23     35
+ss             0x2b     43
+ds             0x2b     43
+es             0x2b     43
+fs             0x53     83
+gs             0x2b     43
+0x61fec0:       0x0061fedc      0x00000008      0x772c8023      0x772c801a
+0x61fed0:       0xb3b6879d      0x004012d0      0x004012d0      0x30303030
+0x61fee0:       0x30303030      0x30303030      0x30303030      0x30303030
+0x61fef0:       0x30303030      0x30303030      0x30303030      0x30303030
+0x61ff00:       0x30303030      0x00303030      0x0061ff50      0x0040195b
+0x61ff10:       0x004018f0      0x00000000      0x002d2000      0x00000000
+=&amp;gt; 0x401432 &amp;lt;main+34&amp;gt;:  mov    eax,DWORD PTR [esp+0x5c]
+   0x401436 &amp;lt;main+38&amp;gt;:  test   eax,eax
+
+Breakpoint 2, 0x00401432 in main ()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;As we see, 43 zero-characters (ascii code &lt;code class=&quot;highlighter-rouge&quot;&gt;0x30&lt;/code&gt;) was not enouph to get to the zero value that we want ti akter. In order to get to the value, we need 64 bytes (because the buffer size is 64). For demonstration purpuses we will use the following string as the input:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;000011111111111111112222222222222222333333333333333344444444444456
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This string contains 66 characters, so the 2 last characters &lt;code class=&quot;highlighter-rouge&quot;&gt;5&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;6&lt;/code&gt; should overwrite the 2 least significant bytes (because memory endianness is &lt;code class=&quot;highlighter-rouge&quot;&gt;little-endian&lt;/code&gt;) of the variable.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;gdb&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;c
+Continuing.
+000011111111111111112222222222222222333333333333333344444444444456
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;eax            0x61fedc 6422236
+ecx            0x772eb098       1999548568
+edx            0xa      10
+ebx            0x3f9000 4165632
+esp            0x61fec0 0x61fec0
+ebp            0x61ff28 0x61ff28
+esi            0x4012d0 4199120
+edi            0x4012d0 4199120
+eip            0x401432 0x401432 &amp;lt;main+34&amp;gt;
+eflags         0x216    [ PF AF IF ]
+cs             0x23     35
+ss             0x2b     43
+ds             0x2b     43
+es             0x2b     43
+fs             0x53     83
+gs             0x2b     43
+0x61fec0:       0x0061fedc      0x00000008      0x772c8023      0x772c801a
+0x61fed0:       0xe53b01b1      0x004012d0      0x004012d0      0x30303030
+0x61fee0:       0x31313131      0x31313131      0x31313131      0x31313131
+0x61fef0:       0x32323232      0x32323232      0x32323232      0x32323232
+0x61ff00:       0x33333333      0x33333333      0x33333333      0x33333333
+0x61ff10:       0x34343434      0x34343434      0x34343434      0x00003635
+=&amp;gt; 0x401432 &amp;lt;main+34&amp;gt;:  mov    eax,DWORD PTR [esp+0x5c]
+   0x401436 &amp;lt;main+38&amp;gt;:  test   eax,eax
+
+Breakpoint 2, 0x00401432 in main ()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;By continuing we see that the variable now contains &lt;code class=&quot;highlighter-rouge&quot;&gt;0x3635&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;13877&lt;/code&gt; in decimal.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;gdb&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;c
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Continuing.
+You changed the zero variable to 13877 (hex: 3635)![Inferior 1 (process 4848) exited normally]
+Error while running hook_stop:
+The program has no registers now.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In order to alter the &lt;code class=&quot;highlighter-rouge&quot;&gt;zero&lt;/code&gt; variable we need to represent the number in the &lt;code class=&quot;highlighter-rouge&quot;&gt;little endian&lt;/code&gt; form and write the corresponding bytes to the 65, 66, 67 and 68 offsets in in buffer.&lt;/p&gt;
+
+&lt;h2 id=&quot;protection-against-buffer-overflows&quot;&gt;Protection against buffer overflows&lt;/h2&gt;
+
+&lt;p&gt;Compilers and operating systems have some techniques to prevent such stack exploits. In &lt;code class=&quot;highlighter-rouge&quot;&gt;gcc&lt;/code&gt;, for example, if the function allocates a buffer on the stack, an additional socalled &lt;code class=&quot;highlighter-rouge&quot;&gt;stack canary&lt;/code&gt; is added. A stack canary is just a random integer generated when the function is called. Before returning the function makes sure that the canary has the same value. If the canary has been altered, the program is terminated with a fatal &lt;code class=&quot;highlighter-rouge&quot;&gt;Stack smashing detected&lt;/code&gt; error.&lt;/p&gt;
+
+&lt;p&gt;Another technique used by operating systems is restricting code evaluation on the stack. When the stack overflow is exploited, hackers will try to overwrite the return address so that it points at the buffer location with the malicious code injected. Even if the exact address is not known, it is possible to construct a &lt;code class=&quot;highlighter-rouge&quot;&gt;NO-OP&lt;/code&gt;-instruction slide in the stack buffer so that jump at any address within this slide will lead to malicious code execution. Exact stack addresses are typically different after every program run because operating systems push environmental variables onto it.&lt;/p&gt;</content><author><name>Alexander Mayorov</name><email>zerobone21@gmail.com</email></author><summary type="html">Buffer overflows are a kind of call stack vulnerability that occur when buffers are created on the stack, but accessed improperly. Buffer underruns are typically not so dangerous, because writing in the current stack frame or beyond the stack pointer will only affect local variables on that stack frame. On the other side, buffer overruns can allow the attacker to overwrite the return address and thus even modify the program’s behaviour.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://zerobone.net/assets/img/blog/call_stack_buffer_overflow.svg" /></entry></feed>
