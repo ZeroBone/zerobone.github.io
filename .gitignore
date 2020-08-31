@@ -1,1 +1,7 @@
-*.json
+stats.json
+bower.json
+resume.json
+version.json
+redirects.json
+package.json
+selection.json
