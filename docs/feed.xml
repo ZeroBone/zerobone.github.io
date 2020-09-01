@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://zerobone.net/feed.xml" rel="self" type="application/atom+xml" /><link href="https://zerobone.net/" rel="alternate" type="text/html" hreflang="en" /><updated>2020-09-01T02:21:46+02:00</updated><id>https://zerobone.net/feed.xml</id><title type="html">ZeroBone</title><subtitle>Computer Science student &amp; backend developer.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://zerobone.net/feed.xml" rel="self" type="application/atom+xml" /><link href="https://zerobone.net/" rel="alternate" type="text/html" hreflang="en" /><updated>2020-09-01T22:17:35+02:00</updated><id>https://zerobone.net/feed.xml</id><title type="html">ZeroBone</title><subtitle>Computer Science student &amp; backend developer.
 </subtitle><entry><title type="html">Efficient compression of congruence class automations</title><link href="https://zerobone.net/blog/cs/2020-09-01-compressing-congruence-automata/" rel="alternate" type="text/html" title="Efficient compression of congruence class automations" /><published>2020-09-01T00:00:00+02:00</published><updated>2020-09-01T00:00:00+02:00</updated><id>https://zerobone.net/blog/cs/compressing-congruence-automata</id><content type="html" xml:base="https://zerobone.net/blog/cs/2020-09-01-compressing-congruence-automata/">&lt;p&gt;As already discussed in the previous post, any radix-b number &lt;code class=&quot;MathJax_Preview&quot;&gt;n&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt; with &lt;code class=&quot;MathJax_Preview&quot;&gt;n \bmod{m} \in E \subseteq Z&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;n \bmod{m} \in E \subseteq Z&lt;/script&gt; can be accepted by finite automata in a digit-by-digit manner. However, the construction is not always optimal. The amount of states required is not always the amount of congruence classes. In this post we will examine when exactly the finite automata can be simplified by combining states. Reducing the amount of states will also help produce a much simpler regular expression, for example, with the Kleene construction.&lt;/p&gt;
 
 &lt;h2 id=&quot;general-way-to-optimize-an-automation&quot;&gt;General way to optimize an automation&lt;/h2&gt;
 
-&lt;p&gt;Of course, we can optimize the DFA with the well-known algorithm based on the Myhill-Nerode theorem. Unfortunately, even an optimized implementation (with implication trees) is not efficient enough to do the optimization for large &lt;code class=&quot;MathJax_Preview&quot;&gt;m&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;m&lt;/script&gt; and &lt;code class=&quot;MathJax_Preview&quot;&gt;b&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;b&lt;/script&gt;, because the complexity of the algorithm expressed in these terms is &lt;code class=&quot;MathJax_Preview&quot;&gt;O(nm^2)&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;O(nm^2)&lt;/script&gt;, because the algorithm needs to iterate over all pairs of states (&lt;code class=&quot;MathJax_Preview&quot;&gt;m^2&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;m^2&lt;/script&gt;) and consider all the outgoing transitions (&lt;code class=&quot;MathJax_Preview&quot;&gt;n&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt; in each state). With &lt;a href=&quot;/projects/numpat/&quot;&gt;this tool&lt;/a&gt; we can run the algorithm and get the following results for &lt;code class=&quot;MathJax_Preview&quot;&gt;b = 10&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;b = 10&lt;/script&gt; and &lt;code class=&quot;MathJax_Preview&quot;&gt;1 \le m \le 20&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;1 \le m \le 20&lt;/script&gt;:&lt;/p&gt;
+&lt;p&gt;Of course, we can optimize the DFA with the well-known algorithm based on the Myhill-Nerode theorem. Unfortunately, even an optimized implementation is not efficient enough to do the optimization for large &lt;code class=&quot;MathJax_Preview&quot;&gt;m&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;m&lt;/script&gt; and &lt;code class=&quot;MathJax_Preview&quot;&gt;b&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;b&lt;/script&gt;, because the complexity of the algorithm expressed in these terms is &lt;code class=&quot;MathJax_Preview&quot;&gt;O(bm^2)&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;O(bm^2)&lt;/script&gt;, as the algorithm needs to iterate over all &lt;code class=&quot;MathJax_Preview&quot;&gt;m^2&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;m^2&lt;/script&gt; pairs of states and consider all the outgoing transitions (&lt;code class=&quot;MathJax_Preview&quot;&gt;b&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;b&lt;/script&gt; in each state). With &lt;a href=&quot;/projects/numpat/&quot;&gt;this tool&lt;/a&gt; we can run the algorithm and get the following results for &lt;code class=&quot;MathJax_Preview&quot;&gt;b = 10&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;b = 10&lt;/script&gt; and &lt;code class=&quot;MathJax_Preview&quot;&gt;1 \le m \le 20&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;1 \le m \le 20&lt;/script&gt;:&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;m= 1 |Z|= 1  Z = [[0]]
 m= 2 |Z|= 2  Z = [[0], [1]]
@@ -39,8 +39,8 @@ m=20 |Z|= 3  Z = [[0], [13, 11, 15, 17, 5, 3, 7, 9, 19, 1], [12, 10, 14, 16, 4, 
 
 &lt;p&gt;If &lt;code class=&quot;MathJax_Preview&quot;&gt;m \le b&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;m \le b&lt;/script&gt; and &lt;code class=&quot;MathJax_Preview&quot;&gt;E \neq \varnothing&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;E \neq \varnothing&lt;/script&gt;, then the minimum finite automation can be constructed as follows:&lt;/p&gt;
 
-&lt;pre class=&quot;MathJax_Preview&quot;&gt;&lt;code&gt;Z = \overset{\cdot}{\bigcup_{A\in Z'}} \{\{a \in A| a \in E\}, \{a \in A| a \notin E\}\}\backslash\varnothing&lt;/code&gt;&lt;/pre&gt;
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;Z = \overset{\cdot}{\bigcup_{A\in Z'}} \{\{a \in A| a \in E\}, \{a \in A| a \notin E\}\}\backslash\varnothing&lt;/script&gt;
+&lt;pre class=&quot;MathJax_Preview&quot;&gt;&lt;code&gt;Z = \overset{\cdot}{\bigcup_{A\in Z'}} \{A \cap E, A \backslash E\}\backslash\varnothing&lt;/code&gt;&lt;/pre&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;Z = \overset{\cdot}{\bigcup_{A\in Z'}} \{A \cap E, A \backslash E\}\backslash\varnothing&lt;/script&gt;
 
 &lt;p&gt;where &lt;code class=&quot;MathJax_Preview&quot;&gt;Z'&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;Z'&lt;/script&gt; is the set of equivalence classes of the following equivalence relation:&lt;/p&gt;
 
@@ -80,15 +80,89 @@ m=20 |Z|= 3  Z = [[0], [13, 11, 15, 17, 5, 3, 7, 9, 19, 1], [12, 10, 14, 16, 4, 
 &amp;\Leftrightarrow x \equiv y \mod{\frac{m}{\gcd(b, m)}}
 \end{aligned} %]]&gt;&lt;/script&gt;
 
-&lt;p&gt;This completes the proof.&lt;/p&gt;
-
-&lt;h3 id=&quot;corollary&quot;&gt;Corollary&lt;/h3&gt;
+&lt;h3 id=&quot;first-corollary&quot;&gt;First corollary&lt;/h3&gt;
 
 &lt;p&gt;It follows, that if &lt;code class=&quot;MathJax_Preview&quot;&gt;m \le b&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;m \le b&lt;/script&gt;, &lt;code class=&quot;MathJax_Preview&quot;&gt;E \neq \varnothing&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;E \neq \varnothing&lt;/script&gt; and &lt;code class=&quot;MathJax_Preview&quot;&gt;\gcd(b, m) = 1&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;\gcd(b, m) = 1&lt;/script&gt;, then no states can be simplified and the minimal automation has &lt;code class=&quot;MathJax_Preview&quot;&gt;m&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;m&lt;/script&gt; states.&lt;/p&gt;
 
-&lt;hr /&gt;
+&lt;h3 id=&quot;second-corollary&quot;&gt;Second corollary&lt;/h3&gt;
 
-&lt;p&gt;In case &lt;code class=&quot;MathJax_Preview&quot;&gt;m &amp;gt; b&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;m &gt; b&lt;/script&gt; the equivalence relation depends very much on the set of final states &lt;code class=&quot;MathJax_Preview&quot;&gt;E&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;E&lt;/script&gt;.&lt;/p&gt;
+&lt;p&gt;If &lt;code class=&quot;MathJax_Preview&quot;&gt;m \le b&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;m \le b&lt;/script&gt; and &lt;code class=&quot;MathJax_Preview&quot;&gt;E \neq \varnothing&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;E \neq \varnothing&lt;/script&gt;, then the amount of states &lt;code class=&quot;MathJax_Preview&quot;&gt;Z'&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;Z'&lt;/script&gt; (before splitting each equivalence class in final states and non final ones as shown in the theorem) is isomorph to the following set of orbits:&lt;/p&gt;
+
+&lt;pre class=&quot;MathJax_Preview&quot;&gt;&lt;code&gt;Z' \cong (\mathbb{Z}/m)/\langle \gcd(b, m) \rangle&lt;/code&gt;&lt;/pre&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;Z' \cong (\mathbb{Z}/m)/\langle \gcd(b, m) \rangle&lt;/script&gt;
+
+&lt;h3 id=&quot;example-implementation&quot;&gt;Example implementation&lt;/h3&gt;
+
+&lt;p&gt;This Java method uses the results above to compute the equivalence classes efficiently:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Integer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;computeEquivalenceClasses&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;HashSet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Integer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;finalStates&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;assert&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;assert&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;finalStates&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;isEmpty&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// Union-Find datastructure, preferrably with union-by-rank and path compression&lt;/span&gt;
+    &lt;span class=&quot;nc&quot;&gt;UnionFind&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;equivalenceClasses&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;UnionFind&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bmgcd&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Euklidian&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;gcd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bmgcd&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;equivalenceClasses&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getDisjointsSets&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;optimizedM&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bmgcd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// loop through every set in the new set of equivalence classes&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;anchor&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;anchor&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;optimizedM&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;anchor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;current&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;anchor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// [anchor] is the equivalence class&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// oppositeAnchor is the element that is final if anchor is intermediate&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// and intermediate if anchor is final&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// if oppositeAnchor == anchor, then it is considered as not yet found&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;oppositeAnchor&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;anchor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+        &lt;span class=&quot;kt&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;anchorFinal&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;finalStates&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;contains&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;anchor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(;;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;current&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;current&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;optimizedM&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;current&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;anchor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+            &lt;span class=&quot;kt&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;currentFinal&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;finalStates&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;contains&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;current&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;currentFinal&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;anchorFinal&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;equivalenceClasses&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;union&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;current&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;anchor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;oppositeAnchor&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;anchor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;c1&quot;&gt;// &quot;initialize&quot; oppositeAnchor&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;oppositeAnchor&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;current&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;equivalenceClasses&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;union&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;current&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;oppositeAnchor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;equivalenceClasses&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getDisjointsSets&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If we use a union-find datastructure with &lt;code class=&quot;highlighter-rouge&quot;&gt;insert&lt;/code&gt; in &lt;code class=&quot;MathJax_Preview&quot;&gt;O(1)&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;O(1)&lt;/script&gt; (e.g. union-by-rank with path compression), then the complexity of the algorithm is &lt;code class=&quot;MathJax_Preview&quot;&gt;O(m)&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;O(m)&lt;/script&gt; which is much better than &lt;code class=&quot;MathJax_Preview&quot;&gt;O(bm^2)&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;O(bm^2)&lt;/script&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;case-when-m--b&quot;&gt;Case when m &amp;gt; b&lt;/h3&gt;
+
+&lt;p&gt;In case &lt;code class=&quot;MathJax_Preview&quot;&gt;m &amp;gt; b&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;m &gt; b&lt;/script&gt; the equivalence relation depends very much on the set of final states &lt;code class=&quot;MathJax_Preview&quot;&gt;E&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;E&lt;/script&gt;. With the Myhill Nerode theorem we get:&lt;/p&gt;
+
+&lt;pre class=&quot;MathJax_Preview&quot;&gt;&lt;code&gt;\begin{aligned}
+x \sim y &amp;amp;\Leftrightarrow (xc \in L \Leftrightarrow yc \in L \quad \forall c \in \Sigma^*) \\
+&amp;amp;\Leftrightarrow (x \cdot b^{|c|} + c \bmod m \in E \Leftrightarrow y \cdot b^{|c|} + c \bmod m \in E)
+\end{aligned}&lt;/code&gt;&lt;/pre&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{aligned}
+x \sim y &amp;\Leftrightarrow (xc \in L \Leftrightarrow yc \in L \quad \forall c \in \Sigma^*) \\
+&amp;\Leftrightarrow (x \cdot b^{|c|} + c \bmod m \in E \Leftrightarrow y \cdot b^{|c|} + c \bmod m \in E)
+\end{aligned} %]]&gt;&lt;/script&gt;
 
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
 
