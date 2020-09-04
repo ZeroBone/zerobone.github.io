@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://zerobone.net/feed.xml" rel="self" type="application/atom+xml" /><link href="https://zerobone.net/" rel="alternate" type="text/html" hreflang="en" /><updated>2020-09-01T22:17:35+02:00</updated><id>https://zerobone.net/feed.xml</id><title type="html">ZeroBone</title><subtitle>Computer Science student &amp; backend developer.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://zerobone.net/feed.xml" rel="self" type="application/atom+xml" /><link href="https://zerobone.net/" rel="alternate" type="text/html" hreflang="en" /><updated>2020-09-04T12:43:27+02:00</updated><id>https://zerobone.net/feed.xml</id><title type="html">ZeroBone</title><subtitle>Computer Science student &amp; backend developer.
 </subtitle><entry><title type="html">Efficient compression of congruence class automations</title><link href="https://zerobone.net/blog/cs/2020-09-01-compressing-congruence-automata/" rel="alternate" type="text/html" title="Efficient compression of congruence class automations" /><published>2020-09-01T00:00:00+02:00</published><updated>2020-09-01T00:00:00+02:00</updated><id>https://zerobone.net/blog/cs/compressing-congruence-automata</id><content type="html" xml:base="https://zerobone.net/blog/cs/2020-09-01-compressing-congruence-automata/">&lt;p&gt;As already discussed in the previous post, any radix-b number &lt;code class=&quot;MathJax_Preview&quot;&gt;n&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt; with &lt;code class=&quot;MathJax_Preview&quot;&gt;n \bmod{m} \in E \subseteq Z&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;n \bmod{m} \in E \subseteq Z&lt;/script&gt; can be accepted by finite automata in a digit-by-digit manner. However, the construction is not always optimal. The amount of states required is not always the amount of congruence classes. In this post we will examine when exactly the finite automata can be simplified by combining states. Reducing the amount of states will also help produce a much simpler regular expression, for example, with the Kleene construction.&lt;/p&gt;
 
 &lt;h2 id=&quot;general-way-to-optimize-an-automation&quot;&gt;General way to optimize an automation&lt;/h2&gt;
@@ -82,7 +82,7 @@ m=20 |Z|= 3  Z = [[0], [13, 11, 15, 17, 5, 3, 7, 9, 19, 1], [12, 10, 14, 16, 4, 
 
 &lt;h3 id=&quot;first-corollary&quot;&gt;First corollary&lt;/h3&gt;
 
-&lt;p&gt;It follows, that if &lt;code class=&quot;MathJax_Preview&quot;&gt;m \le b&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;m \le b&lt;/script&gt;, &lt;code class=&quot;MathJax_Preview&quot;&gt;E \neq \varnothing&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;E \neq \varnothing&lt;/script&gt; and &lt;code class=&quot;MathJax_Preview&quot;&gt;\gcd(b, m) = 1&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;\gcd(b, m) = 1&lt;/script&gt;, then no states can be simplified and the minimal automation has &lt;code class=&quot;MathJax_Preview&quot;&gt;m&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;m&lt;/script&gt; states.&lt;/p&gt;
+&lt;p&gt;It follows, that if &lt;code class=&quot;MathJax_Preview&quot;&gt;m \le b&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;m \le b&lt;/script&gt;, &lt;code class=&quot;MathJax_Preview&quot;&gt;E \neq \varnothing&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;E \neq \varnothing&lt;/script&gt; and &lt;code class=&quot;MathJax_Preview&quot;&gt;\gcd(b, m) = 1&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;\gcd(b, m) = 1&lt;/script&gt;, then no states can be combined and the minimal automation has &lt;code class=&quot;MathJax_Preview&quot;&gt;m&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;m&lt;/script&gt; states.&lt;/p&gt;
 
 &lt;h3 id=&quot;second-corollary&quot;&gt;Second corollary&lt;/h3&gt;
 
@@ -233,7 +233,7 @@ z_0 &amp;:= 0 \\
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/blog/dfa-radix2-modulo4-min.svg&quot; alt=&quot;Stack buffer overflow&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;As languages accepted by DFA’s are exactly the regular languages, we can transform any DFA in a regular expression to see the exact structure of numbers divisible, for example, by 4. Unfortunately such regular expressions are very long when constructed with the Kleene or with the Arden method by a computer. These regular expressions must be massively simplified in order to be readable. With the Kleene construction i’ve implemented in &lt;a href=&quot;/projects/numpat/&quot;&gt;this project&lt;/a&gt; we get the following regular expression:&lt;/p&gt;
+&lt;p&gt;As languages accepted by DFA’s are exactly the regular languages, we can transform any DFA in a regular expression to see the exact structure of numbers divisible, for example, by 4. Unfortunately such regular expressions are very long when constructed with the Kleene or with the Arden method by a computer. These regular expressions must be massively simplified in order to be readable. With the Kleene construction I’ve implemented in &lt;a href=&quot;/projects/numpat/&quot;&gt;this project&lt;/a&gt; we get the following regular expression:&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ε|0|(ε|0)0*(ε|0)|(1|(ε|0)0*1)(1|0*1)*0*(ε|0)|(1|(ε|0)0*1)(1|0*1)*0((1|00*1)(1|0*1)*0)*(0|00*(ε|0)|(1|00*1)(1|0*1)*0*(ε|0))
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -243,9 +243,23 @@ z_0 &amp;:= 0 \\
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ε|0|1(1|01)*00|(0|ε|1(1|01)*00)(0|1(1|01)*00)*(0|ε|1(1|01)*00)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Still, the regular expression is not so readable. By transforming it further manually, we can prove that it is equivalent to:&lt;/p&gt;
+&lt;p&gt;Still, the regular expression is not so readable. By transforming it further by hand, we can prove that it is equivalent to:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ε|0|(0|1)*00
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ε|0|1(1|01)*00|(0|ε|1(1|01)*00)(0|1(1|01)*00)*(0|ε|1(1|01)*00) =
+ε|0|1(1|01)*00|(ε|0|1(1|01)*00)(0|1(1|01)*00)*(ε|0|1(1|01)*00) =
+ε|0|1(1|01)*00|(0|1(1|01)*00)*(ε|0|1(1|01)*00) =
+ε|0|1(1|01)*00|(0|1(1|01)*00)* =
+ε|0|(0|1(1|01)*00)* =
+ε|0|(0|1(1|0)*00)* =
+ε|0|0*(1(1|0)*000*)* =
+ε|0|0*(1(1|0)*0*00)* =
+ε|0|0*(1(1|0)*00)* =
+ε|0|0*(1(0|1)*00)* =
+ε|0|0*(1(0|1)*00|ε) =
+ε|0|0*|0*1(0|1)*00 =
+ε|0|0*|0*(0|1)*00 =
+ε|0|0*(0|1)*00 =
+ε|0|(0|1)*00
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;So, any binary number divisible by 4 must be zero or end with &lt;code class=&quot;highlighter-rouge&quot;&gt;00&lt;/code&gt;.&lt;/p&gt;</content><author><name>Alexander Mayorov</name><email>zerobone21@gmail.com</email></author><summary type="html">In this post we will consider natural Radix-b numbers in positional number systems. The congruence class of any such arbitrary natural number can be determined by a finite automata, and thus, intuitively speaking, the language of all Radix-b numbers that satisfy some fixed properties modulo b is regular.</summary></entry><entry><title type="html">Extended Euclidean algorithm without stack or recursion</title><link href="https://zerobone.net/blog/cs/2020-02-21-non-recursive-extended-euklidian-algorithm/" rel="alternate" type="text/html" title="Extended Euclidean algorithm without stack or recursion" /><published>2020-02-21T00:00:00+01:00</published><updated>2020-02-21T00:00:00+01:00</updated><id>https://zerobone.net/blog/cs/non-recursive-extended-euklidian-algorithm</id><content type="html" xml:base="https://zerobone.net/blog/cs/2020-02-21-non-recursive-extended-euklidian-algorithm/">&lt;p&gt;Typical implementation of the extended Euclidean algorithm on the internet will just iteratively calculate modulo until 0 is reached. However, sometimes you also need to calculate the linear combination coefficients for the greatest common divisor.&lt;/p&gt;
