@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://zerobone.net/feed.xml" rel="self" type="application/atom+xml" /><link href="https://zerobone.net/" rel="alternate" type="text/html" hreflang="en" /><updated>2020-09-05T20:15:26+02:00</updated><id>https://zerobone.net/feed.xml</id><title type="html">ZeroBone</title><subtitle>Computer Science student &amp; backend developer.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://zerobone.net/feed.xml" rel="self" type="application/atom+xml" /><link href="https://zerobone.net/" rel="alternate" type="text/html" hreflang="en" /><updated>2020-09-06T00:08:53+02:00</updated><id>https://zerobone.net/feed.xml</id><title type="html">ZeroBone</title><subtitle>Computer Science student &amp; backend developer.
 </subtitle><entry><title type="html">Efficient compression of congruence class automations</title><link href="https://zerobone.net/blog/cs/2020-09-01-compressing-congruence-automata/" rel="alternate" type="text/html" title="Efficient compression of congruence class automations" /><published>2020-09-01T00:00:00+02:00</published><updated>2020-09-01T00:00:00+02:00</updated><id>https://zerobone.net/blog/cs/compressing-congruence-automata</id><content type="html" xml:base="https://zerobone.net/blog/cs/2020-09-01-compressing-congruence-automata/">&lt;p&gt;As already discussed in the previous post, any radix-b number &lt;code class=&quot;MathJax_Preview&quot;&gt;n&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt; with &lt;code class=&quot;MathJax_Preview&quot;&gt;n \bmod{m} \in E \subseteq Z&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;n \bmod{m} \in E \subseteq Z&lt;/script&gt; can be accepted by finite automata in a digit-by-digit manner. However, the construction is not always optimal. The amount of states required is not always the amount of congruence classes. In this post we will examine when exactly the finite automata can be simplified by combining states. Reducing the amount of states will also help produce a much simpler regular expression, for example, with the Kleene construction.&lt;/p&gt;
 
 &lt;h2 id=&quot;general-way-to-optimize-an-automation&quot;&gt;General way to optimize an automation&lt;/h2&gt;
@@ -105,7 +105,7 @@ m=20 |Z|= 3  Z = [[0], [13, 11, 15, 17, 5, 3, 7, 9, 19, 1], [12, 10, 14, 16, 4, 
     &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bmgcd&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Euklidian&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;gcd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
 
     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bmgcd&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;equivalenceClasses&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getDisjointsSets&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;equivalenceClasses&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getDisjointSets&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
     &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;optimizedM&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bmgcd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
@@ -144,7 +144,7 @@ m=20 |Z|= 3  Z = [[0], [13, 11, 15, 17, 5, 3, 7, 9, 19, 1], [12, 10, 14, 16, 4, 
 
     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;equivalenceClasses&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getDisjointsSets&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;equivalenceClasses&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getDisjointSets&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -211,7 +211,7 @@ z_0 &amp;:= 0 \\
 
 &lt;p&gt;For example, we can construct a finite automation that accepts all binary (&lt;code class=&quot;MathJax_Preview&quot;&gt;b = 2&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;b = 2&lt;/script&gt;) numbers divisible by 4 (&lt;code class=&quot;MathJax_Preview&quot;&gt;m = 4&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;m = 4&lt;/script&gt;):&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/img/blog/dfa-radix2-modulo4.svg&quot; alt=&quot;Stack buffer overflow&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/dfa-radix2-modulo4.svg&quot; alt=&quot;Binary numbers divisible by 4 dfa&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;The transitions are obtained as follows:&lt;/p&gt;
 
@@ -231,7 +231,7 @@ z_0 &amp;:= 0 \\
 
 &lt;p&gt;In this particular case the constructed automation is not minimal. States s1 and s3 are equivalent (this can be formally proven with the Myhill-Nerode theorem) and can be replaced by one state:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/img/blog/dfa-radix2-modulo4-min.svg&quot; alt=&quot;Stack buffer overflow&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/dfa-radix2-modulo4-min.svg&quot; alt=&quot;Optimized automation for binary numbers modulo 4&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;As languages accepted by DFA’s are exactly the regular languages, we can transform any DFA in a regular expression to see the exact structure of numbers divisible, for example, by 4. Unfortunately such regular expressions are very long when constructed with the Kleene or with the Arden method by a computer. These regular expressions must be massively simplified in order to be readable. With the Kleene construction I’ve implemented in &lt;a href=&quot;/projects/numpat/&quot;&gt;this project&lt;/a&gt; we get the following regular expression:&lt;/p&gt;
 
@@ -262,7 +262,21 @@ z_0 &amp;:= 0 \\
 ε|0|(0|1)*00
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;So, any binary number divisible by 4 must be zero or end with &lt;code class=&quot;highlighter-rouge&quot;&gt;00&lt;/code&gt;.&lt;/p&gt;</content><author><name>Alexander Mayorov</name><email>zerobone21@gmail.com</email></author><summary type="html">In this post we will consider natural Radix-b numbers in positional number systems. The congruence class of any such arbitrary natural number can be determined by a finite automata, and thus, intuitively speaking, the language of all Radix-b numbers that satisfy some fixed properties modulo b is regular.</summary></entry><entry><title type="html">Extended Euclidean algorithm without stack or recursion</title><link href="https://zerobone.net/blog/cs/2020-02-21-non-recursive-extended-euklidian-algorithm/" rel="alternate" type="text/html" title="Extended Euclidean algorithm without stack or recursion" /><published>2020-02-21T00:00:00+01:00</published><updated>2020-02-21T00:00:00+01:00</updated><id>https://zerobone.net/blog/cs/non-recursive-extended-euklidian-algorithm</id><content type="html" xml:base="https://zerobone.net/blog/cs/2020-02-21-non-recursive-extended-euklidian-algorithm/">&lt;p&gt;Typical implementation of the extended Euclidean algorithm on the internet will just iteratively calculate modulo until 0 is reached. However, sometimes you also need to calculate the linear combination coefficients for the greatest common divisor.&lt;/p&gt;
+&lt;p&gt;So, any binary number divisible by 4 must be zero or end with &lt;code class=&quot;highlighter-rouge&quot;&gt;00&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;other-examples&quot;&gt;Other examples&lt;/h2&gt;
+
+&lt;h3 id=&quot;decimal-numbers-divisible-by-20&quot;&gt;Decimal numbers divisible by 20&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/dfa-radix10-modulo20-min.svg&quot; alt=&quot;DFA accepting decimal numbers divisible by 20&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;decimal-numbers-divisible-by-75&quot;&gt;Decimal numbers divisible by 75&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/dfa-radix10-modulo75-min.svg&quot; alt=&quot;DFA accepting decimal numbers divisible by 75&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;hexadecimal-numbers-divisible-by-24&quot;&gt;Hexadecimal numbers divisible by 24&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/dfa-radix16-modulo24-min.svg&quot; alt=&quot;DFA accepting hexadecimal numbers divisible by 24&quot; /&gt;&lt;/p&gt;</content><author><name>Alexander Mayorov</name><email>zerobone21@gmail.com</email></author><summary type="html">In this post we will consider natural Radix-b numbers in positional number systems. The congruence class of any such arbitrary natural number can be determined by a finite automata, and thus, intuitively speaking, the language of all Radix-b numbers that satisfy some fixed properties modulo b is regular.</summary></entry><entry><title type="html">Extended Euclidean algorithm without stack or recursion</title><link href="https://zerobone.net/blog/cs/2020-02-21-non-recursive-extended-euklidian-algorithm/" rel="alternate" type="text/html" title="Extended Euclidean algorithm without stack or recursion" /><published>2020-02-21T00:00:00+01:00</published><updated>2020-02-21T00:00:00+01:00</updated><id>https://zerobone.net/blog/cs/non-recursive-extended-euklidian-algorithm</id><content type="html" xml:base="https://zerobone.net/blog/cs/2020-02-21-non-recursive-extended-euklidian-algorithm/">&lt;p&gt;Typical implementation of the extended Euclidean algorithm on the internet will just iteratively calculate modulo until 0 is reached. However, sometimes you also need to calculate the linear combination coefficients for the greatest common divisor.&lt;/p&gt;
 
 &lt;h2 id=&quot;extended-euclidean-algorithm&quot;&gt;Extended Euclidean algorithm&lt;/h2&gt;
 
