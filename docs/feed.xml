@@ -1,5 +1,116 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://zerobone.net/feed.xml" rel="self" type="application/atom+xml" /><link href="https://zerobone.net/" rel="alternate" type="text/html" hreflang="en" /><updated>2020-09-06T00:08:53+02:00</updated><id>https://zerobone.net/feed.xml</id><title type="html">ZeroBone</title><subtitle>Computer Science student &amp; backend developer.
-</subtitle><entry><title type="html">Efficient compression of congruence class automations</title><link href="https://zerobone.net/blog/cs/2020-09-01-compressing-congruence-automata/" rel="alternate" type="text/html" title="Efficient compression of congruence class automations" /><published>2020-09-01T00:00:00+02:00</published><updated>2020-09-01T00:00:00+02:00</updated><id>https://zerobone.net/blog/cs/compressing-congruence-automata</id><content type="html" xml:base="https://zerobone.net/blog/cs/2020-09-01-compressing-congruence-automata/">&lt;p&gt;As already discussed in the previous post, any radix-b number &lt;code class=&quot;MathJax_Preview&quot;&gt;n&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt; with &lt;code class=&quot;MathJax_Preview&quot;&gt;n \bmod{m} \in E \subseteq Z&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;n \bmod{m} \in E \subseteq Z&lt;/script&gt; can be accepted by finite automata in a digit-by-digit manner. However, the construction is not always optimal. The amount of states required is not always the amount of congruence classes. In this post we will examine when exactly the finite automata can be simplified by combining states. Reducing the amount of states will also help produce a much simpler regular expression, for example, with the Kleene construction.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://zerobone.net/feed.xml" rel="self" type="application/atom+xml" /><link href="https://zerobone.net/" rel="alternate" type="text/html" hreflang="en" /><updated>2020-09-22T21:36:18+02:00</updated><id>https://zerobone.net/feed.xml</id><title type="html">ZeroBone</title><subtitle>Computer Science student &amp; backend developer.
+</subtitle><entry><title type="html">Kadane’s algorithm and the idea behind it</title><link href="https://zerobone.net/blog/cs/2020-09-19-kadane-algorithm/" rel="alternate" type="text/html" title="Kadane's algorithm and the idea behind it" /><published>2020-09-19T00:00:00+02:00</published><updated>2020-09-19T00:00:00+02:00</updated><id>https://zerobone.net/blog/cs/kadane-algorithm</id><content type="html" xml:base="https://zerobone.net/blog/cs/2020-09-19-kadane-algorithm/">&lt;p&gt;People often refer to Kadane’s algorithm only in the context of the maximum subarray problem. However, the idea behind this algorithm allows one to use it for solving a variety of problems that have something to do with finding a continuous subarray with a given property. The algorithm can also be used in 2d or multidimensional arrays but in this post we will only consider regular one-dimensional arrays.&lt;/p&gt;
+
+&lt;h2 id=&quot;motivation--idea&quot;&gt;Motivation &amp;amp; idea&lt;/h2&gt;
+
+&lt;p&gt;If we are searching for a subarray with some property, the easiest solution would be to try all possible intervals. A naive algorithm can do that in &lt;code class=&quot;MathJax_Preview&quot;&gt;O(n^3)&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;O(n^3)&lt;/script&gt; time, but we can improve that by computing solutions for intervals of increasing length and reusing already computed solutions (aka dynamic programming). In this case the complexity of the algorithm is &lt;code class=&quot;MathJax_Preview&quot;&gt;O(n^2)&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;O(n^2)&lt;/script&gt;. Of course, this will work not for all problems. It will work, for example, for the computation of any binary associative operation for all intervals in the array. Another example for such an algorithm would be finding all palindromes in a given string:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Mark all letters as palindromes of length 1&lt;/li&gt;
+  &lt;li&gt;Mark all adjacent equal letters as palindromes of length 2&lt;/li&gt;
+  &lt;li&gt;For every fixed length &lt;code class=&quot;MathJax_Preview&quot;&gt;k&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;k&lt;/script&gt;, starting with &lt;code class=&quot;MathJax_Preview&quot;&gt;k = 3&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;k = 3&lt;/script&gt; traverse all substrings of length &lt;code class=&quot;MathJax_Preview&quot;&gt;k&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;k&lt;/script&gt; in the string and mark the current substring as a palindrome if the letters at the start and at the end match and if the middle part is a palindrome.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code class=&quot;MathJax_Preview&quot;&gt;O(n^2)&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;O(n^2)&lt;/script&gt; is the optimal worst-case complexity if the problem cannot be solved without traversing the entire search space. For example, this is the case for the problem of computing all palindromes of a given string (a worst-case example is &lt;code class=&quot;MathJax_Preview&quot;&gt;a^n \in \Sigma^*&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;a^n \in \Sigma^*&lt;/script&gt; where the amount of palindromes is &lt;code class=&quot;MathJax_Preview&quot;&gt;\sum_{i=1}^{n}i =\frac{n \cdot (n + 1)}{2} \in \Omega(n^2)&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;\sum_{i=1}^{n}i =\frac{n \cdot (n + 1)}{2} \in \Omega(n^2)&lt;/script&gt;).&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;key question&lt;/strong&gt; is: How can we traverse only some subset of the search space and still benefit from dynamic programming?&lt;/p&gt;
+
+&lt;p&gt;Well, we can identify a problem with only one side of the interval in the array. We will choose the right side of the interval because that is what is commonly used in real algorithms. That way it is possible to construct a linear time algorithm the following way:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Create a recursive function &lt;code class=&quot;MathJax_Preview&quot;&gt;f(k)&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;f(k)&lt;/script&gt; that computes the trivial solution if &lt;code class=&quot;MathJax_Preview&quot;&gt;k = 1&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;k = 1&lt;/script&gt; and computes the new solution based on the already computed result, e.g. &lt;code class=&quot;MathJax_Preview&quot;&gt;f(k-1)&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;f(k-1)&lt;/script&gt;.&lt;/li&gt;
+  &lt;li&gt;Find the best solution among &lt;code class=&quot;MathJax_Preview&quot;&gt;\{f(k) \char124 0 \le k &amp;lt; n\}&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+\{f(k) \char124 0 \le k &lt; n\} %]]&gt;&lt;/script&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Both parts take linear time (&lt;code class=&quot;MathJax_Preview&quot;&gt;O(n)&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;O(n)&lt;/script&gt;) if we cache and reuse the result of &lt;code class=&quot;MathJax_Preview&quot;&gt;f(k)&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;f(k)&lt;/script&gt; or if we use dynamic programming which is better most of the times.&lt;/p&gt;
+
+&lt;h2 id=&quot;maximum-sum-subarray&quot;&gt;Maximum sum subarray&lt;/h2&gt;
+
+&lt;p&gt;A good example for a construction of such an algorithm is the maximum sum subarray problem - given an array &lt;code class=&quot;MathJax_Preview&quot;&gt;A&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; of integers the algorithm should find such indices &lt;code class=&quot;MathJax_Preview&quot;&gt;a,b \in \{1, \dots, n-1\}&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;a,b \in \{1, \dots, n-1\}&lt;/script&gt; with &lt;code class=&quot;MathJax_Preview&quot;&gt;a \le b&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;a \le b&lt;/script&gt; such that &lt;code class=&quot;MathJax_Preview&quot;&gt;\sum_{i=a}^b {A[i]}&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;\sum_{i=a}^b {A[i]}&lt;/script&gt; is maximal.&lt;/p&gt;
+
+&lt;p&gt;We can define the problem only in terms of the right border &lt;code class=&quot;MathJax_Preview&quot;&gt;k&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;k&lt;/script&gt; - “what is the maximum subarray ending at &lt;code class=&quot;MathJax_Preview&quot;&gt;k&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;k&lt;/script&gt;”?&lt;/p&gt;
+
+&lt;p&gt;Clearly, the maximum subarray of the whole array is the maximum of subarrays ending at &lt;code class=&quot;MathJax_Preview&quot;&gt;k&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;k&lt;/script&gt; for all &lt;code class=&quot;MathJax_Preview&quot;&gt;0 \le k &amp;lt; n&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+0 \le k &lt; n %]]&gt;&lt;/script&gt;. Also, the maximum sum subarray ending at k is either &lt;code class=&quot;MathJax_Preview&quot;&gt;A[k]&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;A[k]&lt;/script&gt; itself or the maximum sum subarray ending at &lt;code class=&quot;MathJax_Preview&quot;&gt;k - 1&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;k - 1&lt;/script&gt; combined with &lt;code class=&quot;MathJax_Preview&quot;&gt;A[k]&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;A[k]&lt;/script&gt;. So we can now write the algorithm formally with Pseudocode:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-pseudocode&quot;&gt;maxSumSubarrayEndingAt(A, k) {
+    if (k == 0) {
+        return (A[0], 1);
+    }
+    (sum, left) = maxSumSubarrayEndingAt(k - 1);
+    if (sum &amp;gt;= 0) { /* sum + A[k] &amp;gt;= A[k] */
+        /* the max subarray (ending at k) is the previous subarray together with this element */
+        return (sum + A[k], left);
+    }
+    else {
+        /* the max subarray (ending at k) is the current element */
+        return (A[k], k);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And the maximum subarray sum and indices can be computed with a simple maximim-search algorithm:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-pseudocode&quot;&gt;maxSumSubarray(A) {
+    n = size(A);
+    maxSum = A[0];
+    maxLeft = 0;
+    maxRight = 0;
+    for (r = 1; r &amp;lt; n; r++) {
+        (s, l) = maxSumSubarrayEndingAt(A, r);
+        if (s &amp;gt; maxSum) {
+            maxSum = s;
+            maxLeft = l;
+            maxRight = r;
+        }
+    }
+    return (maxSum, maxLeft, maxRight);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This intermediate pseudocode solution doesn’t cache &lt;code class=&quot;highlighter-rouge&quot;&gt;maxSumSubarrayEndingAt&lt;/code&gt; results and is therefore inefficient “as-is”. But we can remove recursion and rewrite the same solution with dynamic programming (Java):&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;maxSumSubarray&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;maxSum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;maxLeft&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;maxRight&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;currentSum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;currentLeft&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;currentSum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;currentSum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;currentSum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;currentLeft&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;currentSum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;maxSum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;maxSum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;currentSum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;maxLeft&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;currentLeft&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;maxRight&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// the sum between A[maxLeft] and A[maxRight] (inclusive) is equal maxSum and maximal&lt;/span&gt;
+    &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Max sum: %5d Indices from %5d to %5d.\n&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;maxSum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;maxLeft&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;maxRight&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This is the efficient &lt;code class=&quot;MathJax_Preview&quot;&gt;\Theta(n)&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;\Theta(n)&lt;/script&gt; time and &lt;code class=&quot;MathJax_Preview&quot;&gt;\Theta(1)&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;\Theta(1)&lt;/script&gt; space solution that uses the idea of Kadane’s algorithm to compute the maximum sum subarray.&lt;/p&gt;
+
+&lt;h2 id=&quot;other-problems-that-can-be-solved-analogously&quot;&gt;Other problems that can be solved analogously&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Smallest sum subarray problem&lt;/li&gt;
+  &lt;li&gt;Largest product subarray problem&lt;/li&gt;
+  &lt;li&gt;Smallest product subarray problem&lt;/li&gt;
+  &lt;li&gt;Maximum circular sum&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Alexander Mayorov</name><email>zerobone21@gmail.com</email></author><summary type="html">People often refer to Kadane’s algorithm only in the context of the maximum subarray problem. However, the idea behind this algorithm allows one to use it for solving a variety of problems that have something to do with finding a continuous subarray with a given property. The algorithm can also be used in 2d or multidimensional arrays but in this post we will only consider regular one-dimensional arrays.</summary></entry><entry><title type="html">Efficient compression of congruence class automations</title><link href="https://zerobone.net/blog/cs/2020-09-01-compressing-congruence-automata/" rel="alternate" type="text/html" title="Efficient compression of congruence class automations" /><published>2020-09-01T00:00:00+02:00</published><updated>2020-09-01T00:00:00+02:00</updated><id>https://zerobone.net/blog/cs/compressing-congruence-automata</id><content type="html" xml:base="https://zerobone.net/blog/cs/2020-09-01-compressing-congruence-automata/">&lt;p&gt;As already discussed in the previous post, any radix-b number &lt;code class=&quot;MathJax_Preview&quot;&gt;n&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt; with &lt;code class=&quot;MathJax_Preview&quot;&gt;n \bmod{m} \in E \subseteq Z&lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;n \bmod{m} \in E \subseteq Z&lt;/script&gt; can be accepted by finite automata in a digit-by-digit manner. However, the construction is not always optimal. The amount of states required is not always the amount of congruence classes. In this post we will examine when exactly the finite automata can be simplified by combining states. Reducing the amount of states will also help produce a much simpler regular expression, for example, with the Kleene construction.&lt;/p&gt;
 
 &lt;h2 id=&quot;general-way-to-optimize-an-automation&quot;&gt;General way to optimize an automation&lt;/h2&gt;
 

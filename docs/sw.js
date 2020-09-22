@@ -1,1 +1,1 @@
-importScripts("/assets/js/sw.js?t=2020-09-06T00:08:53+02:00");
+importScripts("/assets/js/sw.js?t=2020-09-22T21:36:18+02:00");
