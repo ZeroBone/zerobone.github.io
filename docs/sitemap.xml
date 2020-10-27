@@ -101,6 +101,10 @@
 <lastmod>2020-10-22T17:07:26+02:00</lastmod>
 </url>
 <url>
+<loc>https://zerobone.net/other/</loc>
+<lastmod>2020-10-27T22:48:57+01:00</lastmod>
+</url>
+<url>
 <loc>https://zerobone.net/</loc>
 <lastmod>2020-10-21T22:13:33+02:00</lastmod>
 </url>
@@ -119,5 +123,13 @@
 <url>
 <loc>https://zerobone.net/resume/</loc>
 <lastmod>2020-10-22T02:17:08+02:00</lastmod>
+</url>
+<url>
+<loc>https://zerobone.net/other/boolean-algebra/</loc>
+<lastmod>2020-10-28T00:14:17+01:00</lastmod>
+</url>
+<url>
+<loc>https://zerobone.net/other/int-table/</loc>
+<lastmod>2020-10-27T13:35:09+01:00</lastmod>
 </url>
 </urlset>
