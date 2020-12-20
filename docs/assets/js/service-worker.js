@@ -29,7 +29,7 @@ const SHELL_CACHE = "shell-9.0.5--v7--sw/";
 const ASSETS_CACHE = "assets--v7--sw/";
 
 // The cache for regular content, which will be invalidated every time you make a new build.
-const CONTENT_CACHE = "content--2020-12-18T00:05:33+01:00--sw/";
+const CONTENT_CACHE = "content--2020-12-20T23:49:25+01:00--sw/";
 
 // A URL search parameter you can add to external assets to cache them in the service worker.
 const SW_CACHE_SEARCH_PARAM = "sw-cache";
@@ -88,9 +88,15 @@ const STATIC_FILES = [
   /**/"/assets/img/blog/extended-euklidian-code.jpg",
   /**/"/assets/img/blog/gaussian-elimination-3d.gif",
   /**/"/assets/img/blog/kadane-example.svg",
+  /**/"/assets/img/blog/kmp-failure-function-ex1.svg",
+  /**/"/assets/img/blog/kmp-failure-function-ex2-inv-shifted.svg",
+  /**/"/assets/img/blog/kmp-failure-function-ex2-inv.svg",
+  /**/"/assets/img/blog/kmp-failure-function-ex2-shifted.svg",
+  /**/"/assets/img/blog/kmp-failure-function-ex2.svg",
+  /**/"/assets/img/blog/kmp-tmb.jpg",
   /**/"/assets/img/blog/linear-transformation-3d-linear-dependent.gif",
+  /**/"/assets/img/blog/linear-transformation-3d-tmb.jpg",
   /**/"/assets/img/blog/linear-transformation-3d.gif",
-  /**/"/assets/img/blog/linear-transformation-3d.jpg",
   /**/"/assets/img/blog/palu-nonstable-interp.svg",
   /**/"/assets/img/blog/palu-stable-interp.svg",
   /**/"/assets/img/blog/power2-graph-4-vertex-cover.svg",
