@@ -29,7 +29,7 @@ const SHELL_CACHE = "shell-9.0.5--v7--sw/";
 const ASSETS_CACHE = "assets--v7--sw/";
 
 // The cache for regular content, which will be invalidated every time you make a new build.
-const CONTENT_CACHE = "content--2020-12-20T23:49:25+01:00--sw/";
+const CONTENT_CACHE = "content--2020-12-21T00:53:54+01:00--sw/";
 
 // A URL search parameter you can add to external assets to cache them in the service worker.
 const SW_CACHE_SEARCH_PARAM = "sw-cache";
@@ -74,12 +74,14 @@ const STATIC_FILES = [
   /**/"/assets/img/blog/bt-full-15-node-0.svg",
   /**/"/assets/img/blog/bt-full-15-node-1-binary.svg",
   /**/"/assets/img/blog/bt-full-15-node-1.svg",
+  /**/"/assets/img/blog/call-stack-buffer-overflow-tmb.jpg",
   /**/"/assets/img/blog/call-stack-buffer-overflow.svg",
   /**/"/assets/img/blog/cnf-cube-dfa.svg",
   /**/"/assets/img/blog/cnf-cube-nfa.svg",
   /**/"/assets/img/blog/cnf-cube-obdd.svg",
   /**/"/assets/img/blog/cnf-cube-obdd2.svg",
   /**/"/assets/img/blog/cnf-cube-robdd.svg",
+  /**/"/assets/img/blog/compressing-congruence-automata-tmb.jpg",
   /**/"/assets/img/blog/dfa-radix10-modulo20-min.svg",
   /**/"/assets/img/blog/dfa-radix10-modulo75-min.svg",
   /**/"/assets/img/blog/dfa-radix16-modulo24-min.svg",
@@ -87,6 +89,7 @@ const STATIC_FILES = [
   /**/"/assets/img/blog/dfa-radix2-modulo4.svg",
   /**/"/assets/img/blog/extended-euklidian-code.jpg",
   /**/"/assets/img/blog/gaussian-elimination-3d.gif",
+  /**/"/assets/img/blog/kadane-algorithm-tmb.jpg",
   /**/"/assets/img/blog/kadane-example.svg",
   /**/"/assets/img/blog/kmp-failure-function-ex1.svg",
   /**/"/assets/img/blog/kmp-failure-function-ex2-inv-shifted.svg",
@@ -97,10 +100,14 @@ const STATIC_FILES = [
   /**/"/assets/img/blog/linear-transformation-3d-linear-dependent.gif",
   /**/"/assets/img/blog/linear-transformation-3d-tmb.jpg",
   /**/"/assets/img/blog/linear-transformation-3d.gif",
+  /**/"/assets/img/blog/lowest-common-ancestor-tmb.jpg",
+  /**/"/assets/img/blog/numbers-are-regular-languages-tmb.jpg",
   /**/"/assets/img/blog/palu-nonstable-interp.svg",
   /**/"/assets/img/blog/palu-stable-interp.svg",
+  /**/"/assets/img/blog/palu-tmb.jpg",
   /**/"/assets/img/blog/power2-graph-4-vertex-cover.svg",
   /**/"/assets/img/blog/power2-vertex-to-set-cover.svg",
+  /**/"/assets/img/blog/regular-language-size-np-hard-tmb.jpg",
   /**/"/assets/img/blog/vertex-cover-power2.svg",
   /**/"/assets/img/math/int/nes_1_geom.svg",
   /**/"/assets/img/math/int/nes_2_geom.svg",

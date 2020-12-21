@@ -78,7 +78,7 @@
   ], 
   "documents": [
     {
-      "image": "../../assets/img/blog/call-stack-buffer-overflow.svg",
+      "image": "../../assets/img/blog/call-stack-buffer-overflow-tmb.jpg",
       "title": "Call Stack - buffer overflow vulnerability",
       "date": "2019-06-30 00:00:00 +0200",
       
@@ -100,7 +100,7 @@
       "collection": "posts",
       "url": "/blog/cs/non-recursive-extended-euklidean-algorithm/"
     },{
-      "image": "../../assets/img/blog/dfa-radix2-modulo4.svg",
+      "image": "../../assets/img/blog/numbers-are-regular-languages-tmb.jpg",
       "title": "Numbers in congruence classes are regular languages",
       "date": "2020-08-29 00:00:00 +0200",
       
@@ -111,7 +111,7 @@
       "collection": "posts",
       "url": "/blog/cs/numbers-are-regular-languages/"
     },{
-      "image": "../../assets/img/blog/dfa-radix10-modulo75-min.svg",
+      "image": "../../assets/img/blog/compressing-congruence-automata-tmb.jpg",
       "title": "Efficient compression of congruence class automations",
       "date": "2020-09-01 00:00:00 +0200",
       
@@ -122,7 +122,7 @@
       "collection": "posts",
       "url": "/blog/cs/compressing-congruence-automata/"
     },{
-      "image": "../../assets/img/blog/kadane-example.svg",
+      "image": "../../assets/img/blog/kadane-algorithm-tmb.jpg",
       "title": "Kadane's algorithm and the idea behind it",
       "date": "2020-09-19 00:00:00 +0200",
       
@@ -133,7 +133,7 @@
       "collection": "posts",
       "url": "/blog/cs/kadane-algorithm/"
     },{
-      "image": "../../assets/img/blog/bt-full-15-node-0.svg",
+      "image": "../../assets/img/blog/lowest-common-ancestor-tmb.jpg",
       "title": "Computing the lowest common ancestor in a full binary tree",
       "date": "2020-09-23 00:00:00 +0200",
       
@@ -144,7 +144,7 @@
       "collection": "posts",
       "url": "/blog/cs/lowest-common-ancestor/"
     },{
-      "image": "../../assets/img/blog/4d-boolean-cube-cnf.svg",
+      "image": "../../assets/img/blog/regular-language-size-np-hard-tmb.jpg",
       "title": "Measuring the size of a regular language is NP-Hard",
       "date": "2020-10-15 00:00:00 +0200",
       
@@ -155,7 +155,7 @@
       "collection": "posts",
       "url": "/blog/cs/regular-language-size-np-hard/"
     },{
-      "image": "../../assets/img/blog/palu-stable-interp.svg",
+      "image": "../../assets/img/blog/palu-tmb.jpg",
       "title": "Using the PA=LU factorization to solve linear systems of equations for many right-hand sides efficiently",
       "date": "2020-11-28 00:00:00 +0100",
       
@@ -190,7 +190,7 @@
     },{
       
       "title": "Computer Science",
-      "date": "2020-12-20 23:49:25 +0100",
+      "date": "2020-12-21 00:53:54 +0100",
       "description": "This category contains all posts that have something to do with theoretical or practical computer science.\n",
       "content": "\n",
       "categories": [],
