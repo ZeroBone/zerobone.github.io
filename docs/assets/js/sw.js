@@ -29,7 +29,7 @@ const SHELL_CACHE = "shell-9.0.5--v7--sw/";
 const ASSETS_CACHE = "assets--v7--sw/";
 
 // The cache for regular content, which will be invalidated every time you make a new build.
-const CONTENT_CACHE = "content--2020-12-21T23:22:58+01:00--sw/";
+const CONTENT_CACHE = "content--2020-12-28T02:11:57+01:00--sw/";
 
 // A URL search parameter you can add to external assets to cache them in the service worker.
 const SW_CACHE_SEARCH_PARAM = "sw-cache";
@@ -68,6 +68,7 @@ const STATIC_FILES = [
   /**/"/assets/img/blog/3-sat-ind-set-graph-power2.svg",
   /**/"/assets/img/blog/3-sat-ind-set-graph.svg",
   /**/"/assets/img/blog/3d-boolean-cube-layers.svg",
+  /**/"/assets/img/blog/3d-boolean-cube.svg",
   /**/"/assets/img/blog/4d-boolean-cube-cnf.svg",
   /**/"/assets/img/blog/4d-boolean-cube-primes.svg",
   /**/"/assets/img/blog/4d-boolean-cube.svg",
@@ -89,6 +90,9 @@ const STATIC_FILES = [
   /**/"/assets/img/blog/dfa-radix2-modulo4.svg",
   /**/"/assets/img/blog/extended-euklidian-code.jpg",
   /**/"/assets/img/blog/gaussian-elimination-3d.gif",
+  /**/"/assets/img/blog/gray-codes-tmb.jpg",
+  /**/"/assets/img/blog/gray-recursive-def.svg",
+  /**/"/assets/img/blog/gray-symmetry-proof-example.svg",
   /**/"/assets/img/blog/kadane-algorithm-tmb.jpg",
   /**/"/assets/img/blog/kadane-example.svg",
   /**/"/assets/img/blog/kmp-failure-function-ex1.svg",
