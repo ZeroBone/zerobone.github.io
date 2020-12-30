@@ -29,7 +29,7 @@ const SHELL_CACHE = "shell-9.0.5--v7--sw/";
 const ASSETS_CACHE = "assets--v7--sw/";
 
 // The cache for regular content, which will be invalidated every time you make a new build.
-const CONTENT_CACHE = "content--2020-12-28T15:46:51+01:00--sw/";
+const CONTENT_CACHE = "content--2020-12-30T23:28:33+01:00--sw/";
 
 // A URL search parameter you can add to external assets to cache them in the service worker.
 const SW_CACHE_SEARCH_PARAM = "sw-cache";
@@ -89,7 +89,6 @@ const STATIC_FILES = [
   /**/"/assets/img/blog/dfa-radix2-modulo4-min.svg",
   /**/"/assets/img/blog/dfa-radix2-modulo4.svg",
   /**/"/assets/img/blog/extended-euklidian-code.jpg",
-  /**/"/assets/img/blog/gaussian-elimination-3d.gif",
   /**/"/assets/img/blog/gray-codes-tmb.jpg",
   /**/"/assets/img/blog/gray-recursive-def.svg",
   /**/"/assets/img/blog/gray-symmetry-proof-example.svg",
@@ -101,9 +100,7 @@ const STATIC_FILES = [
   /**/"/assets/img/blog/kmp-failure-function-ex2-shifted.svg",
   /**/"/assets/img/blog/kmp-failure-function-ex2.svg",
   /**/"/assets/img/blog/kmp-tmb.jpg",
-  /**/"/assets/img/blog/linear-transformation-3d-linear-dependent.gif",
   /**/"/assets/img/blog/linear-transformation-3d-tmb.jpg",
-  /**/"/assets/img/blog/linear-transformation-3d.gif",
   /**/"/assets/img/blog/lowest-common-ancestor-tmb.jpg",
   /**/"/assets/img/blog/numbers-are-regular-languages-tmb.jpg",
   /**/"/assets/img/blog/palu-nonstable-interp.svg",
@@ -141,6 +138,9 @@ const STATIC_FILES = [
   /**/"/assets/img/projects/zerorobo/gameplay02.png",
   /**/"/assets/img/projects/zerorobo/gameplay03.png",
   /**/"/assets/img/swipe.svg",
+  /**/"/assets/videos/blog/gaussian-elimination-3d.mp4",
+  /**/"/assets/videos/blog/linear-transformation-3d-linear-dependent.mp4",
+  /**/"/assets/videos/blog/linear-transformation-3d.mp4",
   /**/"/netlify.toml",
   /**/"/assets/bower.json",
   /**/"/assets/bower_components/MathJax/.bower.json",
