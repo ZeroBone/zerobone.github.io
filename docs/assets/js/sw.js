@@ -29,7 +29,7 @@ const SHELL_CACHE = "shell-9.0.5--v7--sw/";
 const ASSETS_CACHE = "assets--v7--sw/";
 
 // The cache for regular content, which will be invalidated every time you make a new build.
-const CONTENT_CACHE = "content--2020-12-30T23:55:29+01:00--sw/";
+const CONTENT_CACHE = "content--2021-01-14T03:25:40+01:00--sw/";
 
 // A URL search parameter you can add to external assets to cache them in the service worker.
 const SW_CACHE_SEARCH_PARAM = "sw-cache";
@@ -109,6 +109,22 @@ const STATIC_FILES = [
   /**/"/assets/img/blog/power2-graph-4-vertex-cover.svg",
   /**/"/assets/img/blog/power2-vertex-to-set-cover.svg",
   /**/"/assets/img/blog/regular-language-size-np-hard-tmb.jpg",
+  /**/"/assets/img/blog/svd-image-compression-10perc.jpg",
+  /**/"/assets/img/blog/svd-image-compression-20perc.jpg",
+  /**/"/assets/img/blog/svd-image-compression-20perc.png",
+  /**/"/assets/img/blog/svd-image-compression-30perc.jpg",
+  /**/"/assets/img/blog/svd-image-compression-40perc.jpg",
+  /**/"/assets/img/blog/svd-image-compression-50perc.jpg",
+  /**/"/assets/img/blog/svd-image-compression-60perc.jpg",
+  /**/"/assets/img/blog/svd-image-compression-70perc.jpg",
+  /**/"/assets/img/blog/svd-image-compression-80perc.jpg",
+  /**/"/assets/img/blog/svd-image-compression-90perc.jpg",
+  /**/"/assets/img/blog/svd-image-compression-95perc.jpg",
+  /**/"/assets/img/blog/svd-image-compression-99perc.jpg",
+  /**/"/assets/img/blog/svd-image-compression-img.jpg",
+  /**/"/assets/img/blog/svd-image-compression-rank0.jpg",
+  /**/"/assets/img/blog/svd-image-compression-rank1.jpg",
+  /**/"/assets/img/blog/svd-image-compression-tmb.jpg",
   /**/"/assets/img/blog/vertex-cover-power2.svg",
   /**/"/assets/img/math/int/nes_1_geom.svg",
   /**/"/assets/img/math/int/nes_2_geom.svg",
@@ -141,6 +157,7 @@ const STATIC_FILES = [
   /**/"/assets/videos/blog/gaussian-elimination-3d.mp4",
   /**/"/assets/videos/blog/linear-transformation-3d-linear-dependent.mp4",
   /**/"/assets/videos/blog/linear-transformation-3d.mp4",
+  /**/"/assets/videos/blog/svd-2d.mp4",
   /**/"/netlify.toml",
   /**/"/assets/bower.json",
   /**/"/assets/bower_components/MathJax/.bower.json",
