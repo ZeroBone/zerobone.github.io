@@ -29,7 +29,7 @@ const SHELL_CACHE = "shell-9.0.5--v7--sw/";
 const ASSETS_CACHE = "assets--v7--sw/";
 
 // The cache for regular content, which will be invalidated every time you make a new build.
-const CONTENT_CACHE = "content--2021-01-18T22:03:33+01:00--sw/";
+const CONTENT_CACHE = "content--2021-01-24T16:36:50+01:00--sw/";
 
 // A URL search parameter you can add to external assets to cache them in the service worker.
 const SW_CACHE_SEARCH_PARAM = "sw-cache";
@@ -88,6 +88,12 @@ const STATIC_FILES = [
   /**/"/assets/img/blog/dfa-radix16-modulo24-min.svg",
   /**/"/assets/img/blog/dfa-radix2-modulo4-min.svg",
   /**/"/assets/img/blog/dfa-radix2-modulo4.svg",
+  /**/"/assets/img/blog/dining-philosophers-acyclic-precgraph-2.svg",
+  /**/"/assets/img/blog/dining-philosophers-acyclic-precgraph.svg",
+  /**/"/assets/img/blog/dining-philosophers-deadlock.svg",
+  /**/"/assets/img/blog/dining-philosophers-precgraph.svg",
+  /**/"/assets/img/blog/dining-philosophers-tmb.jpg",
+  /**/"/assets/img/blog/dining-philosophers.svg",
   /**/"/assets/img/blog/extended-euklidian-code.jpg",
   /**/"/assets/img/blog/gray-codes-tmb.jpg",
   /**/"/assets/img/blog/gray-recursive-def.svg",
