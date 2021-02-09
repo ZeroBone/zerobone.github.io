@@ -2,12 +2,12 @@
   "lang": "en",
   "name": "ZeroBone",
   "short_name": "ZeroBone",
-  "description": "I am a computer science student and a backend developer.",
+  "description": "I am a computer science student and a backend developer",
   "start_url": "/?utm_source=homescreen",
   "theme_color": "rgb(10,41,132)",
   "background_color": "#fff",
   "orientation": "portrait",
-  "display": "standalone",
+  "display": "minimal-ui",
   "scope": "/",
   "icons": [
     {
