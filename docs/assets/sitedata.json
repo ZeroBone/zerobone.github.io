@@ -85,7 +85,7 @@
   ], 
   "documents": [
     {
-      "image": "/assets/img/blog/call-stack-buffer-overflow-tmb.jpg",
+      "image": {"path":"/assets/img/blog/call-stack-buffer-overflow-tmb.jpg","srcset":{"1920w":"/assets/img/blog/call-stack-buffer-overflow-tmb.jpg","960w":"/assets/img/blog/call-stack-buffer-overflow-tmb@0,5x.jpg","480w":"/assets/img/blog/call-stack-buffer-overflow-tmb@0,25x.jpg","240w":"/assets/img/blog/call-stack-buffer-overflow-tmb@0,125x.jpg"}},
       "title": "Call Stack - buffer overflow vulnerability",
       "date": "2019-06-30 00:00:00 +0200",
       
@@ -96,7 +96,7 @@
       "collection": "posts",
       "url": "/blog/cs/call-stack-buffer-overflow/"
     },{
-      "image": "/assets/img/blog/extended-euklidian-code.jpg",
+      "image": {"path":"/assets/img/blog/extended-euklidian-code.jpg","srcset":{"911w":"/assets/img/blog/extended-euklidian-code.jpg","455w":"/assets/img/blog/extended-euklidian-code@0,5x.jpg","227w":"/assets/img/blog/extended-euklidian-code@0,25x.jpg","113w":"/assets/img/blog/extended-euklidian-code@0,125x.jpg"}},
       "title": "Extended Euclidean algorithm without stack or recursion",
       "date": "2020-02-21 00:00:00 +0100",
       
@@ -107,7 +107,7 @@
       "collection": "posts",
       "url": "/blog/cs/non-recursive-extended-euklidean-algorithm/"
     },{
-      "image": "/assets/img/blog/numbers-are-regular-languages-tmb.jpg",
+      "image": {"path":"/assets/img/blog/numbers-are-regular-languages-tmb.jpg","srcset":{"1920w":"/assets/img/blog/numbers-are-regular-languages-tmb.jpg","960w":"/assets/img/blog/numbers-are-regular-languages-tmb@0,5x.jpg","480w":"/assets/img/blog/numbers-are-regular-languages-tmb@0,25x.jpg","240w":"/assets/img/blog/numbers-are-regular-languages-tmb@0,125x.jpg"}},
       "title": "Numbers in congruence classes are regular languages",
       "date": "2020-08-29 00:00:00 +0200",
       
@@ -118,7 +118,7 @@
       "collection": "posts",
       "url": "/blog/cs/numbers-are-regular-languages/"
     },{
-      "image": "/assets/img/blog/compressing-congruence-automata-tmb.jpg",
+      "image": {"path":"/assets/img/blog/compressing-congruence-automata-tmb.jpg","srcset":{"1920w":"/assets/img/blog/compressing-congruence-automata-tmb.jpg","960w":"/assets/img/blog/compressing-congruence-automata-tmb@0,5x.jpg","480w":"/assets/img/blog/compressing-congruence-automata-tmb@0,25x.jpg","240w":"/assets/img/blog/compressing-congruence-automata-tmb@0,125x.jpg"}},
       "title": "Efficient compression of congruence class automations",
       "date": "2020-09-01 00:00:00 +0200",
       
@@ -129,7 +129,7 @@
       "collection": "posts",
       "url": "/blog/cs/compressing-congruence-automata/"
     },{
-      "image": "/assets/img/blog/kadane-algorithm-tmb.jpg",
+      "image": {"path":"/assets/img/blog/kadane-algorithm-tmb.jpg","srcset":{"1280w":"/assets/img/blog/kadane-algorithm-tmb.jpg","640w":"/assets/img/blog/kadane-algorithm-tmb@0,5x.jpg","320w":"/assets/img/blog/kadane-algorithm-tmb@0,25x.jpg","160w":"/assets/img/blog/kadane-algorithm-tmb@0,125x.jpg"}},
       "title": "Kadane's algorithm and the idea behind it",
       "date": "2020-09-19 00:00:00 +0200",
       
@@ -140,7 +140,7 @@
       "collection": "posts",
       "url": "/blog/cs/kadane-algorithm/"
     },{
-      "image": "/assets/img/blog/lowest-common-ancestor-tmb.jpg",
+      "image": {"path":"/assets/img/blog/lowest-common-ancestor-tmb.jpg","srcset":{"1920w":"/assets/img/blog/lowest-common-ancestor-tmb.jpg","960w":"/assets/img/blog/lowest-common-ancestor-tmb@0,5x.jpg","480w":"/assets/img/blog/lowest-common-ancestor-tmb@0,25x.jpg","240w":"/assets/img/blog/lowest-common-ancestor-tmb@0,125x.jpg"}},
       "title": "Computing the lowest common ancestor in a full binary tree",
       "date": "2020-09-23 00:00:00 +0200",
       
@@ -151,7 +151,7 @@
       "collection": "posts",
       "url": "/blog/cs/lowest-common-ancestor/"
     },{
-      "image": "/assets/img/blog/regular-language-size-np-hard-tmb.jpg",
+      "image": {"path":"/assets/img/blog/regular-language-size-np-hard-tmb.jpg","srcset":{"1520w":"/assets/img/blog/regular-language-size-np-hard-tmb.jpg","760w":"/assets/img/blog/regular-language-size-np-hard-tmb@0,5x.jpg","380w":"/assets/img/blog/regular-language-size-np-hard-tmb@0,25x.jpg","190w":"/assets/img/blog/regular-language-size-np-hard-tmb@0,125x.jpg"}},
       "title": "Measuring the size of a regular language is NP-Hard",
       "date": "2020-10-15 00:00:00 +0200",
       
@@ -162,7 +162,7 @@
       "collection": "posts",
       "url": "/blog/cs/regular-language-size-np-hard/"
     },{
-      "image": "/assets/img/blog/palu-tmb.jpg",
+      "image": {"path":"/assets/img/blog/palu-tmb.jpg","srcset":{"1280w":"/assets/img/blog/palu-tmb.jpg","640w":"/assets/img/blog/palu-tmb@0,5x.jpg","320w":"/assets/img/blog/palu-tmb@0,25x.jpg","160w":"/assets/img/blog/palu-tmb@0,125x.jpg"}},
       "title": "Using the PA=LU factorization to solve linear systems of equations for many right-hand sides efficiently",
       "date": "2020-11-28 00:00:00 +0100",
       
@@ -173,7 +173,7 @@
       "collection": "posts",
       "url": "/blog/cs/pa-lu-factorization/"
     },{
-      "image": "/assets/img/blog/linear-transformation-3d-tmb.jpg",
+      "image": {"path":"/assets/img/blog/linear-transformation-3d-tmb.jpg","srcset":{"1920w":"/assets/img/blog/linear-transformation-3d-tmb.jpg","960w":"/assets/img/blog/linear-transformation-3d-tmb@0,5x.jpg","480w":"/assets/img/blog/linear-transformation-3d-tmb@0,25x.jpg","240w":"/assets/img/blog/linear-transformation-3d-tmb@0,125x.jpg"}},
       "title": "Visualizing 3D linear transformations and Gaussian elimination with Python and Manim",
       "date": "2020-12-15 00:00:00 +0100",
       
@@ -184,7 +184,7 @@
       "collection": "posts",
       "url": "/blog/cs/linear-transformations-3d-manim/"
     },{
-      "image": "/assets/img/blog/kmp-tmb.jpg",
+      "image": {"path":"/assets/img/blog/kmp-tmb.jpg","srcset":{"1170w":"/assets/img/blog/kmp-tmb.jpg","585w":"/assets/img/blog/kmp-tmb@0,5x.jpg","292w":"/assets/img/blog/kmp-tmb@0,25x.jpg","146w":"/assets/img/blog/kmp-tmb@0,125x.jpg"}},
       "title": "Knuth-Morris-Pratt (KMP) algorithm explained",
       "date": "2020-12-20 00:00:00 +0100",
       
@@ -195,7 +195,7 @@
       "collection": "posts",
       "url": "/blog/cs/knuth-morris-pratt/"
     },{
-      "image": "/assets/img/blog/gray-codes-tmb.jpg",
+      "image": {"path":"/assets/img/blog/gray-codes-tmb.jpg","srcset":{"1920w":"/assets/img/blog/gray-codes-tmb.jpg","960w":"/assets/img/blog/gray-codes-tmb@0,5x.jpg","480w":"/assets/img/blog/gray-codes-tmb@0,25x.jpg","240w":"/assets/img/blog/gray-codes-tmb@0,125x.jpg"}},
       "title": "Gray codes and their beautiful symmetries",
       "date": "2020-12-28 00:00:00 +0100",
       
@@ -206,7 +206,7 @@
       "collection": "posts",
       "url": "/blog/cs/gray-codes/"
     },{
-      "image": "/assets/img/blog/svd-image-compression-tmb.jpg",
+      "image": {"path":"/assets/img/blog/svd-image-compression-tmb.jpg","srcset":{"1280w":"/assets/img/blog/svd-image-compression-tmb.jpg","640w":"/assets/img/blog/svd-image-compression-tmb@0,5x.jpg","320w":"/assets/img/blog/svd-image-compression-tmb@0,25x.jpg","160w":"/assets/img/blog/svd-image-compression-tmb@0,125x.jpg"}},
       "title": "Compressing images with singular value decomposition (SVD)",
       "date": "2021-01-14 00:00:00 +0100",
       
@@ -217,7 +217,7 @@
       "collection": "posts",
       "url": "/blog/cs/svd-image-compression/"
     },{
-      "image": "/assets/img/blog/dining-philosophers-tmb.jpg",
+      "image": {"path":"/assets/img/blog/dining-philosophers-tmb.jpg","srcset":{"1920w":"/assets/img/blog/dining-philosophers-tmb.jpg","960w":"/assets/img/blog/dining-philosophers-tmb@0,5x.jpg","480w":"/assets/img/blog/dining-philosophers-tmb@0,25x.jpg","240w":"/assets/img/blog/dining-philosophers-tmb@0,125x.jpg"}},
       "title": "The Dining Philosophers problem and different ways of solving it",
       "date": "2021-01-24 00:00:00 +0100",
       
@@ -228,7 +228,7 @@
       "collection": "posts",
       "url": "/blog/cs/dining-philosophers-problem/"
     },{
-      "image": "/assets/img/blog/gray-code-logic-minimization-tmb.jpg",
+      "image": {"path":"/assets/img/blog/gray-code-logic-minimization-tmb.jpg","srcset":{"1920w":"/assets/img/blog/gray-code-logic-minimization-tmb.jpg","960w":"/assets/img/blog/gray-code-logic-minimization-tmb@0,5x.jpg","480w":"/assets/img/blog/gray-code-logic-minimization-tmb@0,25x.jpg","240w":"/assets/img/blog/gray-code-logic-minimization-tmb@0,125x.jpg"}},
       "title": "How propositional logic minimization and gray codes are connected",
       "date": "2021-01-31 00:00:00 +0100",
       
@@ -241,7 +241,7 @@
     },{
       
       "title": "Computer Science",
-      "date": "2021-02-09 20:45:19 +0100",
+      "date": "2021-02-11 14:09:01 +0100",
       "description": "This category contains all posts that have something to do with theoretical or practical computer science.\n",
       "content": "\n",
       "categories": [],
