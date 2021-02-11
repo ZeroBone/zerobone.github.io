@@ -241,7 +241,7 @@
     },{
       
       "title": "Computer Science",
-      "date": "2021-02-11 14:09:01 +0100",
+      "date": "2021-02-11 20:44:45 +0100",
       "description": "This category contains all posts that have something to do with theoretical or practical computer science.\n",
       "content": "\n",
       "categories": [],
@@ -250,7 +250,7 @@
       "collection": "featured_categories",
       "url": "/blog/cs/"
     },{
-      "image": "/assets/img/projects/crproxy.jpg",
+      "image": {"path":"/assets/img/projects/crproxy.jpg","srcset":{"1600w":"/assets/img/projects/crproxy.jpg","800w":"/assets/img/projects/crproxy@0,5x.jpg","400w":"/assets/img/projects/crproxy@0,25x.jpg","200w":"/assets/img/projects/crproxy@0,125x.jpg"}},
       "title": "Clash Royale Proxy",
       "date": "2018-07-01 00:00:00 +0200",
       "description": "CrProxy is a NodeJs implementation of a Clash Royale proxy server. It decrypts traffic between Supercell servers and the game.\n",
@@ -272,18 +272,7 @@
       "collection": "projects",
       "url": "/projects/zeropacker/"
     },{
-      "image": "/assets/img/projects/apowbmodc.svg",
-      "title": "ApowBmodC",
-      "date": "2018-12-07 00:00:00 +0100",
-      "description": "ApowBmodC is my small implementation of the efficient a ^ b mod c calculation algorithm.\n",
-      "content": "\n",
-      "categories": [],
-      "tags": [],
-      
-      "collection": "projects",
-      "url": "/projects/apowbmodc/"
-    },{
-      "image": "/assets/img/projects/sdlgrapher.jpg",
+      "image": {"path":"/assets/img/projects/sdlgrapher.jpg","srcset":{"1920w":"/assets/img/projects/sdlgrapher.jpg","960w":"/assets/img/projects/sdlgrapher@0,5x.jpg","480w":"/assets/img/projects/sdlgrapher@0,25x.jpg","240w":"/assets/img/projects/sdlgrapher@0,125x.jpg"}},
       "title": "SDL Grapher",
       "date": "2019-02-04 00:00:00 +0100",
       
@@ -294,7 +283,7 @@
       "collection": "projects",
       "url": "/projects/sdlgrapher/"
     },{
-      "image": "/assets/img/projects/bst.jpg",
+      "image": {"path":"/assets/img/projects/bst.jpg","srcset":{"595w":"/assets/img/projects/bst.jpg","297w":"/assets/img/projects/bst@0,5x.jpg","148w":"/assets/img/projects/bst@0,25x.jpg","74w":"/assets/img/projects/bst@0,125x.jpg"}},
       "title": "BST",
       "date": "2019-06-08 00:00:00 +0200",
       "description": "Optimized binary search tree implementation in C++.\n",
@@ -316,7 +305,7 @@
       "collection": "projects",
       "url": "/projects/chainhashmap/"
     },{
-      "image": "/assets/img/projects/lzz.jpg",
+      "image": {"path":"/assets/img/projects/lzz.jpg","srcset":{"1920w":"/assets/img/projects/lzz.jpg","960w":"/assets/img/projects/lzz@0,5x.jpg","480w":"/assets/img/projects/lzz@0,25x.jpg","240w":"/assets/img/projects/lzz@0,125x.jpg"}},
       "title": "LZZ",
       "date": "2019-08-26 00:00:00 +0200",
       "description": "LZZ is a URL shortener that allows changing target URL’s after they have been created.\n",
@@ -327,7 +316,7 @@
       "collection": "projects",
       "url": "/projects/lzz/"
     },{
-      "image": "/assets/img/projects/cstring.jpg",
+      "image": {"path":"/assets/img/projects/cstring.jpg","srcset":{"1920w":"/assets/img/projects/cstring.jpg","960w":"/assets/img/projects/cstring@0,5x.jpg","480w":"/assets/img/projects/cstring@0,25x.jpg","240w":"/assets/img/projects/cstring@0,125x.jpg"}},
       "title": "CString",
       "date": "2019-08-27 00:00:00 +0200",
       "description": "Header-only, expandable and descriptor-caching string implementation in C99.\n",
@@ -349,7 +338,7 @@
       "collection": "projects",
       "url": "/projects/zerorobo/"
     },{
-      "image": "/assets/img/projects/vkantispam.jpg",
+      "image": {"path":"/assets/img/projects/vkantispam.jpg","srcset":{"1920w":"/assets/img/projects/vkantispam.jpg","960w":"/assets/img/projects/vkantispam@0,5x.jpg","480w":"/assets/img/projects/vkantispam@0,25x.jpg","240w":"/assets/img/projects/vkantispam@0,125x.jpg"}},
       "title": "VkAntiSpam",
       "date": "2019-11-01 00:00:00 +0100",
       "description": "Intelligent, integrated and self-learning antispam system for filtering spam in VK groups.\n",
@@ -360,7 +349,7 @@
       "collection": "projects",
       "url": "/projects/vkantispam/"
     },{
-      "image": "/assets/img/projects/chrem.jpg",
+      "image": {"path":"/assets/img/projects/chrem.jpg","srcset":{"1920w":"/assets/img/projects/chrem.jpg","960w":"/assets/img/projects/chrem@0,5x.jpg","480w":"/assets/img/projects/chrem@0,25x.jpg","240w":"/assets/img/projects/chrem@0,125x.jpg"}},
       "title": "chrem",
       "date": "2020-01-18 00:00:00 +0100",
       "description": "Algorithm to solve a linear system of congruences using the Chinese remainder theorem. Works also for non-coprime divisors.\n",
@@ -371,7 +360,7 @@
       "collection": "projects",
       "url": "/projects/chrem/"
     },{
-      "image": "/assets/img/projects/pollardrsacracker.jpg",
+      "image": {"path":"/assets/img/projects/pollardrsacracker.jpg","srcset":{"1920w":"/assets/img/projects/pollardrsacracker.jpg","960w":"/assets/img/projects/pollardrsacracker@0,5x.jpg","480w":"/assets/img/projects/pollardrsacracker@0,25x.jpg","240w":"/assets/img/projects/pollardrsacracker@0,125x.jpg"}},
       "title": "PollardRsaCracker",
       "date": "2020-02-21 00:00:00 +0100",
       "description": "RSA cracking algorithm based on Pollard factorization.\n",
@@ -382,7 +371,7 @@
       "collection": "projects",
       "url": "/projects/pollardrsacracker/"
     },{
-      "image": "/assets/img/projects/knife.jpg",
+      "image": {"path":"/assets/img/projects/knife.jpg","srcset":{"1280w":"/assets/img/projects/knife.jpg","640w":"/assets/img/projects/knife@0,5x.jpg","320w":"/assets/img/projects/knife@0,25x.jpg","160w":"/assets/img/projects/knife@0,125x.jpg"}},
       "title": "Knife",
       "date": "2020-03-31 00:00:00 +0200",
       "description": "Knife is a tool that reads input grammar in BNF format and converts it to a few Java classes that can parse the given grammar through a simple interface.\n",
@@ -393,7 +382,7 @@
       "collection": "projects",
       "url": "/projects/knife/"
     },{
-      "image": "/assets/img/projects/grammax.jpg",
+      "image": {"path":"/assets/img/projects/grammax.jpg","srcset":{"1920w":"/assets/img/projects/grammax.jpg","960w":"/assets/img/projects/grammax@0,5x.jpg","480w":"/assets/img/projects/grammax@0,25x.jpg","240w":"/assets/img/projects/grammax@0,125x.jpg"}},
       "title": "Grammax",
       "date": "2020-05-21 00:00:00 +0200",
       "description": "Grammax takes a grammar in BNF format as an input and converts it to a Java-class that recognizes the language generated by the grammar. Formally speaking, this tool creates a left-to-right, rightmost derivation (LR) parser for a given grammar. That means that grammax parses the given string by constructing a reversed rightmost derivation of it.\n",
@@ -404,7 +393,7 @@
       "collection": "projects",
       "url": "/projects/grammax/"
     },{
-      "image": "/assets/img/projects/garbageset.jpg",
+      "image": {"path":"/assets/img/projects/garbageset.jpg","srcset":{"1920w":"/assets/img/projects/garbageset.jpg","960w":"/assets/img/projects/garbageset@0,5x.jpg","480w":"/assets/img/projects/garbageset@0,25x.jpg","240w":"/assets/img/projects/garbageset@0,125x.jpg"}},
       "title": "GarbageSet",
       "date": "2020-05-22 00:00:00 +0200",
       "description": "Set data structure with all operation is O(1), including initialization!\n",
@@ -415,7 +404,7 @@
       "collection": "projects",
       "url": "/projects/garbageset/"
     },{
-      "image": "/assets/img/projects/numpat.jpg",
+      "image": {"path":"/assets/img/projects/numpat.jpg","srcset":{"1920w":"/assets/img/projects/numpat.jpg","960w":"/assets/img/projects/numpat@0,5x.jpg","480w":"/assets/img/projects/numpat@0,25x.jpg","240w":"/assets/img/projects/numpat@0,125x.jpg"}},
       "title": "NumPat",
       "date": "2020-08-30 00:00:00 +0200",
       "description": "Research tool for examining integer digit structure in different remainder classes.\n",
@@ -426,7 +415,7 @@
       "collection": "projects",
       "url": "/projects/numpat/"
     },{
-      "image": "/assets/img/projects/f0verifier.jpg",
+      "image": {"path":"/assets/img/projects/f0verifier.jpg","srcset":{"1920w":"/assets/img/projects/f0verifier.jpg","960w":"/assets/img/projects/f0verifier@0,5x.jpg","480w":"/assets/img/projects/f0verifier@0,25x.jpg","240w":"/assets/img/projects/f0verifier@0,125x.jpg"}},
       "title": "F0Verifier",
       "date": "2020-12-03 00:00:00 +0100",
       "description": "A program that verifies propositional logic proofs in the F0 proof system\n",
@@ -437,7 +426,7 @@
       "collection": "projects",
       "url": "/projects/f0verifier/"
     },{
-      "image": "/assets/img/projects/flai.jpg",
+      "image": {"path":"/assets/img/projects/flai.jpg","srcset":{"1920w":"/assets/img/projects/flai.jpg","960w":"/assets/img/projects/flai@0,5x.jpg","480w":"/assets/img/projects/flai@0,25x.jpg","240w":"/assets/img/projects/flai@0,125x.jpg"}},
       "title": "FLAI",
       "date": "2020-12-17 00:00:00 +0100",
       "description": "AI that analyzes flat/apartment offers and predicts prices, neural network implemented in pure python &amp; numpy.\n",
