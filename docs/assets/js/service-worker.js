@@ -29,7 +29,7 @@ const SHELL_CACHE = "shell-9.1.1--v13--sw/";
 const ASSETS_CACHE = "assets--v13--sw/";
 
 // The cache for regular content, which will be invalidated every time you make a new build.
-const CONTENT_CACHE = "content--2021-02-17T20:49:07+01:00--sw/";
+const CONTENT_CACHE = "content--2021-02-19T18:06:29+01:00--sw/";
 
 // A URL search parameter you can add to external assets to cache them in the service worker.
 const SW_CACHE_SEARCH_PARAM = "sw-cache";
@@ -109,6 +109,11 @@ const STATIC_FILES = [
   /**/"/assets/img/blog/extended-euklidian-code@0,125x.jpg",
   /**/"/assets/img/blog/extended-euklidian-code@0,25x.jpg",
   /**/"/assets/img/blog/extended-euklidian-code@0,5x.jpg",
+  /**/"/assets/img/blog/gram-schmidt-process-tmb.jpg",
+  /**/"/assets/img/blog/gram-schmidt-process-tmb@0,125x.jpg",
+  /**/"/assets/img/blog/gram-schmidt-process-tmb@0,25x.jpg",
+  /**/"/assets/img/blog/gram-schmidt-process-tmb@0,5x.jpg",
+  /**/"/assets/img/blog/gram-schmidt-step2.svg",
   /**/"/assets/img/blog/gray-code-logic-minimization-tmb.jpg",
   /**/"/assets/img/blog/gray-code-logic-minimization-tmb@0,125x.jpg",
   /**/"/assets/img/blog/gray-code-logic-minimization-tmb@0,25x.jpg",
@@ -249,6 +254,7 @@ const STATIC_FILES = [
   /**/"/assets/img/projects/zerorobo/gameplay03.png",
   /**/"/assets/img/swipe.svg",
   /**/"/assets/videos/blog/gaussian-elimination-3d.mp4",
+  /**/"/assets/videos/blog/gram-schmidt.mp4",
   /**/"/assets/videos/blog/linear-transformation-3d-linear-dependent.mp4",
   /**/"/assets/videos/blog/linear-transformation-3d.mp4",
   /**/"/assets/videos/blog/svd-2d.mp4",
