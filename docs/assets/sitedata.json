@@ -257,7 +257,7 @@
       "url": "/blog/cs/gram-schmidt-orthogonalization/"
     },{
       "image": {"path":"/assets/img/blog/hornsat-2sat-np-complete-tmb.jpg","srcset":{"1920w":"/assets/img/blog/hornsat-2sat-np-complete-tmb.jpg","960w":"/assets/img/blog/hornsat-2sat-np-complete-tmb@0,5x.jpg","480w":"/assets/img/blog/hornsat-2sat-np-complete-tmb@0,25x.jpg","240w":"/assets/img/blog/hornsat-2sat-np-complete-tmb@0,125x.jpg"}},
-      "title": "Satisfiability of both Horn and 2-SAT clauses is NP-Complete",
+      "title": "Satisfiability of formulas with both Horn and 2-SAT clauses is NP-Complete",
       "date": "2021-03-02 00:00:00 +0100",
       
       "content": "The SAT problem is the first problem proven to be NP\\mathcal{NP}NP-Complete. However, many instances of this problem with certain properties can be solved efficiently in polynomial time. Well-known examples of such easy instances are 2-sat-formulas and horn-formulas. All clauses in a 2-sat formula have at most 2 literals and horn-formulas consist only of clauses that contain at most one positive literal. In other words, a 2-sat clause is a conjunction of two implications and any horn-clause can be rewritten as a conjunction of positive literals that implies either false or a negative literal. It may seem that formulas containing both 2-sat as well as horn clauses can be solvable in polynomial time, however, this is not the case unless P=NP\\mathcal{P} = \\mathcal{NP}P=NP — we will prove NP\\mathcal{NP}NP-completeness of this modified SAT problem. The problem also remains NP\\mathcal{NP}NP-complete for Dual-horn clauses instead of normal horn clauses.\n\nThe problem\n\nThe problem mentioned above can be formally formulated as follows:\n\nName: Horn and 2sat clause SAT \n\nInput: A formula φ\\varphiφ in conjunctive normal form (CNF), that consists only of 2-sat or horn clauses.\n\nQuestion: Is φ\\varphiφ satisfiable?\n\nExample of a formula φ\\varphiφ that contains only 2-sat or horn clauses:\n\n(¬a∨¬b)∧(b∨c)∧(¬c∨a)∧(¬b∨d)∧(c∨d)∧(a∨c)∧(¬a∨¬c∨¬d∨b)(\\neg a \\vee \\neg b) \\wedge (b \\vee c) \\wedge (\\neg c \\vee a) \\wedge (\\neg b \\vee d) \\wedge (c \\vee d) \\wedge (a \\vee c) \\wedge (\\neg a \\vee \\neg c \\vee \\neg d \\vee b)(¬a∨¬b)∧(b∨c)∧(¬c∨a)∧(¬b∨d)∧(c∨d)∧(a∨c)∧(¬a∨¬c∨¬d∨b)\n\nThe first 6 clauses are 2-sat clauses and the last one is a horn clause, this formula is satisfiable.\n\nProof of NP-Completeness\n\nThis problem is a special case of the SAT problem and is therefore also in NP\\mathcal{NP}NP (the variable assignment can be used as a certificate).\n\nWe will now construct a reduction from the 3-SAT problem. Consider an arbitrary 3-sat clause. If it contains at most 2 literals, that it is directly a 2-sat clause. If there is at most one positive literal, then it is already a horn clause. Therefore, we need to find equisatisfiable sets of clauses for the following situations:\n\n\n  Two positive literals: a∨b∨¬ca \\vee b \\vee \\neg ca∨b∨¬c\n  Three positive literals: a∨b∨ca \\vee b \\vee ca∨b∨c\n\n\nBy using the idea of the Tseitin transformation for the first case, it follows that a∨b∨¬ca \\vee b \\vee \\neg ca∨b∨¬c is satisfiable iff (x↔b∨¬c)∧(a∨x)(x \\leftrightarrow b \\vee \\neg c) \\wedge (a \\vee x)(x↔b∨¬c)∧(a∨x) is satisfiable, latter can be rewritten as:\n\n(x↔b∨¬c)∧(a∨x)≡(x∨¬b)∧(x∨c)⏟2-sat clauses∧(¬x∨b∨¬c)⏟Horn clause∧(a∨x)⏟2-sat clause(x \\leftrightarrow b \\vee \\neg c) \\wedge (a \\vee x) \\equiv\n\\underbrace{(x \\vee \\neg b) \\wedge (x \\vee c)}_\\text{2-sat clauses}\n\\wedge \\underbrace{(\\neg x \\vee b \\vee \\neg c)}_\\text{Horn clause}\n\\wedge \\underbrace{(a \\vee x)}_\\text{2-sat clause}(x↔b∨¬c)∧(a∨x)≡2-sat clauses(x∨¬b)∧(x∨c)​​∧Horn clause(¬x∨b∨¬c)​​∧2-sat clause(a∨x)​​\n\nAs regards the second case, we can use the result from the first case to produce a horn-clause:\n\na∨b∨c≡sat(x↔a∨b)∧(x∨c)≡((x∨¬a)∧(x∨¬b)∧(¬x∨a∨b))∧(x∨c)≡(x∨¬a)∧(x∨¬b)∧(a∨b∨¬x)∧(x∨c)≡sat(x∨¬a)∧(x∨¬b)∧(y↔b∨¬x)∧(a∨y)∧(x∨c)≡(x∨¬a)∧(x∨¬b)∧(y∨¬b)∧(y∨x)⏟2-sat clauses∧(¬y∨b∨¬x)⏟Horn clause∧(a∨y)∧(x∨c)⏟2-sat clauses\\begin{aligned}\na \\vee b \\vee c\n&amp;\\overset{\\text{sat}}{\\equiv} (x \\leftrightarrow a \\vee b) \\wedge (x \\vee c) \\\\\n&amp;\\equiv ((x \\vee \\neg a) \\wedge (x \\vee \\neg b) \\wedge (\\neg x \\vee a \\vee b)) \\wedge (x \\vee c) \\\\\n&amp;\\equiv (x \\vee \\neg a) \\wedge (x \\vee \\neg b) \\wedge (a \\vee b \\vee \\neg x) \\wedge (x \\vee c) \\\\\n&amp;\\overset{\\text{sat}}{\\equiv} (x \\vee \\neg a) \\wedge (x \\vee \\neg b) \\wedge (y \\leftrightarrow b \\vee \\neg x) \\wedge (a \\vee y) \\wedge (x \\vee c) \\\\\n&amp;\\equiv \\underbrace{(x \\vee \\neg a) \\wedge (x \\vee \\neg b) \\wedge (y \\vee \\neg b) \\wedge (y \\vee x)}_\\text{2-sat clauses} \\wedge \\underbrace{(\\neg y \\vee b \\vee \\neg x)}_\\text{Horn clause} \\wedge \\underbrace{(a \\vee y) \\wedge (x \\vee c)}_\\text{2-sat clauses}\n\\end{aligned}a∨b∨c​≡sat(x↔a∨b)∧(x∨c)≡((x∨¬a)∧(x∨¬b)∧(¬x∨a∨b))∧(x∨c)≡(x∨¬a)∧(x∨¬b)∧(a∨b∨¬x)∧(x∨c)≡sat(x∨¬a)∧(x∨¬b)∧(y↔b∨¬x)∧(a∨y)∧(x∨c)≡2-sat clauses(x∨¬a)∧(x∨¬b)∧(y∨¬b)∧(y∨x)​​∧Horn clause(¬y∨b∨¬x)​​∧2-sat clauses(a∨y)∧(x∨c)​​​\n\nThis is clearly a polynomial-time reduction.\n\nDual Horn-sat and 2-sat clauses\n\nThe above problem remains NP\\mathcal{NP}NP-complete if we consider Dual-horn clauses instead of (normal) Horn clauses (a clause is called Dual-horn, if it has at most one negative literal).\n\nAnalogously to the proof above, in order to prove NP\\mathcal{NP}NP-hardness we have to express 3-sat clauses with 2 and 3 negative literals in terms of 2-sat and dual-horn clauses. If the clause has 2 negative literals, then:\n\n¬a∨¬b∨c≡sat(¬x↔¬b∨c)∧(¬a∨¬x)≡(¬x∨b)∧(¬x∨¬c)⏟2-sat clauses∧(x∨¬b∨c)⏟Horn clause∧(¬a∨¬x)⏟2-sat clause\\begin{aligned}\n\\neg a \\vee \\neg b \\vee c\n&amp;\\overset{\\text{sat}}{\\equiv} (\\neg x \\leftrightarrow \\neg b \\vee c) \\wedge (\\neg a \\vee \\neg x) \\\\\n&amp;\\equiv \\underbrace{(\\neg x \\vee b) \\wedge (\\neg x \\vee \\neg c)}_\\text{2-sat clauses}\n\\wedge \\underbrace{(x \\vee \\neg b \\vee c)}_\\text{Horn clause}\n\\wedge \\underbrace{(\\neg a \\vee \\neg x)}_\\text{2-sat clause}\n\\end{aligned}¬a∨¬b∨c​≡sat(¬x↔¬b∨c)∧(¬a∨¬x)≡2-sat clauses(¬x∨b)∧(¬x∨¬c)​​∧Horn clause(x∨¬b∨c)​​∧2-sat clause(¬a∨¬x)​​​\n\nNormally, in the Tseitin transformation we make the introduced variables equisatisfiable with the corresponding sub-formula. Here, in order to prevent ¬x\\neg x¬x in the horn clause, we make ¬x\\neg x¬x equisatisfiable with ¬b∨c\\neg b \\vee c¬b∨c.\n\nIf the clause has 3 negative literals, then we use the same trick two times:\n\n¬a∨¬b∨¬c≡sat(¬x↔¬a∨¬b)∧(¬x∨¬c)≡((¬x∨a)∧(¬x∨b)∧(x∨¬a∨¬b))∧(¬x∨¬c)≡(¬x∨a)∧(¬x∨b)∧(¬a∨¬b∨x)∧(¬x∨¬c)≡sat(¬x∨a)∧(¬x∨b)∧(¬y↔¬b∨x)∧(¬a∨¬y)∧(¬x∨¬c)≡(¬x∨a)∧(¬x∨b)∧(¬y∨b)∧(¬y∨¬x)⏟2-sat clauses∧(y∨¬b∨x)⏟Dual horn clause∧(¬a∨¬y)∧(¬x∨¬c)⏟2-sat clauses\\begin{aligned}\n\\neg a \\vee \\neg b \\vee \\neg c\n&amp;\\overset{\\text{sat}}{\\equiv} (\\neg x \\leftrightarrow \\neg a \\vee \\neg b) \\wedge (\\neg x \\vee \\neg c) \\\\\n&amp;\\equiv ((\\neg x \\vee a) \\wedge (\\neg x \\vee b) \\wedge (x \\vee \\neg a \\vee \\neg b)) \\wedge (\\neg x \\vee \\neg c) \\\\\n&amp;\\equiv (\\neg x \\vee a) \\wedge (\\neg x \\vee b) \\wedge (\\neg a \\vee \\neg b \\vee x) \\wedge (\\neg x \\vee \\neg c) \\\\\n&amp;\\overset{\\text{sat}}{\\equiv} (\\neg x \\vee a) \\wedge (\\neg x \\vee b) \\wedge (\\neg y \\leftrightarrow \\neg b \\vee x) \\wedge (\\neg a \\vee \\neg y) \\wedge (\\neg x \\vee \\neg c) \\\\\n&amp;\\equiv \\underbrace{(\\neg x \\vee a) \\wedge (\\neg x \\vee b) \\wedge (\\neg y \\vee b) \\wedge (\\neg y \\vee \\neg x)}_\\text{2-sat clauses} \\wedge \\underbrace{(y \\vee \\neg b \\vee x)}_\\text{Dual horn clause} \\wedge \\underbrace{(\\neg a \\vee \\neg y) \\wedge (\\neg x \\vee \\neg c)}_\\text{2-sat clauses}\n\\end{aligned}¬a∨¬b∨¬c​≡sat(¬x↔¬a∨¬b)∧(¬x∨¬c)≡((¬x∨a)∧(¬x∨b)∧(x∨¬a∨¬b))∧(¬x∨¬c)≡(¬x∨a)∧(¬x∨b)∧(¬a∨¬b∨x)∧(¬x∨¬c)≡sat(¬x∨a)∧(¬x∨b)∧(¬y↔¬b∨x)∧(¬a∨¬y)∧(¬x∨¬c)≡2-sat clauses(¬x∨a)∧(¬x∨b)∧(¬y∨b)∧(¬y∨¬x)​​∧Dual horn clause(y∨¬b∨x)​​∧2-sat clauses(¬a∨¬y)∧(¬x∨¬c)​​​\n",
@@ -269,7 +269,7 @@
     },{
       
       "title": "Computer Science",
-      "date": "2021-03-03 01:27:37 +0100",
+      "date": "2021-03-03 01:39:52 +0100",
       "description": "This category contains all posts that have something to do with theoretical or practical computer science.\n",
       "content": "\n",
       "categories": [],
@@ -280,7 +280,7 @@
     },{
       
       "title": "Complexity theory",
-      "date": "2021-03-03 01:27:37 +0100",
+      "date": "2021-03-03 01:39:52 +0100",
       
       "content": "\n",
       "categories": [],
@@ -291,7 +291,7 @@
     },{
       
       "title": "Concurrent programming",
-      "date": "2021-03-03 01:27:37 +0100",
+      "date": "2021-03-03 01:39:52 +0100",
       
       "content": "\n",
       "categories": [],
@@ -302,7 +302,7 @@
     },{
       
       "title": "Linear algebra",
-      "date": "2021-03-03 01:27:37 +0100",
+      "date": "2021-03-03 01:39:52 +0100",
       
       "content": "\n",
       "categories": [],
@@ -313,7 +313,7 @@
     },{
       
       "title": "Logic",
-      "date": "2021-03-03 01:27:37 +0100",
+      "date": "2021-03-03 01:39:52 +0100",
       
       "content": "\n",
       "categories": [],
