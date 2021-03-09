@@ -42,8 +42,8 @@
 <!-- n1 -->
 <g id="node3" class="node">
 <title>n1</title>
-<ellipse fill="none" stroke="#000000" cx="225" cy="-373.2" rx="45.2069" ry="18"/>
-<text text-anchor="middle" x="225" y="-369" font-family="Times,serif" font-size="14.00" fill="#000000">Axiom 4</text>
+<ellipse fill="none" stroke="#000000" cx="225" cy="-373.2" rx="47.5537" ry="18"/>
+<text text-anchor="middle" x="225" y="-369" font-family="Times,serif" font-size="14.00" fill="#000000">Lemma 4</text>
 </g>
 <!-- n2 -->
 <g id="node4" class="node">
