@@ -29,7 +29,7 @@ const SHELL_CACHE = "shell-9.1.1--v13--sw/";
 const ASSETS_CACHE = "assets--v13--sw/";
 
 // The cache for regular content, which will be invalidated every time you make a new build.
-const CONTENT_CACHE = "content--2021-03-04T18:17:32+01:00--sw/";
+const CONTENT_CACHE = "content--2021-03-09T16:40:55+01:00--sw/";
 
 // A URL search parameter you can add to external assets to cache them in the service worker.
 const SW_CACHE_SEARCH_PARAM = "sw-cache";
@@ -109,6 +109,21 @@ const STATIC_FILES = [
   /**/"/assets/img/blog/extended-euklidian-code@0,125x.jpg",
   /**/"/assets/img/blog/extended-euklidian-code@0,25x.jpg",
   /**/"/assets/img/blog/extended-euklidian-code@0,5x.jpg",
+  /**/"/assets/img/blog/f0-lemma-01-proof.svg",
+  /**/"/assets/img/blog/f0-lemma-02-proof.svg",
+  /**/"/assets/img/blog/f0-lemma-03-proof.svg",
+  /**/"/assets/img/blog/f0-lemma-04-proof.svg",
+  /**/"/assets/img/blog/f0-lemma-05-proof.svg",
+  /**/"/assets/img/blog/f0-lemma-06-proof.svg",
+  /**/"/assets/img/blog/f0-lemma-07-proof.svg",
+  /**/"/assets/img/blog/f0-lemma-08-proof.svg",
+  /**/"/assets/img/blog/f0-lemma-09-proof.svg",
+  /**/"/assets/img/blog/f0-lemma-10-proof.svg",
+  /**/"/assets/img/blog/f0-lemma-11-proof.svg",
+  /**/"/assets/img/blog/f0-lemma-12-proof.svg",
+  /**/"/assets/img/blog/f0-lemma-13-proof.svg",
+  /**/"/assets/img/blog/f0-lemma-14-proof.svg",
+  /**/"/assets/img/blog/f0-lemma-15-proof.svg",
   /**/"/assets/img/blog/gram-schmidt-process-tmb.jpg",
   /**/"/assets/img/blog/gram-schmidt-process-tmb@0,125x.jpg",
   /**/"/assets/img/blog/gram-schmidt-process-tmb@0,25x.jpg",
@@ -124,6 +139,10 @@ const STATIC_FILES = [
   /**/"/assets/img/blog/gray-codes-tmb@0,5x.jpg",
   /**/"/assets/img/blog/gray-recursive-def.svg",
   /**/"/assets/img/blog/gray-symmetry-proof-example.svg",
+  /**/"/assets/img/blog/hilbert-frege-f0-proofs-tmb.jpg",
+  /**/"/assets/img/blog/hilbert-frege-f0-proofs-tmb@0,125x.jpg",
+  /**/"/assets/img/blog/hilbert-frege-f0-proofs-tmb@0,25x.jpg",
+  /**/"/assets/img/blog/hilbert-frege-f0-proofs-tmb@0,5x.jpg",
   /**/"/assets/img/blog/hornsat-2sat-np-complete-tmb.jpg",
   /**/"/assets/img/blog/hornsat-2sat-np-complete-tmb@0,125x.jpg",
   /**/"/assets/img/blog/hornsat-2sat-np-complete-tmb@0,25x.jpg",
