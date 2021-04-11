@@ -11,6 +11,12 @@
       "url": "/404.html"
     },{
       
+      "title": "CV",
+      "description": "Alexander Mayorov’s CV as a software engineer.\n",
+      "content": "\n",
+      "url": "/cv/"
+    },{
+      
       "title": "Blog",
       "description": "The official Hydejack blog. Version updates, example content and how-to guides on how to blog with Jekyll.\n",
       "content": "\n",
@@ -51,12 +57,6 @@
       "description": "Most of my open-source projects are listed on this page. Every project has a link to a GitHub repo with all the details and the source code.\n",
       "content": "\n",
       "url": "/projects/"
-    },{
-      
-      "title": "Resume",
-      "description": "Alexander Mayorov’s resume as a software engineer.\n",
-      "content": "\n",
-      "url": "/resume/"
     },{
       
       "title": "Boolean algebra cheat sheet",
@@ -280,7 +280,7 @@
     },{
       
       "title": "Computer Science",
-      "date": "2021-03-29 14:31:55 +0200",
+      "date": "2021-04-11 22:36:47 +0200",
       "description": "This category contains all posts that have something to do with theoretical or practical computer science.\n",
       "content": "\n",
       "categories": [],
@@ -291,7 +291,7 @@
     },{
       
       "title": "Complexity theory",
-      "date": "2021-03-29 14:31:55 +0200",
+      "date": "2021-04-11 22:36:47 +0200",
       
       "content": "\n",
       "categories": [],
@@ -302,7 +302,7 @@
     },{
       
       "title": "Concurrent programming",
-      "date": "2021-03-29 14:31:55 +0200",
+      "date": "2021-04-11 22:36:47 +0200",
       
       "content": "\n",
       "categories": [],
@@ -313,7 +313,7 @@
     },{
       
       "title": "Linear algebra",
-      "date": "2021-03-29 14:31:55 +0200",
+      "date": "2021-04-11 22:36:47 +0200",
       
       "content": "\n",
       "categories": [],
@@ -324,7 +324,7 @@
     },{
       
       "title": "Logic",
-      "date": "2021-03-29 14:31:55 +0200",
+      "date": "2021-04-11 22:36:47 +0200",
       
       "content": "\n",
       "categories": [],
