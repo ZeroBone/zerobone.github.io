@@ -29,7 +29,7 @@ const SHELL_CACHE = "shell-9.1.1--v13--sw/";
 const ASSETS_CACHE = "assets--v13--sw/";
 
 // The cache for regular content, which will be invalidated every time you make a new build.
-const CONTENT_CACHE = "content--2021-06-28T16:15:06+02:00--sw/";
+const CONTENT_CACHE = "content--2021-07-06T20:06:04+02:00--sw/";
 
 // A URL search parameter you can add to external assets to cache them in the service worker.
 const SW_CACHE_SEARCH_PARAM = "sw-cache";
@@ -297,6 +297,7 @@ const STATIC_FILES = [
   /**/"/assets/videos/blog/linear-transformation-3d-linear-dependent.mp4",
   /**/"/assets/videos/blog/linear-transformation-3d.mp4",
   /**/"/assets/videos/blog/svd-2d.mp4",
+  /**/"/deploy.bat",
   /**/"/package-lock.json",
   /**/"/package.json",
   /**/"/assets/bower.json",
