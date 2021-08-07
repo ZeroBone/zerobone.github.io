@@ -29,7 +29,7 @@ const SHELL_CACHE = "shell-9.1.1--v13--sw/";
 const ASSETS_CACHE = "assets--v13--sw/";
 
 // The cache for regular content, which will be invalidated every time you make a new build.
-const CONTENT_CACHE = "content--2021-07-06T20:22:02+02:00--sw/";
+const CONTENT_CACHE = "content--2021-08-07T23:10:23+02:00--sw/";
 
 // A URL search parameter you can add to external assets to cache them in the service worker.
 const SW_CACHE_SEARCH_PARAM = "sw-cache";
@@ -143,6 +143,8 @@ const STATIC_FILES = [
   /**/"/assets/img/blog/gray-codes-tmb@0,5x.jpg",
   /**/"/assets/img/blog/gray-recursive-def.svg",
   /**/"/assets/img/blog/gray-symmetry-proof-example.svg",
+  /**/"/assets/img/blog/hc-example.svg",
+  /**/"/assets/img/blog/hc-npc-gadget.svg",
   /**/"/assets/img/blog/hilbert-frege-f0-proofs-tmb.jpg",
   /**/"/assets/img/blog/hilbert-frege-f0-proofs-tmb@0,125x.jpg",
   /**/"/assets/img/blog/hilbert-frege-f0-proofs-tmb@0,25x.jpg",
@@ -173,6 +175,7 @@ const STATIC_FILES = [
   /**/"/assets/img/blog/lowest-common-ancestor-tmb@0,125x.jpg",
   /**/"/assets/img/blog/lowest-common-ancestor-tmb@0,25x.jpg",
   /**/"/assets/img/blog/lowest-common-ancestor-tmb@0,5x.jpg",
+  /**/"/assets/img/blog/no-hc-disjoint-cycles.svg",
   /**/"/assets/img/blog/non-productive-cfg-rules-tmb.jpg",
   /**/"/assets/img/blog/non-productive-cfg-rules-tmb@0,125x.jpg",
   /**/"/assets/img/blog/non-productive-cfg-rules-tmb@0,25x.jpg",
@@ -193,6 +196,10 @@ const STATIC_FILES = [
   /**/"/assets/img/blog/regular-language-size-np-hard-tmb@0,125x.jpg",
   /**/"/assets/img/blog/regular-language-size-np-hard-tmb@0,25x.jpg",
   /**/"/assets/img/blog/regular-language-size-np-hard-tmb@0,5x.jpg",
+  /**/"/assets/img/blog/restricted-injective-mapping-np-complete.jpg",
+  /**/"/assets/img/blog/restricted-injective-mapping-np-complete@0,125x.jpg",
+  /**/"/assets/img/blog/restricted-injective-mapping-np-complete@0,25x.jpg",
+  /**/"/assets/img/blog/restricted-injective-mapping-np-complete@0,5x.jpg",
   /**/"/assets/img/blog/svd-image-compression-10perc.jpg",
   /**/"/assets/img/blog/svd-image-compression-1perc.jpg",
   /**/"/assets/img/blog/svd-image-compression-20perc.jpg",
