@@ -302,7 +302,7 @@
     },{
       
       "title": "Computer Science",
-      "date": "2022-02-10 20:34:52 +0100",
+      "date": "2022-02-10 21:04:12 +0100",
       "description": "This category contains all posts that have something to do with theoretical or practical computer science.\n",
       "content": "\n",
       "categories": [],
@@ -313,7 +313,7 @@
     },{
       
       "title": "Complexity theory",
-      "date": "2022-02-10 20:34:52 +0100",
+      "date": "2022-02-10 21:04:12 +0100",
       
       "content": "\n",
       "categories": [],
@@ -324,7 +324,7 @@
     },{
       
       "title": "Concurrent programming",
-      "date": "2022-02-10 20:34:52 +0100",
+      "date": "2022-02-10 21:04:12 +0100",
       
       "content": "\n",
       "categories": [],
@@ -335,7 +335,7 @@
     },{
       
       "title": "Linear algebra",
-      "date": "2022-02-10 20:34:52 +0100",
+      "date": "2022-02-10 21:04:12 +0100",
       
       "content": "\n",
       "categories": [],
@@ -346,7 +346,7 @@
     },{
       
       "title": "Logic",
-      "date": "2022-02-10 20:34:52 +0100",
+      "date": "2022-02-10 21:04:12 +0100",
       
       "content": "\n",
       "categories": [],
@@ -357,7 +357,7 @@
     },{
       
       "title": "Research",
-      "date": "2022-02-10 20:34:52 +0100",
+      "date": "2022-02-10 21:04:12 +0100",
       
       "content": "\n",
       "categories": [],
@@ -578,7 +578,7 @@
       "image": {"path":"/assets/img/projects/presmondec.jpg","srcset":{"1920w":"/assets/img/projects/presmondec.jpg","960w":"/assets/img/projects/presmondec@0,5x.jpg","480w":"/assets/img/projects/presmondec@0,25x.jpg","240w":"/assets/img/projects/presmondec@0,125x.jpg"}},
       "title": "PresMonDec",
       "date": "2022-02-10 00:00:00 +0100",
-      "description": "PresMonDec is a tool that checks monadic decomposability of quantifier-free Presburger arithmetic formulas. Congruence relations are supported.\n",
+      "description": "Tool that checks monadic decomposability of quantifier-free Presburger arithmetic sentences. Congruence relations are supported.\n",
       "content": "\n",
       "categories": [],
       "tags": [],
