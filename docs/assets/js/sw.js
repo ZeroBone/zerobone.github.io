@@ -29,7 +29,7 @@ const SHELL_CACHE = "shell-9.1.1--v13--sw/";
 const ASSETS_CACHE = "assets--v13--sw/";
 
 // The cache for regular content, which will be invalidated every time you make a new build.
-const CONTENT_CACHE = "content--2021-10-22T15:11:08+02:00--sw/";
+const CONTENT_CACHE = "content--2022-02-10T18:49:24+01:00--sw/";
 
 // A URL search parameter you can add to external assets to cache them in the service worker.
 const SW_CACHE_SEARCH_PARAM = "sw-cache";
@@ -55,12 +55,14 @@ const STATIC_FILES = [
   /**/"/CNAME",
   /**/"/ads.txt",
   /**/"/assets/icons/favicon.ico",
+  /**/"/assets/icons/icon.jpg",
   /**/"/assets/icons/icon.png",
   /**/"/assets/icons/icon@0,25x.png",
   /**/"/assets/icons/icon@0,5x.png",
   /**/"/assets/icons/icon@0,75x.png",
   /**/"/assets/icons/icon@2x.png",
   /**/"/assets/icons/icon@3x.png",
+  /**/"/assets/icons/icon_init.jpg",
   /**/"/assets/icons/logo_128.png",
   /**/"/assets/icons/logo_256.png",
   /**/"/assets/img/bg.jpg",
@@ -282,6 +284,10 @@ const STATIC_FILES = [
   /**/"/assets/img/projects/pollardrsacracker@0,125x.jpg",
   /**/"/assets/img/projects/pollardrsacracker@0,25x.jpg",
   /**/"/assets/img/projects/pollardrsacracker@0,5x.jpg",
+  /**/"/assets/img/projects/presmondec.jpg",
+  /**/"/assets/img/projects/presmondec@0,125x.jpg",
+  /**/"/assets/img/projects/presmondec@0,25x.jpg",
+  /**/"/assets/img/projects/presmondec@0,5x.jpg",
   /**/"/assets/img/projects/sdlgrapher.jpg",
   /**/"/assets/img/projects/sdlgrapher@0,125x.jpg",
   /**/"/assets/img/projects/sdlgrapher@0,25x.jpg",
@@ -567,7 +573,7 @@ const STATIC_FILES = [
 const PRE_CACHED_ASSETS = [
   '/assets/icons/favicon.ico',
   /**/"/assets/img/bg.jpg",/**/
-  /**/"/assets/icons/icon.png",/**/
+  /**/"/assets/icons/icon.jpg",/**/
   /**/"/assets/img/swipe.svg",
   /**/
 ];
