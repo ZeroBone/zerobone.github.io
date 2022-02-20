@@ -37,7 +37,7 @@
       
       "title": "Welcome!",
       
-      "content": "Hi, I am Alexander Mayorov (a.k.a. ZeroBone) and this is my personal website. I am currently a computer science student and a backend developer.\n\nApart from studying I do research. My fields of interests:\n\n\n  Theoretical computer science: algorithms, theory of computation, formal languages, etc.\n  Logic, formal verification and automated proof procedures\n  Compiler design and programming languages\n  Group theory &amp; linear algebra\n  Graph theory\n\n\nLatest posts\n\n\n\nLatest projects\n\n\n",
+      "content": "Hi, I am Alexander Mayorov (a.k.a. ZeroBone) and this is my personal website. I am currently a computer science student at the University of Kaiserslautern. I’m also a backend and open-source developer.\n\nApart from studying I do research. My fields of interests, formulated in broad terms, are:\n\n\n  Algorithms, complexity theory, theory of computation and related areas\n  Logic, formal verification and automated reasoning\n  Compiler design and programming languages\n  Linear algebra &amp; group theory\n  Graph theory\n\n\nMy hobbies include climbing, orienteering, swimming &amp; traveling. I am also interested in fundamental Human Rights.\n\nLatest posts\n\n\n\nLatest projects\n\n\n",
       "url": "/"
     },{
       
@@ -302,7 +302,7 @@
     },{
       
       "title": "Computer Science",
-      "date": "2022-02-19 22:27:32 +0100",
+      "date": "2022-02-20 01:25:49 +0100",
       "description": "This category contains all posts that have something to do with theoretical or practical computer science.\n",
       "content": "\n",
       "categories": [],
@@ -313,7 +313,7 @@
     },{
       
       "title": "Complexity theory",
-      "date": "2022-02-19 22:27:32 +0100",
+      "date": "2022-02-20 01:25:49 +0100",
       
       "content": "\n",
       "categories": [],
@@ -324,7 +324,7 @@
     },{
       
       "title": "Concurrent programming",
-      "date": "2022-02-19 22:27:32 +0100",
+      "date": "2022-02-20 01:25:49 +0100",
       
       "content": "\n",
       "categories": [],
@@ -335,7 +335,7 @@
     },{
       
       "title": "Linear algebra",
-      "date": "2022-02-19 22:27:32 +0100",
+      "date": "2022-02-20 01:25:49 +0100",
       
       "content": "\n",
       "categories": [],
@@ -346,7 +346,7 @@
     },{
       
       "title": "Logic",
-      "date": "2022-02-19 22:27:32 +0100",
+      "date": "2022-02-20 01:25:49 +0100",
       
       "content": "\n",
       "categories": [],
@@ -357,7 +357,7 @@
     },{
       
       "title": "Research",
-      "date": "2022-02-19 22:27:32 +0100",
+      "date": "2022-02-20 01:25:49 +0100",
       
       "content": "\n",
       "categories": [],
