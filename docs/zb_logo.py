@@ -19,7 +19,7 @@ class ZBLogo(Scene):
 
         vertices = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
-        edges = [("1", "2"), ("2", "3"), ("2", "7"), ("2", "5"), ("3", "6"), 
+        edges = [("1", "2"), ("2", "3"), ("2", "7"), ("5", "2"), ("3", "6"), 
             ("5", "4"), ("5", "6"), ("8", "5"), ("6", "9"),
             ("7", "8"), ("9", "8")]
 
@@ -42,10 +42,10 @@ class ZBLogo(Scene):
         vc = {
             "1": {"fill_color": BLUE, "stroke_width": stroke_w},
             "2": {"fill_color": PINK, "stroke_width": stroke_w},
-            "3": {"fill_color": GREY, "stroke_width": stroke_w},
-            "4": {"fill_color": YELLOW, "stroke_width": stroke_w},
-            "5": {"fill_color": GREEN, "stroke_width": stroke_w},
-            "6": {"fill_color": RED, "stroke_width": stroke_w},
+            "3": {"fill_color": GREEN, "stroke_width": stroke_w},
+            "4": {"fill_color": GREEN, "stroke_width": stroke_w},
+            "5": {"fill_color": RED, "stroke_width": stroke_w},
+            "6": {"fill_color": YELLOW, "stroke_width": stroke_w},
             "7": {"fill_color": TEAL_E, "stroke_width": stroke_w},
             "8": {"fill_color": PURPLE, "stroke_width": stroke_w},
             "9": {"fill_color": WHITE, "stroke_width": stroke_w},
@@ -59,12 +59,12 @@ class ZBLogo(Scene):
             edges[9]: {"stroke_color": RED, "angle": 0, "stroke_width": edge_stroke_w},
             edges[1]: {"stroke_color": GOLD, "angle": 0, "stroke_width": edge_stroke_w},
             edges[3]: {"stroke_color": GOLD, "angle": 0, "stroke_width": edge_stroke_w},
-            edges[4]: {"stroke_color": GOLD, "angle": -PI/2., "stroke_width": edge_stroke_w},
+            edges[4]: {"stroke_color": GOLD, "angle": -PI/2, "stroke_width": edge_stroke_w},
             edges[6]: {"stroke_color": GOLD, "angle": 0, "stroke_width": edge_stroke_w},
             edges[7]: {"stroke_color": GOLD, "angle": 0, "stroke_width": edge_stroke_w},
-            edges[8]: {"stroke_color": GOLD, "angle": -PI/2., "stroke_width": edge_stroke_w},
+            edges[8]: {"stroke_color": GOLD, "angle": -PI/2, "stroke_width": edge_stroke_w},
             edges[10]: {"stroke_color": GOLD, "angle": 0, "stroke_width": edge_stroke_w},
-            edges[5]: {"stroke_width": edge_stroke_w, "angle": 0}
+            edges[5]: {"stroke_color": BLUE, "stroke_width": edge_stroke_w, "angle": 0}
         }
 
         lbl = "\\bullet"
