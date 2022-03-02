@@ -29,7 +29,7 @@ const SHELL_CACHE = "shell-9.1.1--v13--sw/";
 const ASSETS_CACHE = "assets--v13--sw/";
 
 // The cache for regular content, which will be invalidated every time you make a new build.
-const CONTENT_CACHE = "content--2022-02-20T01:25:49+01:00--sw/";
+const CONTENT_CACHE = "content--2022-03-02T18:19:55+01:00--sw/";
 
 // A URL search parameter you can add to external assets to cache them in the service worker.
 const SW_CACHE_SEARCH_PARAM = "sw-cache";
@@ -55,17 +55,20 @@ const STATIC_FILES = [
   /**/"/CNAME",
   /**/"/ads.txt",
   /**/"/assets/icons/favicon.ico",
-  /**/"/assets/icons/icon.jpg",
   /**/"/assets/icons/icon.png",
-  /**/"/assets/icons/icon@0,25x.png",
-  /**/"/assets/icons/icon@0,5x.png",
-  /**/"/assets/icons/icon@0,75x.png",
-  /**/"/assets/icons/icon@2x.png",
-  /**/"/assets/icons/icon@3x.png",
-  /**/"/assets/icons/logo_128.jpg",
   /**/"/assets/icons/logo_128.png",
-  /**/"/assets/icons/logo_256.jpg",
   /**/"/assets/icons/logo_256.png",
+  /**/"/assets/icons/old_logo/icon.jpg",
+  /**/"/assets/icons/old_logo/icon.png",
+  /**/"/assets/icons/old_logo/icon@0,25x.png",
+  /**/"/assets/icons/old_logo/icon@0,5x.png",
+  /**/"/assets/icons/old_logo/icon@0,75x.png",
+  /**/"/assets/icons/old_logo/icon@2x.png",
+  /**/"/assets/icons/old_logo/icon@3x.png",
+  /**/"/assets/icons/old_logo/logo_128.jpg",
+  /**/"/assets/icons/old_logo/logo_128.png",
+  /**/"/assets/icons/old_logo/logo_256.jpg",
+  /**/"/assets/icons/old_logo/logo_256.png",
   /**/"/assets/icons/photo.jpg",
   /**/"/assets/icons/photo_init.jpg",
   /**/"/assets/img/bg.jpg",
@@ -316,6 +319,7 @@ const STATIC_FILES = [
   /**/"/deploy.bat",
   /**/"/package-lock.json",
   /**/"/package.json",
+  /**/"/zb_logo.py",
   /**/"/assets/bower.json",
   /**/"/assets/bower_components/MathJax/.bower.json",
   /**/"/assets/bower_components/MathJax/LICENSE",
@@ -576,7 +580,7 @@ const STATIC_FILES = [
 const PRE_CACHED_ASSETS = [
   '/assets/icons/favicon.ico',
   /**/"/assets/img/bg.jpg",/**/
-  /**/"/assets/icons/icon.jpg",/**/
+  /**/"/assets/icons/icon.png",/**/
   /**/"/assets/img/swipe.svg",
   /**/
 ];
