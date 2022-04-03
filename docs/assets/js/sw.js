@@ -29,7 +29,7 @@ const SHELL_CACHE = "shell-9.1.1--v13--sw/";
 const ASSETS_CACHE = "assets--v13--sw/";
 
 // The cache for regular content, which will be invalidated every time you make a new build.
-const CONTENT_CACHE = "content--2022-03-02T22:50:39+01:00--sw/";
+const CONTENT_CACHE = "content--2022-04-03T15:45:42+02:00--sw/";
 
 // A URL search parameter you can add to external assets to cache them in the service worker.
 const SW_CACHE_SEARCH_PARAM = "sw-cache";
@@ -154,6 +154,10 @@ const STATIC_FILES = [
   /**/"/assets/img/blog/hornsat-2sat-np-complete-tmb@0,125x.jpg",
   /**/"/assets/img/blog/hornsat-2sat-np-complete-tmb@0,25x.jpg",
   /**/"/assets/img/blog/hornsat-2sat-np-complete-tmb@0,5x.jpg",
+  /**/"/assets/img/blog/ip-pspace-tmb.jpg",
+  /**/"/assets/img/blog/ip-pspace-tmb@0,125x.jpg",
+  /**/"/assets/img/blog/ip-pspace-tmb@0,25x.jpg",
+  /**/"/assets/img/blog/ip-pspace-tmb@0,5x.jpg",
   /**/"/assets/img/blog/kadane-algorithm-tmb.jpg",
   /**/"/assets/img/blog/kadane-algorithm-tmb@0,125x.jpg",
   /**/"/assets/img/blog/kadane-algorithm-tmb@0,25x.jpg",
@@ -221,6 +225,7 @@ const STATIC_FILES = [
   /**/"/assets/img/blog/svd-image-compression-tmb@0,125x.jpg",
   /**/"/assets/img/blog/svd-image-compression-tmb@0,25x.jpg",
   /**/"/assets/img/blog/svd-image-compression-tmb@0,5x.jpg",
+  /**/"/assets/img/blog/tqbfip-arithmetization-example.jpg",
   /**/"/assets/img/blog/uniqueness-of-xor-equivalence-models.svg",
   /**/"/assets/img/blog/vertex-cover-power2.svg",
   /**/"/assets/img/math/int/nes_1_geom.svg",
