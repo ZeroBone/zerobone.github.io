@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://zerobone.net/feed.xml" rel="self" type="application/atom+xml" /><link href="https://zerobone.net/" rel="alternate" type="text/html" hreflang="en" /><updated>2022-04-03T19:52:11+02:00</updated><id>https://zerobone.net/feed.xml</id><title type="html">ZeroBone</title><subtitle>I am a computer science student and a backend developer
-</subtitle><author><name>Alexander Mayorov</name><email>zb@zerobone.net</email></author><entry><title type="html">Visualization and detailed description of the interactive protocol for TQBF yielding IP = PSPACE</title><link href="https://zerobone.net/blog/cs/ip-pspace/" rel="alternate" type="text/html" title="Visualization and detailed description of the interactive protocol for TQBF yielding IP = PSPACE" /><published>2022-04-03T00:00:00+02:00</published><updated>2022-04-03T00:00:00+02:00</updated><id>https://zerobone.net/blog/cs/ip-pspace</id><content type="html" xml:base="https://zerobone.net/blog/cs/ip-pspace/">&lt;p&gt;In complexity theory, it is well known that IP = PSPACE. In this post I would like to go over the private coin interactive protocol for TQBF typically used to prove that PSPACE is contained in IP and, in that context, present my detailed visualization of the entire protocol together with the Open Source tool I developed to run the protocol and render the animations. I would also like to note that when I was first studying the proof protocol for TQBF, I was a bit frustrated by the fact that most texts lack a precise and detailed description of some subtleties in the proof — this is what also motivated me to try my best to fill in the relevant but missing details in this post.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://zerobone.net/feed.xml" rel="self" type="application/atom+xml" /><link href="https://zerobone.net/" rel="alternate" type="text/html" hreflang="en" /><updated>2022-04-04T13:55:52+02:00</updated><id>https://zerobone.net/feed.xml</id><title type="html">ZeroBone</title><subtitle>I am a computer science student and a backend developer
+</subtitle><author><name>Alexander Mayorov</name><email>zb@zerobone.net</email></author><entry><title type="html">Visualization and detailed description of the interactive protocol for TQBF yielding IP = PSPACE</title><link href="https://zerobone.net/blog/cs/ip-pspace/" rel="alternate" type="text/html" title="Visualization and detailed description of the interactive protocol for TQBF yielding IP = PSPACE" /><published>2022-04-03T00:00:00+02:00</published><updated>2022-04-04T00:00:00+02:00</updated><id>https://zerobone.net/blog/cs/ip-pspace</id><content type="html" xml:base="https://zerobone.net/blog/cs/ip-pspace/">&lt;p&gt;In complexity theory, it is well known that IP = PSPACE. In this post I would like to go over the private coin interactive protocol for TQBF typically used to prove that PSPACE is contained in IP and, in that context, present my detailed visualization of the entire protocol together with the Open Source tool I developed to run the protocol and render the animations. I would also like to note that when I was first studying the proof protocol for TQBF, I was a bit frustrated by the fact that most texts lack a precise and detailed description of some subtleties in the proof — this is what also motivated me to try my best to fill in the relevant but missing details in this post.&lt;/p&gt;
 
 &lt;h2 id=&quot;shamirs-theorem&quot;&gt;Shamir’s Theorem&lt;/h2&gt;
 
@@ -8,18 +8,18 @@
 &lt;pre&gt;&lt;code class=&quot;language-pseudocode&quot;&gt;c = 0
 threshold = ceil(2/3 * (total number of different ways the verifier can toss coins))
 for all possible verifier's random bits {
-	for all possible message sequences the prover may send during the communication {
-		Run the verifier using the current message sequence and random bits;
-		if verifier accepted {
-			c++;
-			break;
-		}
-	}
+    for all possible message sequences the prover may send during the communication {
+        Run the verifier using the current message sequence and random bits;
+        if verifier accepted {
+            c++;
+            break;
+        }
+    }
 }
 if c &amp;gt;= threshold {
-	accept;
+    accept;
 } else {
-	reject;
+    reject;
 }
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -239,7 +239,7 @@ Starting round 4. Current operator: L_{x}
 [V]: s(a) = 5 =: c
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;And running the tool in rendering mode (see the &lt;a href=&quot;https://github.com/ZeroBone/TQBFIP&quot;&gt;GitHub repository&lt;/a&gt; for the details) produces the following visualization of the protocol applied to &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-mathml&quot;&gt;&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;φ&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&quot;application/x-tex&quot;&gt;\varphi&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.625em;vertical-align:-0.19444em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot;&gt;φ&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;:&lt;/p&gt;
+&lt;p&gt;And running the &lt;a href=&quot;https://github.com/ZeroBone/TQBFIP&quot;&gt;tool&lt;/a&gt; in rendering mode produces the following visualization of the protocol applied to &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-mathml&quot;&gt;&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;φ&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&quot;application/x-tex&quot;&gt;\varphi&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.625em;vertical-align:-0.19444em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot;&gt;φ&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;:&lt;/p&gt;
 
 &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/gSWT3DOiQtk&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
 
