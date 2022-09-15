@@ -29,7 +29,7 @@ const SHELL_CACHE = "shell-9.1.6--v13--sw/";
 const ASSETS_CACHE = "assets--v13--sw/";
 
 // The cache for regular content, which will be invalidated every time you make a new build.
-const CONTENT_CACHE = "content--2022-09-05T01:02:44+02:00--sw/";
+const CONTENT_CACHE = "content--2022-09-15T20:05:01+02:00--sw/";
 
 // A URL search parameter you can add to external assets to cache them in the service worker.
 const SW_CACHE_SEARCH_PARAM = "sw-cache";
@@ -224,6 +224,10 @@ const STATIC_FILES = [
   /**/"/assets/img/blog/svd-image-compression-tmb@0,125x.jpg",
   /**/"/assets/img/blog/svd-image-compression-tmb@0,25x.jpg",
   /**/"/assets/img/blog/svd-image-compression-tmb@0,5x.jpg",
+  /**/"/assets/img/blog/tonellishanks.jpg",
+  /**/"/assets/img/blog/tonellishanks@0,125x.jpg",
+  /**/"/assets/img/blog/tonellishanks@0,25x.jpg",
+  /**/"/assets/img/blog/tonellishanks@0,5x.jpg",
   /**/"/assets/img/blog/tqbfip-arithmetization-example.jpg",
   /**/"/assets/img/blog/uniqueness-of-xor-equivalence-models.svg",
   /**/"/assets/img/blog/vertex-cover-power2.svg",
@@ -295,6 +299,10 @@ const STATIC_FILES = [
   /**/"/assets/img/projects/sdlgrapher@0,125x.jpg",
   /**/"/assets/img/projects/sdlgrapher@0,25x.jpg",
   /**/"/assets/img/projects/sdlgrapher@0,5x.jpg",
+  /**/"/assets/img/projects/tonellishanks.jpg",
+  /**/"/assets/img/projects/tonellishanks@0,125x.jpg",
+  /**/"/assets/img/projects/tonellishanks@0,25x.jpg",
+  /**/"/assets/img/projects/tonellishanks@0,5x.jpg",
   /**/"/assets/img/projects/tqbfip.jpg",
   /**/"/assets/img/projects/tqbfip@0,125x.jpg",
   /**/"/assets/img/projects/tqbfip@0,25x.jpg",
