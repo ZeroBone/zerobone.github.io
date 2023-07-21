@@ -29,16 +29,16 @@
       "url": "/legal/"
     },{
       
-      "title": "Математика",
-      "description": "Разделы\n",
-      "content": "Внимание: Этот раздел находится в разработке и ещё не завершён.\n\nРазделы\n\n  Дифференциальное исчисление — пределы, производные.\n  Интегральное исчисление — первообразные, интегралы, ряды.\n\n",
-      "url": "/math/"
-    },{
-      
       "title": "Other",
       "description": "This page contains some of my summaries, cheat sheets and other materials that you might also find useful.\n",
       "content": "\n  Integral table.\n  Modular arithmetic\n  Boolean algebra.\n  Regular expressions.\n\n",
       "url": "/other/"
+    },{
+      
+      "title": "Математика",
+      "description": "Разделы\n",
+      "content": "Внимание: Этот раздел находится в разработке и ещё не завершён.\n\nРазделы\n\n  Дифференциальное исчисление — пределы, производные.\n  Интегральное исчисление — первообразные, интегралы, ряды.\n\n",
+      "url": "/math/"
     },{
       
       "title": "Welcome!",
@@ -330,7 +330,7 @@
     },{
       
       "title": "Computer Science",
-      "date": "2023-02-18 23:07:35 +0100",
+      "date": "2023-07-21 19:48:41 +0200",
       "description": "This category contains all posts that have something to do with theoretical or practical computer science.\n",
       "content": "\n",
       "categories": [],
@@ -341,7 +341,7 @@
     },{
       
       "title": "Mathematics",
-      "date": "2023-02-18 23:07:35 +0100",
+      "date": "2023-07-21 19:48:41 +0200",
       "description": "This category contains all posts about various topics from pure mathematics.\n",
       "content": "\n",
       "categories": [],
@@ -352,7 +352,7 @@
     },{
       
       "title": "Algebra",
-      "date": "2023-02-18 23:07:35 +0100",
+      "date": "2023-07-21 19:48:41 +0200",
       
       "content": "\n",
       "categories": [],
@@ -363,7 +363,7 @@
     },{
       
       "title": "Complexity theory",
-      "date": "2023-02-18 23:07:35 +0100",
+      "date": "2023-07-21 19:48:41 +0200",
       
       "content": "\n",
       "categories": [],
@@ -374,7 +374,7 @@
     },{
       
       "title": "Concurrency",
-      "date": "2023-02-18 23:07:35 +0100",
+      "date": "2023-07-21 19:48:41 +0200",
       
       "content": "\n",
       "categories": [],
@@ -385,7 +385,7 @@
     },{
       
       "title": "Cryptography",
-      "date": "2023-02-18 23:07:35 +0100",
+      "date": "2023-07-21 19:48:41 +0200",
       
       "content": "\n",
       "categories": [],
@@ -396,7 +396,7 @@
     },{
       
       "title": "Linear algebra",
-      "date": "2023-02-18 23:07:35 +0100",
+      "date": "2023-07-21 19:48:41 +0200",
       
       "content": "\n",
       "categories": [],
@@ -407,7 +407,7 @@
     },{
       
       "title": "Logic",
-      "date": "2023-02-18 23:07:35 +0100",
+      "date": "2023-07-21 19:48:41 +0200",
       
       "content": "\n",
       "categories": [],
@@ -418,7 +418,7 @@
     },{
       
       "title": "Research",
-      "date": "2023-02-18 23:07:35 +0100",
+      "date": "2023-07-21 19:48:41 +0200",
       
       "content": "\n",
       "categories": [],

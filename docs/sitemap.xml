@@ -18,7 +18,7 @@
 </url>
 <url>
 <loc>https://zerobone.net/tag/concurrency/</loc>
-<lastmod>2021-03-02T00:30:56+01:00</lastmod>
+<lastmod>2023-02-18T23:08:40+01:00</lastmod>
 </url>
 <url>
 <loc>https://zerobone.net/tag/cryptography/</loc>
@@ -221,12 +221,12 @@
 <lastmod>2021-03-02T00:30:56+01:00</lastmod>
 </url>
 <url>
-<loc>https://zerobone.net/math/</loc>
-<lastmod>2020-09-01T02:23:14+02:00</lastmod>
-</url>
-<url>
 <loc>https://zerobone.net/other/</loc>
 <lastmod>2020-12-05T02:30:36+01:00</lastmod>
+</url>
+<url>
+<loc>https://zerobone.net/math/</loc>
+<lastmod>2020-09-01T02:23:14+02:00</lastmod>
 </url>
 <url>
 <loc>https://zerobone.net/</loc>
