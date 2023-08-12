@@ -43,7 +43,7 @@
       
       "title": "Welcome!",
       
-      "content": "Hi, I am Alexander Mayorov and this is my personal website. I am currently a computer science student at the University of Kaiserslautern-Landau. I’m also a backend and open-source developer.\n\nApart from studying I do research. My fields of interests:\n\n\n  Algorithms, complexity theory, theory of computation and related areas\n  Logic, formal verification and automated reasoning\n  Linear algebra, Group, Ring and Galois theory\n  String combinatorics, Graph theory and Ramsey theory\n  Compiler design and programming languages\n\n\nMy hobbies include climbing, orienteering, swimming &amp; traveling. I am also interested in fundamental Human Rights. I am passionate about computer science and math.\n\nPublications\n\n\n  \n    \n      Title\n      Links\n    \n  \n  \n    \n      Variable Independence in Linear Real Arithmetic (Bachelor’s thesis)\n      arXiv, presentation\n    \n  \n\n\nLatest posts\n\n\n\nLatest projects\n\n\n",
+      "content": "Hi, I am Alexander Mayorov and this is my personal website. I am currently a computer science student at the University of Kaiserslautern-Landau. I’m also a backend and open-source developer.\n\nApart from studying I do research. My fields of interests:\n\n\n  Algorithms, complexity theory, theory of computation and related areas\n  Information theory, logic, formal verification and automated reasoning\n  Linear algebra, Group, Ring and Galois theory\n  String combinatorics, Graph theory and Ramsey theory\n  Compiler design and programming languages\n\n\nMy hobbies include climbing, orienteering, swimming &amp; traveling. I am also interested in fundamental Human Rights. I am passionate about computer science and math.\n\nPublications\n\n\n  \n    \n      Title\n      Links\n    \n  \n  \n    \n      Variable Independence in Linear Real Arithmetic (Bachelor’s thesis)\n      arXiv, presentation\n    \n  \n\n\nLatest posts\n\n\n\nLatest projects\n\n\n",
       "url": "/"
     },{
       
@@ -330,7 +330,7 @@
     },{
       
       "title": "Computer Science",
-      "date": "2023-08-12 15:22:47 +0200",
+      "date": "2023-08-12 15:49:20 +0200",
       "description": "This category contains all posts that have something to do with theoretical or practical computer science.\n",
       "content": "\n",
       "categories": [],
@@ -341,7 +341,7 @@
     },{
       
       "title": "Mathematics",
-      "date": "2023-08-12 15:22:47 +0200",
+      "date": "2023-08-12 15:49:20 +0200",
       "description": "This category contains all posts about various topics from pure mathematics.\n",
       "content": "\n",
       "categories": [],
@@ -352,7 +352,7 @@
     },{
       
       "title": "Algebra",
-      "date": "2023-08-12 15:22:47 +0200",
+      "date": "2023-08-12 15:49:20 +0200",
       
       "content": "\n",
       "categories": [],
@@ -363,7 +363,7 @@
     },{
       
       "title": "Complexity theory",
-      "date": "2023-08-12 15:22:47 +0200",
+      "date": "2023-08-12 15:49:20 +0200",
       
       "content": "\n",
       "categories": [],
@@ -374,7 +374,7 @@
     },{
       
       "title": "Concurrency",
-      "date": "2023-08-12 15:22:47 +0200",
+      "date": "2023-08-12 15:49:20 +0200",
       
       "content": "\n",
       "categories": [],
@@ -385,7 +385,7 @@
     },{
       
       "title": "Cryptography",
-      "date": "2023-08-12 15:22:47 +0200",
+      "date": "2023-08-12 15:49:20 +0200",
       
       "content": "\n",
       "categories": [],
@@ -396,7 +396,7 @@
     },{
       
       "title": "Linear algebra",
-      "date": "2023-08-12 15:22:47 +0200",
+      "date": "2023-08-12 15:49:20 +0200",
       
       "content": "\n",
       "categories": [],
@@ -407,7 +407,7 @@
     },{
       
       "title": "Logic",
-      "date": "2023-08-12 15:22:47 +0200",
+      "date": "2023-08-12 15:49:20 +0200",
       
       "content": "\n",
       "categories": [],
@@ -418,7 +418,7 @@
     },{
       
       "title": "Research",
-      "date": "2023-08-12 15:22:47 +0200",
+      "date": "2023-08-12 15:49:20 +0200",
       
       "content": "\n",
       "categories": [],
