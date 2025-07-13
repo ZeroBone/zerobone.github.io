@@ -29,7 +29,7 @@ const SHELL_CACHE = "shell-9.1.6--v13--sw/";
 const ASSETS_CACHE = "assets--v13--sw/";
 
 // The cache for regular content, which will be invalidated every time you make a new build.
-const CONTENT_CACHE = "content--2023-08-12T15:49:20+02:00--sw/";
+const CONTENT_CACHE = "content--2025-07-13T21:38:24+02:00--sw/";
 
 // A URL search parameter you can add to external assets to cache them in the service worker.
 const SW_CACHE_SEARCH_PARAM = "sw-cache";
@@ -53,6 +53,7 @@ const SHELL_FILES = [
 
 const STATIC_FILES = [
   /**/"/CNAME",
+  /**/"/README.md",
   /**/"/assets/icons/apple-touch-icon.png",
   /**/"/assets/icons/favicon-16x16.png",
   /**/"/assets/icons/favicon-32x32.png",
