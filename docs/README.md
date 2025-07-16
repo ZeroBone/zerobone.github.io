@@ -1,16 +1,9 @@
 # ZeroBone's website
 
-Installation:
-
-First, Ruby is to be installed. Then we need to install dependencies.
+Installation is easy. First, Ruby is to be installed. Then we need to install dependencies.
 
 ```bash
 bundle install
-bundle add csv
-bundle add logger
-bundle add base64
-bundle add bigdecimal
-bundle update
 ```
 
 After that the website can be served on a local webserver using
