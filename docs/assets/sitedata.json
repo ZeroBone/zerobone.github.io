@@ -43,7 +43,7 @@
       
       "title": "Alexander Mayorov",
       
-      "content": "Hi, I am Alexander Mayorov and this is my personal website. I am currently a PhD student at the Saarland University and the Max-Planck Institute for Informatics.\n\nI’m especially drawn to the study of fundamental, known and important open problems. I find it both humbling and motivating that in theoretical computer science and mathematics, so many basic questions are still open in ways that feel almost embarrassing.\n\nMy study and research interests include:\n\n\n  Algorithms, complexity theory, computability theory, descriptive complexity\n  Algebra, group theory and cryptography\n  Information theory, randomness, logic, automated reasoning and formal verification\n  Formal languages, compiler design and programming languages\n  String combinatorics, graph theory and Ramsey theory\n\n\nMy hobbies include climbing, orienteering, swimming, sailing &amp; traveling. I also love electronics, especially power electronics. My deepest intellectual passion lies in theoretical computer science and neighboring fields of mathematics.\n\nPublications and presentations\n\n\n  \n    \n      Date\n      Title\n      References\n    \n  \n  \n    \n      17.06.2023\n      The recompression technique for word equations\n      presentation, presentation source code\n    \n    \n      13.07.2023\n      Variable Independence in Linear Real Arithmetic\n      arXiv, presentation\n    \n    \n      09.12.2025\n      Luks’s algorithm for Graph Isomorphism\n      presentation, presentation source code\n    \n  \n\n\nLatest posts\n\n\n\nLatest projects\n\n\n\nSome thoughts on Life\n\nThese are brief summaries of thoughts I’ve spent a long time wrestling with — reflections shaped by science, history, and experience. They’re not definitive, just the clearest ways I’ve found to express certain ideas.\nI’m sharing them in the hope that some might resonate with others, as they continue to resonate with me.\n\n\n  If I were a politician, others would have to rightly reject my attempts to turn life on Earth into paradise.\n\n\n\n  Unfortunately, there is always a point after which further attempts to approach the ideal will gradually lead to disaster.\n\n\n\n  Complexity is directly connected to the inability to predict future.\n\n\n\n  Whenever an intuition eludes rigorous formulation within existing theories, it becomes necessary to develop a new theory capturing it.\n\n\n\n  Justice is too heavy a responsibility to be left in human hands.\n\n",
+      "content": "Hi, I am Alexander Mayorov and this is my personal website. I am currently a PhD student at the Saarland University and the Max-Planck Institute for Informatics.\n\nI’m especially drawn to the study of fundamental, known and important open problems. I find it both humbling and motivating that in theoretical computer science and mathematics, so many basic questions are still open in ways that feel almost embarrassing.\n\nMy study and research interests include:\n\n\n  Algorithms, complexity theory, computability theory, descriptive complexity\n  Algebra, group theory and cryptography\n  Information theory, randomness, logic, automated reasoning and formal verification\n  Formal languages, compiler design and programming languages\n  String combinatorics, graph theory and Ramsey theory\n\n\nMy hobbies include climbing, orienteering, swimming, sailing &amp; traveling. I also love electronics, especially power electronics. My deepest intellectual passion lies in theoretical computer science and neighboring fields of mathematics.\n\nPublications and presentations\n\n\n  \n    \n      Date\n      Title\n      References\n    \n  \n  \n    \n      13.07.2023\n      Variable Independence in Linear Real Arithmetic\n      arXiv, presentation\n    \n  \n\n\nSurvey presentations\n\nUnlike the above section containing my original research, the following presentations are my interpretations of already known results in the literature:\n\n\n  \n    \n      Date\n      Title\n      References\n    \n  \n  \n    \n      17.06.2023\n      The recompression technique for word equations\n      presentation, presentation source code\n    \n    \n      09.12.2025\n      Luks’s algorithm for Graph Isomorphism\n      presentation, presentation source code\n    \n    \n      02.04.2026\n      A few words about Derandomization and Polynomial Identity Testing\n      presentation, presentation source code\n    \n  \n\n\nLatest posts\n\n\n\nLatest projects\n\n\n\nSome thoughts on Life\n\nThese are brief summaries of thoughts I’ve spent a long time wrestling with — reflections shaped by science, history, and experience. They’re not definitive, just the clearest ways I’ve found to express certain ideas.\nI’m sharing them in the hope that some might resonate with others, as they continue to resonate with me.\n\n\n  If I were a politician, others would have to rightly reject my attempts to turn life on Earth into paradise.\n\n\n\n  Unfortunately, there is always a point after which further attempts to approach the ideal will gradually lead to disaster.\n\n\n\n  Complexity is directly connected to the inability to predict future.\n\n\n\n  Whenever an intuition eludes rigorous formulation within existing theories, it becomes necessary to develop a new theory capturing it.\n\n\n\n  Justice is too heavy a responsibility to be left in human hands.\n\n",
       "url": "/"
     },{
       
@@ -330,7 +330,7 @@
     },{
       
       "title": "Computer Science",
-      "date": "2026-02-18 18:42:11 +0100",
+      "date": "2026-04-07 09:49:10 +0200",
       "description": "This category contains all posts that have something to do with theoretical or practical computer science.\n",
       "content": "\n",
       "categories": [],
@@ -341,7 +341,7 @@
     },{
       
       "title": "Mathematics",
-      "date": "2026-02-18 18:42:11 +0100",
+      "date": "2026-04-07 09:49:10 +0200",
       "description": "This category contains all posts about various topics from pure mathematics.\n",
       "content": "\n",
       "categories": [],
@@ -352,7 +352,7 @@
     },{
       
       "title": "Algebra",
-      "date": "2026-02-18 18:42:11 +0100",
+      "date": "2026-04-07 09:49:10 +0200",
       
       "content": "\n",
       "categories": [],
@@ -363,7 +363,7 @@
     },{
       
       "title": "Complexity theory",
-      "date": "2026-02-18 18:42:11 +0100",
+      "date": "2026-04-07 09:49:10 +0200",
       
       "content": "\n",
       "categories": [],
@@ -374,7 +374,7 @@
     },{
       
       "title": "Concurrency",
-      "date": "2026-02-18 18:42:11 +0100",
+      "date": "2026-04-07 09:49:10 +0200",
       
       "content": "\n",
       "categories": [],
@@ -385,7 +385,7 @@
     },{
       
       "title": "Cryptography",
-      "date": "2026-02-18 18:42:11 +0100",
+      "date": "2026-04-07 09:49:10 +0200",
       
       "content": "\n",
       "categories": [],
@@ -396,7 +396,7 @@
     },{
       
       "title": "Linear algebra",
-      "date": "2026-02-18 18:42:11 +0100",
+      "date": "2026-04-07 09:49:10 +0200",
       
       "content": "\n",
       "categories": [],
@@ -407,7 +407,7 @@
     },{
       
       "title": "Logic",
-      "date": "2026-02-18 18:42:11 +0100",
+      "date": "2026-04-07 09:49:10 +0200",
       
       "content": "\n",
       "categories": [],
@@ -418,7 +418,7 @@
     },{
       
       "title": "Research",
-      "date": "2026-02-18 18:42:11 +0100",
+      "date": "2026-04-07 09:49:10 +0200",
       
       "content": "\n",
       "categories": [],
